@@ -6,6 +6,9 @@
 
 <title>PERTHSANTA CARD COLLECTION</title>
 
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 * {
     box-sizing: border-box;
@@ -49,10 +52,6 @@ header {
         drop-shadow(0 0 25px rgba(255,0,0,0.15));
 }
 
-.logo-fallback {
-    display: none;
-}
-
 header h1 {
     margin: 0;
     font-size: clamp(24px, 4vw, 42px);
@@ -68,6 +67,145 @@ header h1 {
     color: #d7d7d7;
     font-size: 15px;
     letter-spacing: 1px;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.account-area {
+    margin: 22px auto 0;
+    width: min(560px, 95%);
+}
+
+.login-panel {
+    padding: 15px;
+    border: 1px solid #620000;
+    border-radius: 14px;
+    background:
+        linear-gradient(145deg, rgba(35,0,0,0.9), rgba(8,8,8,0.95));
+    box-shadow:
+        0 0 20px rgba(120,0,0,0.18);
+}
+
+.login-title {
+    font-size: 12px;
+    color: #ff6666;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.login-description {
+    color: #aaa;
+    font-size: 12px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.google-login-btn {
+    width: 100%;
+    padding: 12px 18px;
+
+    border: 1px solid #7d0000;
+    border-radius: 9px;
+
+    background:
+        linear-gradient(135deg, #8b0000, #450000);
+
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.google-login-btn:hover {
+    background:
+        linear-gradient(135deg, #b00000, #650000);
+
+    border-color: #ff3333;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 0 18px rgba(255,0,0,0.25);
+}
+
+.google-login-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.user-panel {
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.user-info {
+    text-align: left;
+    min-width: 0;
+}
+
+.user-name {
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-email {
+    color: #999;
+    font-size: 11px;
+    margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cloud-status {
+    color: #ff6666;
+    font-size: 11px;
+    margin-top: 7px;
+}
+
+.logout-btn {
+    padding: 9px 13px;
+
+    border: 1px solid #570000;
+    border-radius: 8px;
+
+    background: #120000;
+    color: white;
+
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #650000;
+    border-color: #ff2222;
+}
+
+.sync-message {
+    display: none;
+    margin-top: 10px;
+    padding: 8px 10px;
+
+    border-radius: 8px;
+    background: rgba(80,0,0,0.35);
+
+    color: #ccc;
+    font-size: 11px;
+}
+
+.sync-message.error {
+    color: #ff8888;
+    border: 1px solid #700000;
 }
 
 /* =========================
@@ -734,6 +872,14 @@ footer strong {
         line-height: 1.6;
     }
 
+    .account-area {
+        width: 94%;
+    }
+
+    .user-panel {
+        justify-content: space-between;
+    }
+
     .music-player {
         position: fixed;
         top: auto;
@@ -897,6 +1043,7 @@ footer strong {
 
 <audio id="audioPlayer" preload="auto"></audio>
 
+
 <!-- =========================
      HEADER
 ========================= -->
@@ -918,6 +1065,80 @@ footer strong {
         Because of love, every card has its own value. 🖤🤍❤️
     </div>
 
+
+    <!-- =========================
+         GOOGLE LOGIN
+    ========================= -->
+
+    <div class="account-area">
+
+        <div class="login-panel" id="loginPanel">
+
+            <div class="login-title">
+                ☁️ PERSONAL CLOUD COLLECTION
+            </div>
+
+            <div class="login-description">
+                Sign in with Google to save your card collection
+                to the cloud and access it on other devices.
+            </div>
+
+            <button
+                class="google-login-btn"
+                id="googleLoginButton"
+                onclick="loginWithGoogle()"
+            >
+                🔐 SIGN IN WITH GOOGLE
+            </button>
+
+            <div
+                class="sync-message"
+                id="syncMessage"
+            ></div>
+
+        </div>
+
+
+        <div
+            class="login-panel user-panel"
+            id="userPanel"
+        >
+
+            <div class="user-info">
+
+                <div
+                    class="user-name"
+                    id="userName"
+                >
+                    Google User
+                </div>
+
+                <div
+                    class="user-email"
+                    id="userEmail"
+                >
+                </div>
+
+                <div
+                    class="cloud-status"
+                    id="cloudStatus"
+                >
+                    ☁️ Cloud Sync On
+                </div>
+
+            </div>
+
+            <button
+                class="logout-btn"
+                onclick="logout()"
+            >
+                LOG OUT
+            </button>
+
+        </div>
+
+    </div>
+
 </header>
 
 
@@ -934,7 +1155,10 @@ footer strong {
             <p>Choose your collection</p>
         </div>
 
-        <div class="location-grid" id="locationGrid"></div>
+        <div
+            class="location-grid"
+            id="locationGrid"
+        ></div>
 
     </section>
 
@@ -952,45 +1176,69 @@ footer strong {
         <div class="summary-stats">
 
             <div class="stat">
-                <div class="stat-number" id="seriesTotal">
+                <div
+                    class="stat-number"
+                    id="seriesTotal"
+                >
                     0
                 </div>
+
                 <div class="stat-label">
                     SERIES
                 </div>
             </div>
 
+
             <div class="stat">
-                <div class="stat-number" id="cardTotal">
+                <div
+                    class="stat-number"
+                    id="cardTotal"
+                >
                     0
                 </div>
+
                 <div class="stat-label">
                     TOTAL CARDS
                 </div>
             </div>
 
+
             <div class="stat">
-                <div class="stat-number" id="cardCollected">
+                <div
+                    class="stat-number"
+                    id="cardCollected"
+                >
                     0
                 </div>
+
                 <div class="stat-label">
                     COLLECTED
                 </div>
             </div>
 
+
             <div class="stat">
-                <div class="stat-number" id="cardMissing">
+                <div
+                    class="stat-number"
+                    id="cardMissing"
+                >
                     0
                 </div>
+
                 <div class="stat-label">
                     MISSING
                 </div>
             </div>
 
+
             <div class="stat">
-                <div class="stat-number" id="cardPercent">
+                <div
+                    class="stat-number"
+                    id="cardPercent"
+                >
                     0%
                 </div>
+
                 <div class="stat-label">
                     COMPLETE
                 </div>
@@ -1003,14 +1251,19 @@ footer strong {
 
             <div class="progress-label">
                 <span>Overall Progress</span>
-                <span id="progressText">0%</span>
+
+                <span id="progressText">
+                    0%
+                </span>
             </div>
 
             <div class="progress-bar">
+
                 <div
                     class="progress-fill"
                     id="progressFill"
                 ></div>
+
             </div>
 
         </div>
@@ -1079,6 +1332,29 @@ footer strong {
 <script>
 
 /* ============================================================
+   SUPABASE CONFIG
+============================================================ */
+
+const SUPABASE_URL =
+    "https://zfawlcmvhotcntnldynu.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_rQPVQewVx_HN9Gqv1V9yxg_8JPlwuy3";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+let currentUser = null;
+
+let cloudSyncReady = false;
+
+
+/* ============================================================
    LOCATION DATA
 ============================================================ */
 
@@ -1118,6 +1394,7 @@ const seriesData = [
     {
         location: "Perth",
         series: [
+
             {
                 title: "Shining Series",
                 count: 9,
@@ -1231,6 +1508,7 @@ const seriesData = [
                 count: 10,
                 imageFolder: "Numb-Photo-Set"
             }
+
         ]
     },
 
@@ -1481,7 +1759,9 @@ const seriesData = [
    STORAGE
 ============================================================ */
 
-const STORAGE_KEY = "myCardCollection";
+const STORAGE_KEY =
+    "myCardCollection";
+
 
 let collection = JSON.parse(
     localStorage.getItem(STORAGE_KEY) || "{}"
@@ -1514,7 +1794,11 @@ function getLocationIcon(locationName) {
    CARD KEY
 ============================================================ */
 
-function getCardKey(location, seriesIndex, cardNumber) {
+function getCardKey(
+    location,
+    seriesIndex,
+    cardNumber
+) {
 
     return `${location}-${seriesIndex}-${cardNumber}`;
 
@@ -1522,7 +1806,75 @@ function getCardKey(location, seriesIndex, cardNumber) {
 
 
 /* ============================================================
-   SAVE
+   SYNC MESSAGE
+============================================================ */
+
+function showSyncMessage(
+    message,
+    isError = false
+) {
+
+    const element =
+        document.getElementById(
+            "syncMessage"
+        );
+
+    if (!element) {
+        return;
+    }
+
+    element.textContent = message;
+
+    element.classList.toggle(
+        "error",
+        isError
+    );
+
+    element.style.display =
+        "block";
+
+
+    if (!isError) {
+
+        setTimeout(() => {
+
+            if (
+                element.textContent ===
+                message
+            ) {
+
+                element.style.display =
+                    "none";
+
+            }
+
+        }, 3500);
+
+    }
+
+}
+
+
+/* ============================================================
+   UPDATE CLOUD STATUS
+============================================================ */
+
+function updateCloudStatus(message) {
+
+    const status =
+        document.getElementById(
+            "cloudStatus"
+        );
+
+    if (status) {
+        status.textContent = message;
+    }
+
+}
+
+
+/* ============================================================
+   SAVE LOCAL
 ============================================================ */
 
 function saveCollection() {
@@ -1536,38 +1888,919 @@ function saveCollection() {
 
 
 /* ============================================================
-   TOTALS
+   GET LOCAL OWNED CARDS
 ============================================================ */
 
-function getTotals() {
+function getOwnedCardEntries() {
 
-    let totalCards = 0;
-    let collected = 0;
-    let totalSeries = 0;
+    const entries = [];
 
-    seriesData.forEach(locationData => {
+    Object.keys(collection).forEach(key => {
 
-        locationData.series.forEach(series => {
+        if (collection[key] === true) {
 
-            totalSeries++;
-            totalCards += series.count;
+            entries.push(key);
+
+        }
+
+    });
+
+    return entries;
+
+}
+
+
+/* ============================================================
+   PARSE CARD KEY
+============================================================ */
+
+function parseCardKey(key) {
+
+    const parts =
+        key.split("-");
+
+    /*
+        Location can contain no "-"
+        in the current data.
+
+        Format:
+        Perth-0-1
+        Santa-1-2
+        PerthSanta-10-4
+    */
+
+    if (parts.length < 3) {
+        return null;
+    }
+
+    const cardNumber =
+        Number(parts[parts.length - 1]);
+
+    const seriesIndex =
+        Number(parts[parts.length - 2]);
+
+    const location =
+        parts.slice(
+            0,
+            parts.length - 2
+        ).join("-");
+
+
+    if (
+        !location ||
+        Number.isNaN(seriesIndex) ||
+        Number.isNaN(cardNumber)
+    ) {
+        return null;
+    }
+
+
+    return {
+        location,
+        seriesIndex,
+        cardNumber
+    };
+
+}
+
+
+/* ============================================================
+   LOGIN WITH GOOGLE
+============================================================ */
+
+async function loginWithGoogle() {
+
+    const button =
+        document.getElementById(
+            "googleLoginButton"
+        );
+
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.textContent =
+            "🔄 CONNECTING...";
+
+    }
+
+
+    showSyncMessage(
+        "Opening Google login..."
+    );
+
+
+    const redirectTo =
+        window.location.origin +
+        window.location.pathname;
+
+
+    const { error } =
+        await supabaseClient.auth.signInWithOAuth({
+
+            provider: "google",
+
+            options: {
+                redirectTo: redirectTo
+            }
+
+        });
+
+
+    if (error) {
+
+        console.error(
+            "Google login error:",
+            error
+        );
+
+
+        showSyncMessage(
+            "Google login failed: " +
+            error.message,
+            true
+        );
+
+
+        if (button) {
+
+            button.disabled = false;
+
+            button.textContent =
+                "🔐 SIGN IN WITH GOOGLE";
+
+        }
+
+    }
+
+}
+
+
+/* ============================================================
+   LOGOUT
+============================================================ */
+
+async function logout() {
+
+    const confirmed =
+        confirm(
+            "Log out from your Google account?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    const { error } =
+        await supabaseClient.auth.signOut();
+
+
+    if (error) {
+
+        console.error(
+            "Logout error:",
+            error
+        );
+
+
+        alert(
+            "Logout failed: " +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    currentUser = null;
+
+    cloudSyncReady = false;
+
+
+    updateLoginUI(null);
+
+
+    showSyncMessage(
+        "Logged out. Your local collection remains on this device."
+    );
+
+}
+
+
+/* ============================================================
+   UPDATE LOGIN UI
+============================================================ */
+
+function updateLoginUI(user) {
+
+    const loginPanel =
+        document.getElementById(
+            "loginPanel"
+        );
+
+    const userPanel =
+        document.getElementById(
+            "userPanel"
+        );
+
+
+    const userName =
+        document.getElementById(
+            "userName"
+        );
+
+    const userEmail =
+        document.getElementById(
+            "userEmail"
+        );
+
+
+    if (!user) {
+
+        loginPanel.style.display =
+            "block";
+
+        userPanel.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    loginPanel.style.display =
+        "none";
+
+    userPanel.style.display =
+        "flex";
+
+
+    const metadata =
+        user.user_metadata || {};
+
+
+    const name =
+        metadata.full_name ||
+        metadata.name ||
+        "Google User";
+
+
+    const email =
+        user.email ||
+        "";
+
+
+    userName.textContent =
+        name;
+
+    userEmail.textContent =
+        email;
+
+}
+
+
+/* ============================================================
+   LOAD CLOUD COLLECTION
+============================================================ */
+
+async function loadCloudCollection() {
+
+    if (!currentUser) {
+        return;
+    }
+
+
+    updateCloudStatus(
+        "☁️ Loading cloud collection..."
+    );
+
+
+    const { data, error } =
+        await supabaseClient
+            .from("card_collection")
+            .select(
+                "location, series_index, card_number, owned"
+            )
+            .eq(
+                "user_id",
+                currentUser.id
+            );
+
+
+    if (error) {
+
+        console.error(
+            "Load cloud collection error:",
+            error
+        );
+
+
+        updateCloudStatus(
+            "⚠️ Cloud sync error"
+        );
+
+
+        showSyncMessage(
+            "Could not load cloud collection: " +
+            error.message,
+            true
+        );
+
+
+        return;
+
+    }
+
+
+    const cloudCollection = {};
+
+
+    (data || []).forEach(row => {
+
+        if (row.owned === true) {
+
+            const key =
+                getCardKey(
+                    row.location,
+                    row.series_index,
+                    row.card_number
+                );
+
+
+            cloudCollection[key] =
+                true;
+
+        }
+
+    });
+
+
+    const localKeys =
+        getOwnedCardEntries();
+
+
+    /*
+        FIRST LOGIN / EMPTY CLOUD
+
+        If the cloud has nothing but this browser
+        already has a collection, upload the local
+        collection so the user's existing cards are
+        not lost.
+    */
+
+    if (
+        Object.keys(cloudCollection).length === 0 &&
+        localKeys.length > 0
+    ) {
+
+        showSyncMessage(
+            `Found ${localKeys.length} cards on this device. Uploading them to your cloud collection...`
+        );
+
+
+        const success =
+            await uploadLocalCollection();
+
+
+        if (success) {
+
+            cloudSyncReady = true;
+
+            updateCloudStatus(
+                "☁️ Cloud Sync On"
+            );
+
+            showSyncMessage(
+                `☁️ ${localKeys.length} cards saved to your cloud collection.`
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /*
+        BOTH LOCAL AND CLOUD HAVE DATA
+
+        We merge owned cards so existing local
+        cards are not accidentally lost.
+    */
+
+    let mergedCollection = {
+        ...cloudCollection
+    };
+
+
+    let localOnlyCount = 0;
+
+
+    localKeys.forEach(key => {
+
+        if (!mergedCollection[key]) {
+
+            mergedCollection[key] =
+                true;
+
+            localOnlyCount++;
+
+        }
+
+    });
+
+
+    collection =
+        mergedCollection;
+
+
+    saveCollection();
+
+
+    /*
+        Upload local-only cards if there were any.
+    */
+
+    if (localOnlyCount > 0) {
+
+        await uploadLocalCollection();
+
+    }
+
+
+    cloudSyncReady = true;
+
+
+    updateCloudStatus(
+        "☁️ Cloud Sync On"
+    );
+
+
+    renderCollection();
+    renderLocations();
+    renderSummary();
+
+
+    showSyncMessage(
+        `☁️ Cloud collection loaded: ${Object.keys(collection).length} cards.`
+    );
+
+}
+
+
+/* ============================================================
+   UPLOAD LOCAL COLLECTION
+============================================================ */
+
+async function uploadLocalCollection() {
+
+    if (!currentUser) {
+        return false;
+    }
+
+
+    const ownedKeys =
+        getOwnedCardEntries();
+
+
+    if (ownedKeys.length === 0) {
+        return true;
+    }
+
+
+    const rows = [];
+
+
+    ownedKeys.forEach(key => {
+
+        const parsed =
+            parseCardKey(key);
+
+
+        if (!parsed) {
+            return;
+        }
+
+
+        rows.push({
+
+            user_id:
+                currentUser.id,
+
+            location:
+                parsed.location,
+
+            series_index:
+                parsed.seriesIndex,
+
+            card_number:
+                parsed.cardNumber,
+
+            owned:
+                true,
+
+            updated_at:
+                new Date().toISOString()
 
         });
 
     });
 
 
-    Object.values(collection).forEach(value => {
+    if (rows.length === 0) {
+        return true;
+    }
 
-        if (value === true) {
-            collected++;
+
+    const { error } =
+        await supabaseClient
+            .from("card_collection")
+            .upsert(
+                rows,
+                {
+                    onConflict:
+                        "user_id,location,series_index,card_number"
+                }
+            );
+
+
+    if (error) {
+
+        console.error(
+            "Upload collection error:",
+            error
+        );
+
+
+        showSyncMessage(
+            "Cloud upload failed: " +
+            error.message,
+            true
+        );
+
+
+        updateCloudStatus(
+            "⚠️ Cloud Sync Error"
+        );
+
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* ============================================================
+   SYNC ONE CARD
+============================================================ */
+
+async function syncCardToCloud(
+    location,
+    seriesIndex,
+    cardNumber,
+    owned
+) {
+
+    if (
+        !currentUser ||
+        !cloudSyncReady
+    ) {
+        return;
+    }
+
+
+    const baseQuery =
+        supabaseClient
+            .from("card_collection");
+
+
+    if (owned) {
+
+        const { error } =
+            await baseQuery.upsert(
+
+                {
+
+                    user_id:
+                        currentUser.id,
+
+                    location:
+                        location,
+
+                    series_index:
+                        seriesIndex,
+
+                    card_number:
+                        cardNumber,
+
+                    owned:
+                        true,
+
+                    updated_at:
+                        new Date().toISOString()
+
+                },
+
+                {
+                    onConflict:
+                        "user_id,location,series_index,card_number"
+                }
+
+            );
+
+
+        if (error) {
+
+            console.error(
+                "Cloud card save error:",
+                error
+            );
+
+
+            updateCloudStatus(
+                "⚠️ Save error"
+            );
+
+
+            showSyncMessage(
+                "Could not save this card to cloud: " +
+                error.message,
+                true
+            );
+
+
+            return;
+
         }
 
-    });
+    } else {
+
+        const { error } =
+            await baseQuery
+                .delete()
+                .eq(
+                    "user_id",
+                    currentUser.id
+                )
+                .eq(
+                    "location",
+                    location
+                )
+                .eq(
+                    "series_index",
+                    seriesIndex
+                )
+                .eq(
+                    "card_number",
+                    cardNumber
+                );
+
+
+        if (error) {
+
+            console.error(
+                "Cloud card delete error:",
+                error
+            );
+
+
+            updateCloudStatus(
+                "⚠️ Save error"
+            );
+
+
+            showSyncMessage(
+                "Could not update cloud collection: " +
+                error.message,
+                true
+            );
+
+
+            return;
+
+        }
+
+    }
+
+
+    updateCloudStatus(
+        "☁️ Cloud Sync On"
+    );
+
+}
+
+
+/* ============================================================
+   RESET CLOUD COLLECTION
+============================================================ */
+
+async function resetCloudCollection() {
+
+    if (!currentUser) {
+        return true;
+    }
+
+
+    const { error } =
+        await supabaseClient
+            .from("card_collection")
+            .delete()
+            .eq(
+                "user_id",
+                currentUser.id
+            );
+
+
+    if (error) {
+
+        console.error(
+            "Cloud reset error:",
+            error
+        );
+
+
+        showSyncMessage(
+            "Cloud reset failed: " +
+            error.message,
+            true
+        );
+
+
+        updateCloudStatus(
+            "⚠️ Cloud Sync Error"
+        );
+
+
+        return false;
+
+    }
+
+
+    updateCloudStatus(
+        "☁️ Cloud Sync On"
+    );
+
+
+    return true;
+
+}
+
+
+/* ============================================================
+   AUTH SESSION
+============================================================ */
+
+async function handleAuthSession(
+    session
+) {
+
+    if (!session) {
+
+        currentUser = null;
+
+        cloudSyncReady = false;
+
+        updateLoginUI(null);
+
+        return;
+
+    }
+
+
+    currentUser =
+        session.user;
+
+
+    updateLoginUI(
+        currentUser
+    );
+
+
+    /*
+        Give the browser a moment after OAuth redirect.
+    */
+
+    await loadCloudCollection();
+
+}
+
+
+/* ============================================================
+   INITIALIZE AUTH
+============================================================ */
+
+async function initializeAuth() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getSession();
+
+
+    if (error) {
+
+        console.error(
+            "Get session error:",
+            error
+        );
+
+        showSyncMessage(
+            "Could not check login session: " +
+            error.message,
+            true
+        );
+
+        return;
+
+    }
+
+
+    await handleAuthSession(
+        data.session
+    );
+
+
+    supabaseClient.auth.onAuthStateChange(
+        async (
+            event,
+            session
+        ) => {
+
+            console.log(
+                "Auth event:",
+                event
+            );
+
+
+            await handleAuthSession(
+                session
+            );
+
+        }
+    );
+
+}
+
+
+/* ============================================================
+   TOTALS
+============================================================ */
+
+function getTotals() {
+
+    let totalCards = 0;
+
+    let collected = 0;
+
+    let totalSeries = 0;
+
+
+    seriesData.forEach(
+        locationData => {
+
+            locationData.series.forEach(
+                series => {
+
+                    totalSeries++;
+
+                    totalCards +=
+                        series.count;
+
+                }
+            );
+
+        }
+    );
+
+
+    Object.values(
+        collection
+    ).forEach(
+        value => {
+
+            if (value === true) {
+                collected++;
+            }
+
+        }
+    );
 
 
     const missing =
-        Math.max(totalCards - collected, 0);
+        Math.max(
+            totalCards - collected,
+            0
+        );
+
 
     const percent =
         totalCards === 0
@@ -1576,12 +2809,19 @@ function getTotals() {
                 (collected / totalCards) * 100
             );
 
+
     return {
+
         totalCards,
+
         collected,
+
         missing,
+
         percent,
+
         totalSeries
+
     };
 
 }
@@ -1594,90 +2834,115 @@ function getTotals() {
 function renderLocations() {
 
     const container =
-        document.getElementById("locationGrid");
+        document.getElementById(
+            "locationGrid"
+        );
+
 
     container.innerHTML = "";
 
 
-    seriesData.forEach(locationData => {
+    seriesData.forEach(
+        locationData => {
 
-        let total = 0;
-
-        locationData.series.forEach(series => {
-            total += series.count;
-        });
+            let total = 0;
 
 
-        let collected = 0;
+            locationData.series.forEach(
+                series => {
 
-        locationData.series.forEach(
-            (series, seriesIndex) => {
+                    total +=
+                        series.count;
 
-                for (
-                    let number = 1;
-                    number <= series.count;
-                    number++
-                ) {
+                }
+            );
 
-                    const key = getCardKey(
-                        locationData.location,
-                        seriesIndex,
-                        number
-                    );
 
-                    if (collection[key]) {
-                        collected++;
+            let collected = 0;
+
+
+            locationData.series.forEach(
+                (
+                    series,
+                    seriesIndex
+                ) => {
+
+                    for (
+                        let number = 1;
+                        number <= series.count;
+                        number++
+                    ) {
+
+                        const key =
+                            getCardKey(
+                                locationData.location,
+                                seriesIndex,
+                                number
+                            );
+
+
+                        if (collection[key]) {
+                            collected++;
+                        }
+
                     }
 
                 }
-
-            }
-        );
+            );
 
 
-        const card =
-            document.createElement("div");
-
-        card.className = "location-card";
-
-        card.onclick = () => {
-
-            const target =
-                document.getElementById(
-                    `location-${locationData.location}`
+            const card =
+                document.createElement(
+                    "div"
                 );
 
-            if (target) {
 
-                target.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            }
-
-        };
+            card.className =
+                "location-card";
 
 
-        card.innerHTML = `
+            card.onclick = () => {
 
-            <div class="location-icon">
-                ${getLocationIcon(locationData.location)}
-            </div>
-
-            <div class="location-name">
-                ${locationData.location}
-            </div>
-
-            <div class="location-count">
-                ${collected} / ${total} collected
-            </div>
-
-        `;
+                const target =
+                    document.getElementById(
+                        `location-${locationData.location}`
+                    );
 
 
-        container.appendChild(card);
+                if (target) {
 
-    });
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            };
+
+
+            card.innerHTML = `
+
+                <div class="location-icon">
+                    ${getLocationIcon(locationData.location)}
+                </div>
+
+                <div class="location-name">
+                    ${locationData.location}
+                </div>
+
+                <div class="location-count">
+                    ${collected} / ${total} collected
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
 
 }
 
@@ -1688,33 +2953,57 @@ function renderLocations() {
 
 function renderSummary() {
 
-    const totals = getTotals();
+    const totals =
+        getTotals();
 
 
-    document.getElementById("seriesTotal")
-        .textContent = totals.totalSeries;
+    document.getElementById(
+        "seriesTotal"
+    ).textContent =
+        totals.totalSeries;
 
-    document.getElementById("cardTotal")
-        .textContent = totals.totalCards;
 
-    document.getElementById("cardCollected")
-        .textContent = totals.collected;
+    document.getElementById(
+        "cardTotal"
+    ).textContent =
+        totals.totalCards;
 
-    document.getElementById("cardMissing")
-        .textContent = totals.missing;
 
-    document.getElementById("cardPercent")
-        .textContent = totals.percent + "%";
+    document.getElementById(
+        "cardCollected"
+    ).textContent =
+        totals.collected;
 
-    document.getElementById("progressText")
-        .textContent = totals.percent + "%";
 
-    document.getElementById("progressFill")
-        .style.width = totals.percent + "%";
+    document.getElementById(
+        "cardMissing"
+    ).textContent =
+        totals.missing;
+
+
+    document.getElementById(
+        "cardPercent"
+    ).textContent =
+        totals.percent + "%";
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        totals.percent + "%";
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        totals.percent + "%";
 
 
     const breakdown =
-        document.getElementById("breakdown");
+        document.getElementById(
+            "breakdown"
+        );
+
 
     breakdown.innerHTML = "";
 
@@ -1722,79 +3011,91 @@ function renderSummary() {
     let globalSeriesNumber = 0;
 
 
-    seriesData.forEach(locationData => {
+    seriesData.forEach(
+        locationData => {
 
-        locationData.series.forEach(
-            (series, seriesIndex) => {
+            locationData.series.forEach(
+                (
+                    series,
+                    seriesIndex
+                ) => {
 
-                globalSeriesNumber++;
+                    globalSeriesNumber++;
 
 
-                let collected = 0;
+                    let collected = 0;
 
 
-                for (
-                    let number = 1;
-                    number <= series.count;
-                    number++
-                ) {
+                    for (
+                        let number = 1;
+                        number <= series.count;
+                        number++
+                    ) {
 
-                    const key = getCardKey(
-                        locationData.location,
-                        seriesIndex,
-                        number
-                    );
+                        const key =
+                            getCardKey(
+                                locationData.location,
+                                seriesIndex,
+                                number
+                            );
 
-                    if (collection[key]) {
-                        collected++;
+
+                        if (collection[key]) {
+                            collected++;
+                        }
+
                     }
 
-                }
+
+                    const percent =
+                        series.count === 0
+                            ? 0
+                            : Math.round(
+                                (collected / series.count) * 100
+                            );
 
 
-                const percent =
-                    series.count === 0
-                        ? 0
-                        : Math.round(
-                            (collected / series.count) * 100
+                    const row =
+                        document.createElement(
+                            "div"
                         );
 
 
-                const row =
-                    document.createElement("div");
-
-                row.className =
-                    "breakdown-row";
+                    row.className =
+                        "breakdown-row";
 
 
-                row.innerHTML = `
+                    row.innerHTML = `
 
-                    <div class="breakdown-number">
-                        ${String(globalSeriesNumber).padStart(2, "0")}
-                    </div>
+                        <div class="breakdown-number">
+                            ${String(globalSeriesNumber).padStart(2, "0")}
+                        </div>
 
-                    <div class="breakdown-name">
-                        ${getLocationIcon(locationData.location)}
-                        ${series.title}
-                    </div>
+                        <div class="breakdown-name">
+                            ${getLocationIcon(locationData.location)}
+                            ${series.title}
+                        </div>
 
-                    <div class="breakdown-count">
-                        ${collected}/${series.count}
-                    </div>
+                        <div class="breakdown-count">
+                            ${collected}/${series.count}
+                        </div>
 
-                    <div class="breakdown-percent">
-                        ${percent}%
-                    </div>
+                        <div class="breakdown-percent">
+                            ${percent}%
+                        </div>
 
-                `;
+                    `;
 
 
-                breakdown.appendChild(row);
+                    breakdown.appendChild(
+                        row
+                    );
 
-            }
-        );
+                }
+            );
 
-    });
+        }
+    );
 
 }
 
@@ -1805,15 +3106,21 @@ function renderSummary() {
 
 function imageError(img) {
 
-    img.style.display = "none";
+    img.style.display =
+        "none";
+
 
     const fallback =
         img.parentElement.querySelector(
             ".card-no-image"
         );
 
+
     if (fallback) {
-        fallback.style.display = "flex";
+
+        fallback.style.display =
+            "flex";
+
     }
 
 }
@@ -1830,262 +3137,366 @@ function renderCollection() {
             "collectionContainer"
         );
 
+
     container.innerHTML = "";
 
 
-    seriesData.forEach(locationData => {
+    seriesData.forEach(
+        locationData => {
 
-        const locationSection =
-            document.createElement("section");
-
-        locationSection.className =
-            "location-section";
-
-        locationSection.id =
-            `location-${locationData.location}`;
-
-
-        const locationHeader =
-            document.createElement("div");
-
-        locationHeader.className =
-            "location-header";
-
-
-        let locationTotal = 0;
-        let locationCollected = 0;
-
-
-        locationData.series.forEach(
-            (series, seriesIndex) => {
-
-                locationTotal += series.count;
-
-
-                for (
-                    let number = 1;
-                    number <= series.count;
-                    number++
-                ) {
-
-                    const key = getCardKey(
-                        locationData.location,
-                        seriesIndex,
-                        number
-                    );
-
-                    if (collection[key]) {
-                        locationCollected++;
-                    }
-
-                }
-
-            }
-        );
-
-
-        locationHeader.innerHTML = `
-
-            <h2>
-                ${getLocationIcon(locationData.location)}
-                ${locationData.location}
-            </h2>
-
-            <p>
-                ${locationCollected} / ${locationTotal}
-                cards collected
-            </p>
-
-        `;
-
-
-        locationSection.appendChild(
-            locationHeader
-        );
-
-
-        locationData.series.forEach(
-            (series, seriesIndex) => {
-
-                let collected = 0;
-
-
-                for (
-                    let number = 1;
-                    number <= series.count;
-                    number++
-                ) {
-
-                    const key = getCardKey(
-                        locationData.location,
-                        seriesIndex,
-                        number
-                    );
-
-                    if (collection[key]) {
-                        collected++;
-                    }
-
-                }
-
-
-                const seriesElement =
-                    document.createElement("div");
-
-                seriesElement.className =
-                    "series";
-
-
-                if (collected === series.count) {
-                    seriesElement.classList.add(
-                        "complete"
-                    );
-                }
-
-
-                const seriesDivider =
-                    document.createElement("div");
-
-                seriesDivider.className =
-                    "series-divider";
-
-
-                seriesDivider.innerHTML = `
-
-                    <div class="series-number">
-                        SERIES ${String(
-                            seriesIndex + 1
-                        ).padStart(2, "0")}
-                    </div>
-
-                    <div class="series-title">
-                        ${series.title}
-                    </div>
-
-                    <div class="series-count">
-                        ${collected} / ${series.count}
-                        collected
-                    </div>
-
-                `;
-
-
-                seriesElement.appendChild(
-                    seriesDivider
+            const locationSection =
+                document.createElement(
+                    "section"
                 );
 
 
-                const grid =
-                    document.createElement("div");
-
-                grid.className =
-                    "cards-grid";
+            locationSection.className =
+                "location-section";
 
 
-                for (
-                    let number = 1;
-                    number <= series.count;
-                    number++
-                ) {
-
-                    const key = getCardKey(
-                        locationData.location,
-                        seriesIndex,
-                        number
-                    );
+            locationSection.id =
+                `location-${locationData.location}`;
 
 
-                    const owned =
-                        collection[key] === true;
+            const locationHeader =
+                document.createElement(
+                    "div"
+                );
 
 
-                    const card =
-                        document.createElement("div");
-
-                    card.className =
-                        "card" +
-                        (owned ? " owned" : "");
+            locationHeader.className =
+                "location-header";
 
 
-                    card.dataset.number =
-                        String(number).padStart(
-                            3,
-                            "0"
+            let locationTotal = 0;
+
+            let locationCollected = 0;
+
+
+            locationData.series.forEach(
+                (
+                    series,
+                    seriesIndex
+                ) => {
+
+                    locationTotal +=
+                        series.count;
+
+
+                    for (
+                        let number = 1;
+                        number <= series.count;
+                        number++
+                    ) {
+
+                        const key =
+                            getCardKey(
+                                locationData.location,
+                                seriesIndex,
+                                number
+                            );
+
+
+                        if (collection[key]) {
+                            locationCollected++;
+                        }
+
+                    }
+
+                }
+            );
+
+
+            locationHeader.innerHTML = `
+
+                <h2>
+                    ${getLocationIcon(locationData.location)}
+                    ${locationData.location}
+                </h2>
+
+                <p>
+                    ${locationCollected} / ${locationTotal}
+                    cards collected
+                </p>
+
+            `;
+
+
+            locationSection.appendChild(
+                locationHeader
+            );
+
+
+            locationData.series.forEach(
+                (
+                    series,
+                    seriesIndex
+                ) => {
+
+                    let collected = 0;
+
+
+                    for (
+                        let number = 1;
+                        number <= series.count;
+                        number++
+                    ) {
+
+                        const key =
+                            getCardKey(
+                                locationData.location,
+                                seriesIndex,
+                                number
+                            );
+
+
+                        if (collection[key]) {
+                            collected++;
+                        }
+
+                    }
+
+
+                    const seriesElement =
+                        document.createElement(
+                            "div"
                         );
 
 
-                    const imagePath =
-                        `images/${locationData.imageFolder}/${series.imageFolder}/${String(number).padStart(3, "0")}.jpg`;
+                    seriesElement.className =
+                        "series";
 
 
-                    card.innerHTML = `
+                    if (
+                        collected ===
+                        series.count
+                    ) {
 
-                        <img
-                            src="${imagePath}"
-                            alt="${series.title} ${String(number).padStart(3, "0")}"
-                            onerror="imageError(this)"
-                        >
+                        seriesElement.classList.add(
+                            "complete"
+                        );
 
-                        <div
-                            class="card-no-image"
-                            style="display:none;"
-                        >
-                            NO IMAGE
+                    }
+
+
+                    const seriesDivider =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    seriesDivider.className =
+                        "series-divider";
+
+
+                    seriesDivider.innerHTML = `
+
+                        <div class="series-number">
+                            SERIES ${String(
+                                seriesIndex + 1
+                            ).padStart(2, "0")}
                         </div>
 
-                        <div class="card-number">
-                            ${String(number).padStart(3, "0")}
+                        <div class="series-title">
+                            ${series.title}
                         </div>
 
-                        <div class="heart">
-                            🖤
-                        </div>
-
-                        <div class="card-status">
-                            ${
-                                owned
-                                    ? "- 🖤🤍❤️ get"
-                                    : "- havent get 😭"
-                            }
+                        <div class="series-count">
+                            ${collected} / ${series.count}
+                            collected
                         </div>
 
                     `;
 
 
-                    card.onclick = () => {
-
-                        collection[key] =
-                            !collection[key];
-
-                        saveCollection();
-
-                        renderCollection();
-                        renderLocations();
-                        renderSummary();
-
-                    };
+                    seriesElement.appendChild(
+                        seriesDivider
+                    );
 
 
-                    grid.appendChild(card);
+                    const grid =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    grid.className =
+                        "cards-grid";
+
+
+                    for (
+                        let number = 1;
+                        number <= series.count;
+                        number++
+                    ) {
+
+                        const key =
+                            getCardKey(
+                                locationData.location,
+                                seriesIndex,
+                                number
+                            );
+
+
+                        const owned =
+                            collection[key] === true;
+
+
+                        const card =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        card.className =
+                            "card" +
+                            (
+                                owned
+                                    ? " owned"
+                                    : ""
+                            );
+
+
+                        card.dataset.number =
+                            String(
+                                number
+                            ).padStart(
+                                3,
+                                "0"
+                            );
+
+
+                        const imagePath =
+                            `images/${locationData.imageFolder}/${series.imageFolder}/${String(number).padStart(3, "0")}.jpg`;
+
+
+                        card.innerHTML = `
+
+                            <img
+                                src="${imagePath}"
+                                alt="${series.title} ${String(number).padStart(3, "0")}"
+                                onerror="imageError(this)"
+                            >
+
+                            <div
+                                class="card-no-image"
+                                style="display:none;"
+                            >
+                                NO IMAGE
+                            </div>
+
+                            <div class="card-number">
+                                ${String(number).padStart(3, "0")}
+                            </div>
+
+                            <div class="heart">
+                                🖤
+                            </div>
+
+                            <div class="card-status">
+                                ${
+                                    owned
+                                        ? "- 🖤🤍❤️ get"
+                                        : "- havent get 😭"
+                                }
+                            </div>
+
+                        `;
+
+
+                        card.onclick = async () => {
+
+                            const newOwned =
+                                !collection[key];
+
+
+                            collection[key] =
+                                newOwned;
+
+
+                            saveCollection();
+
+
+                            /*
+                                Render immediately so the
+                                card changes without waiting
+                                for internet.
+                            */
+
+                            renderCollection();
+                            renderLocations();
+                            renderSummary();
+
+
+                            /*
+                                Then sync to cloud.
+                            */
+
+                            if (
+                                currentUser &&
+                                cloudSyncReady
+                            ) {
+
+                                const syncData =
+                                    parseCardKey(
+                                        key
+                                    );
+
+
+                                if (syncData) {
+
+                                    await syncCardToCloud(
+
+                                        syncData.location,
+
+                                        syncData.seriesIndex,
+
+                                        syncData.cardNumber,
+
+                                        newOwned
+
+                                    );
+
+                                }
+
+                            }
+
+                        };
+
+
+                        grid.appendChild(
+                            card
+                        );
+
+                    }
+
+
+                    seriesElement.appendChild(
+                        grid
+                    );
+
+
+                    locationSection.appendChild(
+                        seriesElement
+                    );
 
                 }
+            );
 
 
-                seriesElement.appendChild(grid);
+            container.appendChild(
+                locationSection
+            );
 
-                locationSection.appendChild(
-                    seriesElement
-                );
-
-            }
-        );
+        }
+    );
 
 
-        container.appendChild(
-            locationSection
-        );
+    /*
+        Re-apply search after rendering.
+    */
 
-    });
+    searchCards();
 
 }
 
@@ -2096,49 +3507,72 @@ function renderCollection() {
 
 function searchCards() {
 
-    const value =
+    const input =
         document.getElementById(
             "searchInput"
-        ).value.trim();
+        );
+
+
+    if (!input) {
+        return;
+    }
+
+
+    const value =
+        input.value.trim();
 
 
     const cards =
-        document.querySelectorAll(".card");
+        document.querySelectorAll(
+            ".card"
+        );
 
 
     if (!value) {
 
-        cards.forEach(card => {
+        cards.forEach(
+            card => {
 
-            card.style.display = "";
+                card.style.display =
+                    "";
 
-        });
+            }
+        );
+
 
         return;
 
     }
 
 
-    cards.forEach(card => {
+    cards.forEach(
+        card => {
 
-        const number =
-            card.dataset.number;
+            const number =
+                card.dataset.number;
 
 
-        if (
-            number.includes(value) ||
-            number === value.padStart(3, "0")
-        ) {
+            if (
+                number.includes(value) ||
+                number ===
+                    value.padStart(
+                        3,
+                        "0"
+                    )
+            ) {
 
-            card.style.display = "";
+                card.style.display =
+                    "";
 
-        } else {
+            } else {
 
-            card.style.display = "none";
+                card.style.display =
+                    "none";
+
+            }
 
         }
-
-    });
+    );
 
 }
 
@@ -2148,6 +3582,7 @@ function resetSearch() {
     document.getElementById(
         "searchInput"
     ).value = "";
+
 
     searchCards();
 
@@ -2166,7 +3601,7 @@ document.getElementById(
    RESET COLLECTION
 ============================================================ */
 
-function resetCollection() {
+async function resetCollection() {
 
     const confirmed =
         confirm(
@@ -2179,13 +3614,58 @@ function resetCollection() {
     }
 
 
+    /*
+        If logged in, delete cloud data first.
+    */
+
+    if (
+        currentUser &&
+        cloudSyncReady
+    ) {
+
+        updateCloudStatus(
+            "☁️ Resetting cloud collection..."
+        );
+
+
+        const cloudSuccess =
+            await resetCloudCollection();
+
+
+        if (!cloudSuccess) {
+
+            alert(
+                "Cloud reset failed. Your collection was NOT reset."
+            );
+
+
+            return;
+
+        }
+
+    }
+
+
     collection = {};
+
 
     saveCollection();
 
+
     renderCollection();
+
     renderLocations();
+
     renderSummary();
+
+
+    if (currentUser) {
+
+        showSyncMessage(
+            "☁️ Your cloud collection has been reset."
+        );
+
+    }
 
 }
 
@@ -2264,8 +3744,10 @@ function loadTrack(
 ) {
 
     currentTrack =
-        (index + playlist.length)
-        % playlist.length;
+        (
+            index +
+            playlist.length
+        ) % playlist.length;
 
 
     audio.src =
@@ -2474,10 +3956,16 @@ audio.addEventListener(
 
 
 /* ============================================================
-   INITIALIZE
+   INITIALIZE APP
 ============================================================ */
 
-function initializeApp() {
+async function initializeApp() {
+
+    /*
+        Render local collection first.
+        This means the page still works even
+        before login/cloud loading finishes.
+    */
 
     renderLocations();
 
@@ -2488,7 +3976,17 @@ function initializeApp() {
 
     audio.volume = 0.6;
 
-    loadTrack(0, false);
+    loadTrack(
+        0,
+        false
+    );
+
+
+    /*
+        Then connect to Supabase.
+    */
+
+    await initializeAuth();
 
 }
 
@@ -2511,15 +4009,18 @@ window.addEventListener(
     "load",
     function() {
 
-        setTimeout(() => {
+        setTimeout(
+            () => {
 
-            audio.play().catch(() => {
+                audio.play().catch(() => {
 
-                // Autoplay blocked by browser.
+                    // Autoplay blocked by browser.
 
-            });
+                });
 
-        }, 500);
+            },
+            500
+        );
 
     }
 );
