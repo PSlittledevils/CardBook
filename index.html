@@ -105,30 +105,22 @@ header h1 {
 .google-login-btn {
     width: 100%;
     padding: 12px 18px;
-
     border: 1px solid #7d0000;
     border-radius: 9px;
-
     background:
         linear-gradient(135deg, #8b0000, #450000);
-
     color: white;
     font-weight: bold;
     font-size: 14px;
-
     cursor: pointer;
-
     transition: 0.2s;
 }
 
 .google-login-btn:hover {
     background:
         linear-gradient(135deg, #b00000, #650000);
-
     border-color: #ff3333;
-
     transform: translateY(-1px);
-
     box-shadow:
         0 0 18px rgba(255,0,0,0.25);
 }
@@ -140,7 +132,6 @@ header h1 {
 
 .user-panel {
     display: none;
-
     align-items: center;
     justify-content: center;
     gap: 12px;
@@ -176,13 +167,10 @@ header h1 {
 
 .logout-btn {
     padding: 9px 13px;
-
     border: 1px solid #570000;
     border-radius: 8px;
-
     background: #120000;
     color: white;
-
     cursor: pointer;
 }
 
@@ -195,10 +183,8 @@ header h1 {
     display: none;
     margin-top: 10px;
     padding: 8px 10px;
-
     border-radius: 8px;
     background: rgba(80,0,0,0.35);
-
     color: #ccc;
     font-size: 11px;
 }
@@ -410,6 +396,7 @@ header h1 {
 }
 
 .summary-title {
+    text-align: center;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 22px;
@@ -418,7 +405,7 @@ header h1 {
 
 .summary-stats {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 12px;
     margin-bottom: 25px;
 }
@@ -427,7 +414,7 @@ header h1 {
     background: rgba(0,0,0,0.45);
     border: 1px solid #3d0000;
     border-radius: 12px;
-    padding: 17px;
+    padding: 17px 10px;
     text-align: center;
 }
 
@@ -440,7 +427,26 @@ header h1 {
 .stat-label {
     margin-top: 5px;
     color: #aaa;
-    font-size: 12px;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.hidden-stat {
+    border-color: #705d18;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45,35,5,0.35),
+            rgba(0,0,0,0.45)
+        );
+}
+
+.hidden-stat .stat-number {
+    color: #e6c85c;
+}
+
+.hidden-stat .stat-label {
+    color: #c9b96a;
 }
 
 .progress-wrapper {
@@ -509,6 +515,43 @@ header h1 {
 .breakdown-percent {
     color: #ff6666;
     text-align: right;
+}
+
+/* =========================
+   CARD CATALOG TITLE
+========================= */
+
+.catalog-heading {
+    text-align: center;
+    margin: 55px 0 30px;
+}
+
+.catalog-line {
+    height: 1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #680000,
+            transparent
+        );
+}
+
+.catalog-heading h2 {
+    margin: 18px 0 10px;
+    font-size: 25px;
+    letter-spacing: 3px;
+}
+
+.collection-legend {
+    margin-top: 12px;
+    color: #888;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.collection-legend .gold {
+    color: #e6c85c;
 }
 
 /* =========================
@@ -606,20 +649,33 @@ header h1 {
     margin-top: 5px;
 }
 
+.series-hidden-info {
+    color: #c9b96a;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
 /* =========================
-   CARDS
+   CARDS GRID
 ========================= */
 
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 10px;
+    align-items: start;
 }
+
+/* =========================
+   NORMAL CARD
+========================= */
 
 .card {
     position: relative;
 
     aspect-ratio: 2 / 3;
+
+    min-width: 0;
 
     border-radius: 8px;
     overflow: hidden;
@@ -648,6 +704,20 @@ header h1 {
         brightness(0.55);
 }
 
+/* =========================
+   HORIZONTAL CARD
+   Takes 2 card spaces
+========================= */
+
+.card.horizontal-card {
+    aspect-ratio: 3 / 2;
+    grid-column: span 2;
+}
+
+/* =========================
+   OWNED CARD
+========================= */
+
 .card.owned {
     filter:
         grayscale(0)
@@ -668,11 +738,87 @@ header h1 {
         0 0 30px rgba(255,0,0,0.2);
 }
 
+/* =========================
+   HIDDEN CARD
+========================= */
+
+.card.hidden-card {
+    border: 2px solid #c9a227;
+
+    box-shadow:
+        0 0 8px rgba(201,162,39,0.28),
+        inset 0 0 8px rgba(201,162,39,0.08);
+}
+
+.card.hidden-card:hover {
+    border-color: #f4d76a;
+
+    box-shadow:
+        0 0 14px rgba(244,215,106,0.45),
+        0 0 28px rgba(201,162,39,0.20);
+}
+
+/* =========================
+   OWNED + HIDDEN
+========================= */
+
+.card.hidden-card.owned {
+    border: 2px solid #e6c85c;
+
+    box-shadow:
+        0 0 12px rgba(230,200,92,0.60),
+        0 0 25px rgba(201,162,39,0.28);
+}
+
+.card.hidden-card.owned:hover {
+    border-color: #ffe98a;
+
+    box-shadow:
+        0 0 18px rgba(255,225,100,0.75),
+        0 0 35px rgba(201,162,39,0.35);
+}
+
+/* =========================
+   HIDDEN BADGE
+========================= */
+
+.hidden-badge {
+    position: absolute;
+
+    top: 5px;
+    right: 5px;
+
+    padding: 3px 5px;
+
+    border-radius: 5px;
+
+    background: rgba(25,18,0,0.90);
+
+    border: 1px solid #c9a227;
+
+    color: #f4d76a;
+
+    font-size: 8px;
+    font-weight: bold;
+
+    letter-spacing: 0.5px;
+
+    z-index: 5;
+}
+
+/* =========================
+   CARD IMAGE
+========================= */
+
 .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.card.horizontal-card img {
+    object-fit: cover;
 }
 
 .card-no-image {
@@ -703,6 +849,8 @@ header h1 {
 
     font-size: 10px;
     font-weight: bold;
+
+    z-index: 4;
 }
 
 .card-status {
@@ -726,6 +874,8 @@ header h1 {
 
     opacity: 0;
     transition: 0.2s;
+
+    z-index: 3;
 }
 
 .card:hover .card-status,
@@ -748,6 +898,8 @@ header h1 {
     transform: scale(0.5);
 
     transition: 0.2s;
+
+    z-index: 4;
 }
 
 .card.owned .heart {
@@ -837,7 +989,7 @@ footer strong {
 }
 
 /* =========================
-   MOBILE
+   TABLET
 ========================= */
 
 @media (max-width: 1200px) {
@@ -850,6 +1002,10 @@ footer strong {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 700px) {
 
@@ -921,8 +1077,16 @@ footer strong {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .stat {
+        padding: 15px 8px;
+    }
+
     .stat-number {
         font-size: 22px;
+    }
+
+    .stat-label {
+        font-size: 10px;
     }
 
     .breakdown-row {
@@ -958,7 +1122,15 @@ footer strong {
     .search-box {
         width: 100%;
     }
+
+    .collection-legend {
+        line-height: 1.8;
+    }
 }
+
+/* =========================
+   SMALL PHONE
+========================= */
 
 @media (max-width: 430px) {
 
@@ -968,6 +1140,10 @@ footer strong {
 
     .summary-stats {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card.horizontal-card {
+        grid-column: span 2;
     }
 }
 </style>
@@ -1027,6 +1203,7 @@ footer strong {
 
         <div class="volume-area">
             🔊
+
             <input
                 id="volumeControl"
                 type="range"
@@ -1066,13 +1243,14 @@ footer strong {
     </div>
 
 
-    <!-- =========================
-         GOOGLE LOGIN
-    ========================= -->
+    <!-- GOOGLE LOGIN -->
 
     <div class="account-area">
 
-        <div class="login-panel" id="loginPanel">
+        <div
+            class="login-panel"
+            id="loginPanel"
+        >
 
             <div class="login-title">
                 ☁️ PERSONAL CLOUD COLLECTION
@@ -1151,8 +1329,15 @@ footer strong {
     <section class="home">
 
         <div class="section-title">
-            <h2>MY CARD COLLECTION</h2>
-            <p>Choose your collection</p>
+
+            <h2>
+                MY CARD COLLECTION
+            </h2>
+
+            <p>
+                Choose your collection
+            </p>
+
         </div>
 
         <div
@@ -1170,26 +1355,14 @@ footer strong {
     <section class="summary">
 
         <div class="summary-title">
-            📊 COLLECTION SUMMARY
+            COLLECTION SUMMARY
         </div>
+
 
         <div class="summary-stats">
 
             <div class="stat">
-                <div
-                    class="stat-number"
-                    id="seriesTotal"
-                >
-                    0
-                </div>
 
-                <div class="stat-label">
-                    SERIES
-                </div>
-            </div>
-
-
-            <div class="stat">
                 <div
                     class="stat-number"
                     id="cardTotal"
@@ -1200,10 +1373,28 @@ footer strong {
                 <div class="stat-label">
                     TOTAL CARDS
                 </div>
+
+            </div>
+
+
+            <div class="stat hidden-stat">
+
+                <div
+                    class="stat-number"
+                    id="hiddenTotal"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    ✨ HIDDEN CARDS
+                </div>
+
             </div>
 
 
             <div class="stat">
+
                 <div
                     class="stat-number"
                     id="cardCollected"
@@ -1214,10 +1405,28 @@ footer strong {
                 <div class="stat-label">
                     COLLECTED
                 </div>
+
+            </div>
+
+
+            <div class="stat hidden-stat">
+
+                <div
+                    class="stat-number"
+                    id="hiddenCollected"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    ✨ HIDDEN COLLECTED
+                </div>
+
             </div>
 
 
             <div class="stat">
+
                 <div
                     class="stat-number"
                     id="cardMissing"
@@ -1228,10 +1437,12 @@ footer strong {
                 <div class="stat-label">
                     MISSING
                 </div>
+
             </div>
 
 
             <div class="stat">
+
                 <div
                     class="stat-number"
                     id="cardPercent"
@@ -1240,8 +1451,9 @@ footer strong {
                 </div>
 
                 <div class="stat-label">
-                    COMPLETE
+                    OVERALL PROGRESS
                 </div>
+
             </div>
 
         </div>
@@ -1250,12 +1462,17 @@ footer strong {
         <div class="progress-wrapper">
 
             <div class="progress-label">
-                <span>Overall Progress</span>
+
+                <span>
+                    Overall Progress
+                </span>
 
                 <span id="progressText">
                     0%
                 </span>
+
             </div>
+
 
             <div class="progress-bar">
 
@@ -1308,6 +1525,31 @@ footer strong {
 
 
     <!-- =========================
+         CARD CATALOG
+    ========================= -->
+
+    <section class="catalog-heading">
+
+        <div class="catalog-line"></div>
+
+        <h2>
+            📖 CARD CATALOG
+        </h2>
+
+        <div class="collection-legend">
+            🖼️ Horizontal Card
+            &nbsp; • &nbsp;
+            <span class="gold">
+                ✨ Gold Border = Hidden Card
+            </span>
+        </div>
+
+        <div class="catalog-line"></div>
+
+    </section>
+
+
+    <!-- =========================
          COLLECTION
     ========================= -->
 
@@ -1337,6 +1579,7 @@ footer strong {
 
 const SUPABASE_URL =
     "https://zfawlcmvhotcntnldynu.supabase.co";
+
 
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_rQPVQewVx_HN9Gqv1V9yxg_8JPlwuy3";
@@ -1393,12 +1636,19 @@ const seriesData = [
 
     {
         location: "Perth",
+
         series: [
 
             {
                 title: "Shining Series",
                 count: 9,
-                imageFolder: "Shining-Series"
+                imageFolder: "Shining-Series",
+
+                /* 005 = horizontal
+                   009 = hidden */
+
+                horizontal: [5],
+                hidden: [9]
             },
 
             {
@@ -1519,6 +1769,7 @@ const seriesData = [
 
     {
         location: "Santa",
+
         series: [
 
             {
@@ -1567,6 +1818,7 @@ const seriesData = [
 
     {
         location: "PerthSanta",
+
         series: [
 
             {
@@ -1823,7 +2075,8 @@ function showSyncMessage(
         return;
     }
 
-    element.textContent = message;
+    element.textContent =
+        message;
 
     element.classList.toggle(
         "error",
@@ -1867,7 +2120,8 @@ function updateCloudStatus(message) {
         );
 
     if (status) {
-        status.textContent = message;
+        status.textContent =
+            message;
     }
 
 }
@@ -1895,15 +2149,17 @@ function getOwnedCardEntries() {
 
     const entries = [];
 
-    Object.keys(collection).forEach(key => {
+    Object.keys(collection).forEach(
+        key => {
 
-        if (collection[key] === true) {
+            if (collection[key] === true) {
 
-            entries.push(key);
+                entries.push(key);
+
+            }
 
         }
-
-    });
+    );
 
     return entries;
 
@@ -1919,25 +2175,23 @@ function parseCardKey(key) {
     const parts =
         key.split("-");
 
-    /*
-        Location can contain no "-"
-        in the current data.
-
-        Format:
-        Perth-0-1
-        Santa-1-2
-        PerthSanta-10-4
-    */
 
     if (parts.length < 3) {
         return null;
     }
 
+
     const cardNumber =
-        Number(parts[parts.length - 1]);
+        Number(
+            parts[parts.length - 1]
+        );
+
 
     const seriesIndex =
-        Number(parts[parts.length - 2]);
+        Number(
+            parts[parts.length - 2]
+        );
+
 
     const location =
         parts.slice(
@@ -1951,7 +2205,9 @@ function parseCardKey(key) {
         Number.isNaN(seriesIndex) ||
         Number.isNaN(cardNumber)
     ) {
+
         return null;
+
     }
 
 
@@ -1960,6 +2216,36 @@ function parseCardKey(key) {
         seriesIndex,
         cardNumber
     };
+
+}
+
+
+/* ============================================================
+   CARD TYPE HELPERS
+============================================================ */
+
+function isHiddenCard(
+    series,
+    number
+) {
+
+    return (
+        Array.isArray(series.hidden) &&
+        series.hidden.includes(number)
+    );
+
+}
+
+
+function isHorizontalCard(
+    series,
+    number
+) {
+
+    return (
+        Array.isArray(series.horizontal) &&
+        series.horizontal.includes(number)
+    );
 
 }
 
@@ -2102,6 +2388,7 @@ function updateLoginUI(user) {
             "loginPanel"
         );
 
+
     const userPanel =
         document.getElementById(
             "userPanel"
@@ -2112,6 +2399,7 @@ function updateLoginUI(user) {
         document.getElementById(
             "userName"
         );
+
 
     const userEmail =
         document.getElementById(
@@ -2156,6 +2444,7 @@ function updateLoginUI(user) {
 
     userName.textContent =
         name;
+
 
     userEmail.textContent =
         email;
@@ -2219,24 +2508,26 @@ async function loadCloudCollection() {
     const cloudCollection = {};
 
 
-    (data || []).forEach(row => {
+    (data || []).forEach(
+        row => {
 
-        if (row.owned === true) {
+            if (row.owned === true) {
 
-            const key =
-                getCardKey(
-                    row.location,
-                    row.series_index,
-                    row.card_number
-                );
+                const key =
+                    getCardKey(
+                        row.location,
+                        row.series_index,
+                        row.card_number
+                    );
 
 
-            cloudCollection[key] =
-                true;
+                cloudCollection[key] =
+                    true;
+
+            }
 
         }
-
-    });
+    );
 
 
     const localKeys =
@@ -2245,11 +2536,6 @@ async function loadCloudCollection() {
 
     /*
         FIRST LOGIN / EMPTY CLOUD
-
-        If the cloud has nothing but this browser
-        already has a collection, upload the local
-        collection so the user's existing cards are
-        not lost.
     */
 
     if (
@@ -2268,15 +2554,19 @@ async function loadCloudCollection() {
 
         if (success) {
 
-            cloudSyncReady = true;
+            cloudSyncReady =
+                true;
+
 
             updateCloudStatus(
                 "☁️ Cloud Sync On"
             );
 
+
             showSyncMessage(
                 `☁️ ${localKeys.length} cards saved to your cloud collection.`
             );
+
 
             return;
 
@@ -2286,10 +2576,7 @@ async function loadCloudCollection() {
 
 
     /*
-        BOTH LOCAL AND CLOUD HAVE DATA
-
-        We merge owned cards so existing local
-        cards are not accidentally lost.
+        MERGE LOCAL + CLOUD
     */
 
     let mergedCollection = {
@@ -2300,18 +2587,20 @@ async function loadCloudCollection() {
     let localOnlyCount = 0;
 
 
-    localKeys.forEach(key => {
+    localKeys.forEach(
+        key => {
 
-        if (!mergedCollection[key]) {
+            if (!mergedCollection[key]) {
 
-            mergedCollection[key] =
-                true;
+                mergedCollection[key] =
+                    true;
 
-            localOnlyCount++;
+                localOnlyCount++;
+
+            }
 
         }
-
-    });
+    );
 
 
     collection =
@@ -2321,10 +2610,6 @@ async function loadCloudCollection() {
     saveCollection();
 
 
-    /*
-        Upload local-only cards if there were any.
-    */
-
     if (localOnlyCount > 0) {
 
         await uploadLocalCollection();
@@ -2332,7 +2617,8 @@ async function loadCloudCollection() {
     }
 
 
-    cloudSyncReady = true;
+    cloudSyncReady =
+        true;
 
 
     updateCloudStatus(
@@ -2341,7 +2627,9 @@ async function loadCloudCollection() {
 
 
     renderCollection();
+
     renderLocations();
+
     renderSummary();
 
 
@@ -2375,40 +2663,42 @@ async function uploadLocalCollection() {
     const rows = [];
 
 
-    ownedKeys.forEach(key => {
+    ownedKeys.forEach(
+        key => {
 
-        const parsed =
-            parseCardKey(key);
+            const parsed =
+                parseCardKey(key);
 
 
-        if (!parsed) {
-            return;
+            if (!parsed) {
+                return;
+            }
+
+
+            rows.push({
+
+                user_id:
+                    currentUser.id,
+
+                location:
+                    parsed.location,
+
+                series_index:
+                    parsed.seriesIndex,
+
+                card_number:
+                    parsed.cardNumber,
+
+                owned:
+                    true,
+
+                updated_at:
+                    new Date().toISOString()
+
+            });
+
         }
-
-
-        rows.push({
-
-            user_id:
-                currentUser.id,
-
-            location:
-                parsed.location,
-
-            series_index:
-                parsed.seriesIndex,
-
-            card_number:
-                parsed.cardNumber,
-
-            owned:
-                true,
-
-            updated_at:
-                new Date().toISOString()
-
-        });
-
-    });
+    );
 
 
     if (rows.length === 0) {
@@ -2473,7 +2763,9 @@ async function syncCardToCloud(
         !currentUser ||
         !cloudSyncReady
     ) {
+
         return;
+
     }
 
 
@@ -2510,8 +2802,10 @@ async function syncCardToCloud(
                 },
 
                 {
+
                     onConflict:
                         "user_id,location,series_index,card_number"
+
                 }
 
             );
@@ -2684,10 +2978,6 @@ async function handleAuthSession(
     );
 
 
-    /*
-        Give the browser a moment after OAuth redirect.
-    */
-
     await loadCloudCollection();
 
 }
@@ -2713,11 +3003,13 @@ async function initializeAuth() {
             error
         );
 
+
         showSyncMessage(
             "Could not check login session: " +
             error.message,
             true
         );
+
 
         return;
 
@@ -2761,19 +3053,60 @@ function getTotals() {
 
     let collected = 0;
 
-    let totalSeries = 0;
+    let hiddenTotal = 0;
+
+    let hiddenCollected = 0;
 
 
     seriesData.forEach(
         locationData => {
 
             locationData.series.forEach(
-                series => {
-
-                    totalSeries++;
+                (
+                    series,
+                    seriesIndex
+                ) => {
 
                     totalCards +=
                         series.count;
+
+
+                    const hiddenCards =
+                        Array.isArray(series.hidden)
+                            ? series.hidden
+                            : [];
+
+
+                    hiddenCards.forEach(
+                        number => {
+
+                            if (
+                                number >= 1 &&
+                                number <= series.count
+                            ) {
+
+                                hiddenTotal++;
+
+                                const key =
+                                    getCardKey(
+                                        locationData.location,
+                                        seriesIndex,
+                                        number
+                                    );
+
+
+                                if (
+                                    collection[key] === true
+                                ) {
+
+                                    hiddenCollected++;
+
+                                }
+
+                            }
+
+                        }
+                    );
 
                 }
             );
@@ -2782,13 +3115,17 @@ function getTotals() {
     );
 
 
-    Object.values(
+    Object.keys(
         collection
     ).forEach(
-        value => {
+        key => {
 
-            if (value === true) {
+            if (
+                collection[key] === true
+            ) {
+
                 collected++;
+
             }
 
         }
@@ -2820,7 +3157,9 @@ function getTotals() {
 
         percent,
 
-        totalSeries
+        hiddenTotal,
+
+        hiddenCollected
 
     };
 
@@ -2839,7 +3178,8 @@ function renderLocations() {
         );
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
     seriesData.forEach(
@@ -2881,8 +3221,12 @@ function renderLocations() {
                             );
 
 
-                        if (collection[key]) {
+                        if (
+                            collection[key]
+                        ) {
+
                             collected++;
+
                         }
 
                     }
@@ -2901,29 +3245,32 @@ function renderLocations() {
                 "location-card";
 
 
-            card.onclick = () => {
+            card.onclick =
+                () => {
 
-                const target =
-                    document.getElementById(
-                        `location-${locationData.location}`
-                    );
+                    const target =
+                        document.getElementById(
+                            `location-${locationData.location}`
+                        );
 
 
-                if (target) {
+                    if (target) {
 
-                    target.scrollIntoView({
-                        behavior: "smooth"
-                    });
+                        target.scrollIntoView({
+                            behavior: "smooth"
+                        });
 
-                }
+                    }
 
-            };
+                };
 
 
             card.innerHTML = `
 
                 <div class="location-icon">
-                    ${getLocationIcon(locationData.location)}
+                    ${getLocationIcon(
+                        locationData.location
+                    )}
                 </div>
 
                 <div class="location-name">
@@ -2958,21 +3305,27 @@ function renderSummary() {
 
 
     document.getElementById(
-        "seriesTotal"
-    ).textContent =
-        totals.totalSeries;
-
-
-    document.getElementById(
         "cardTotal"
     ).textContent =
         totals.totalCards;
 
 
     document.getElementById(
+        "hiddenTotal"
+    ).textContent =
+        totals.hiddenTotal;
+
+
+    document.getElementById(
         "cardCollected"
     ).textContent =
         totals.collected;
+
+
+    document.getElementById(
+        "hiddenCollected"
+    ).textContent =
+        totals.hiddenCollected;
 
 
     document.getElementById(
@@ -3005,7 +3358,8 @@ function renderSummary() {
         );
 
 
-    breakdown.innerHTML = "";
+    breakdown.innerHTML =
+        "";
 
 
     let globalSeriesNumber = 0;
@@ -3026,6 +3380,12 @@ function renderSummary() {
                     let collected = 0;
 
 
+                    let hiddenCount = 0;
+
+
+                    let hiddenCollected = 0;
+
+
                     for (
                         let number = 1;
                         number <= series.count;
@@ -3040,8 +3400,33 @@ function renderSummary() {
                             );
 
 
-                        if (collection[key]) {
+                        if (
+                            collection[key]
+                        ) {
+
                             collected++;
+
+                        }
+
+
+                        if (
+                            isHiddenCard(
+                                series,
+                                number
+                            )
+                        ) {
+
+                            hiddenCount++;
+
+
+                            if (
+                                collection[key]
+                            ) {
+
+                                hiddenCollected++;
+
+                            }
+
                         }
 
                     }
@@ -3068,16 +3453,25 @@ function renderSummary() {
                     row.innerHTML = `
 
                         <div class="breakdown-number">
-                            ${String(globalSeriesNumber).padStart(2, "0")}
+                            ${String(
+                                globalSeriesNumber
+                            ).padStart(2, "0")}
                         </div>
 
                         <div class="breakdown-name">
-                            ${getLocationIcon(locationData.location)}
+                            ${getLocationIcon(
+                                locationData.location
+                            )}
                             ${series.title}
                         </div>
 
                         <div class="breakdown-count">
                             ${collected}/${series.count}
+                            ${
+                                hiddenCount > 0
+                                    ? ` · ✨ ${hiddenCollected}/${hiddenCount}`
+                                    : ""
+                            }
                         </div>
 
                         <div class="breakdown-percent">
@@ -3138,7 +3532,8 @@ function renderCollection() {
         );
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
     seriesData.forEach(
@@ -3197,8 +3592,12 @@ function renderCollection() {
                             );
 
 
-                        if (collection[key]) {
+                        if (
+                            collection[key]
+                        ) {
+
                             locationCollected++;
+
                         }
 
                     }
@@ -3210,7 +3609,9 @@ function renderCollection() {
             locationHeader.innerHTML = `
 
                 <h2>
-                    ${getLocationIcon(locationData.location)}
+                    ${getLocationIcon(
+                        locationData.location
+                    )}
                     ${locationData.location}
                 </h2>
 
@@ -3236,6 +3637,12 @@ function renderCollection() {
                     let collected = 0;
 
 
+                    let hiddenCount = 0;
+
+
+                    let hiddenCollected = 0;
+
+
                     for (
                         let number = 1;
                         number <= series.count;
@@ -3250,8 +3657,33 @@ function renderCollection() {
                             );
 
 
-                        if (collection[key]) {
+                        if (
+                            collection[key]
+                        ) {
+
                             collected++;
+
+                        }
+
+
+                        if (
+                            isHiddenCard(
+                                series,
+                                number
+                            )
+                        ) {
+
+                            hiddenCount++;
+
+
+                            if (
+                                collection[key]
+                            ) {
+
+                                hiddenCollected++;
+
+                            }
+
                         }
 
                     }
@@ -3306,6 +3738,17 @@ function renderCollection() {
                             collected
                         </div>
 
+                        ${
+                            hiddenCount > 0
+                                ? `
+                                    <div class="series-hidden-info">
+                                        ✨ ${hiddenCollected}/${hiddenCount}
+                                        hidden collected
+                                    </div>
+                                  `
+                                : ""
+                        }
+
                     `;
 
 
@@ -3342,19 +3785,60 @@ function renderCollection() {
                             collection[key] === true;
 
 
+                        const hidden =
+                            isHiddenCard(
+                                series,
+                                number
+                            );
+
+
+                        const horizontal =
+                            isHorizontalCard(
+                                series,
+                                number
+                            );
+
+
                         const card =
                             document.createElement(
                                 "div"
                             );
 
 
-                        card.className =
-                            "card" +
-                            (
-                                owned
-                                    ? " owned"
-                                    : ""
+                        const classes = [
+                            "card"
+                        ];
+
+
+                        if (owned) {
+
+                            classes.push(
+                                "owned"
                             );
+
+                        }
+
+
+                        if (hidden) {
+
+                            classes.push(
+                                "hidden-card"
+                            );
+
+                        }
+
+
+                        if (horizontal) {
+
+                            classes.push(
+                                "horizontal-card"
+                            );
+
+                        }
+
+
+                        card.className =
+                            classes.join(" ");
 
 
                         card.dataset.number =
@@ -3389,6 +3873,16 @@ function renderCollection() {
                                 ${String(number).padStart(3, "0")}
                             </div>
 
+                            ${
+                                hidden
+                                    ? `
+                                        <div class="hidden-badge">
+                                            ✨ HIDDEN
+                                        </div>
+                                      `
+                                    : ""
+                            }
+
                             <div class="heart">
                                 🖤
                             </div>
@@ -3404,64 +3898,65 @@ function renderCollection() {
                         `;
 
 
-                        card.onclick = async () => {
+                        card.onclick =
+                            async () => {
 
-                            const newOwned =
-                                !collection[key];
-
-
-                            collection[key] =
-                                newOwned;
+                                const newOwned =
+                                    !collection[key];
 
 
-                            saveCollection();
+                                collection[key] =
+                                    newOwned;
 
 
-                            /*
-                                Render immediately so the
-                                card changes without waiting
-                                for internet.
-                            */
-
-                            renderCollection();
-                            renderLocations();
-                            renderSummary();
+                                saveCollection();
 
 
-                            /*
-                                Then sync to cloud.
-                            */
+                                /*
+                                    Render immediately.
+                                */
 
-                            if (
-                                currentUser &&
-                                cloudSyncReady
-                            ) {
+                                renderCollection();
 
-                                const syncData =
-                                    parseCardKey(
-                                        key
-                                    );
+                                renderLocations();
+
+                                renderSummary();
 
 
-                                if (syncData) {
+                                /*
+                                    Sync to cloud.
+                                */
 
-                                    await syncCardToCloud(
+                                if (
+                                    currentUser &&
+                                    cloudSyncReady
+                                ) {
 
-                                        syncData.location,
+                                    const syncData =
+                                        parseCardKey(
+                                            key
+                                        );
 
-                                        syncData.seriesIndex,
 
-                                        syncData.cardNumber,
+                                    if (syncData) {
 
-                                        newOwned
+                                        await syncCardToCloud(
 
-                                    );
+                                            syncData.location,
+
+                                            syncData.seriesIndex,
+
+                                            syncData.cardNumber,
+
+                                            newOwned
+
+                                        );
+
+                                    }
 
                                 }
 
-                            }
-
-                        };
+                            };
 
 
                         grid.appendChild(
@@ -3493,7 +3988,7 @@ function renderCollection() {
 
 
     /*
-        Re-apply search after rendering.
+        Re-apply search.
     */
 
     searchCards();
@@ -3614,10 +4109,6 @@ async function resetCollection() {
     }
 
 
-    /*
-        If logged in, delete cloud data first.
-    */
-
     if (
         currentUser &&
         cloudSyncReady
@@ -3646,7 +4137,8 @@ async function resetCollection() {
     }
 
 
-    collection = {};
+    collection =
+        {};
 
 
     saveCollection();
@@ -3760,14 +4252,7 @@ function loadTrack(
 
     if (autoPlay) {
 
-        audio.play().catch(() => {
-
-            /*
-                Browser may block autoplay.
-                User can press Play.
-            */
-
-        });
+        audio.play().catch(() => {});
 
     }
 
@@ -3854,9 +4339,12 @@ function nextTrack() {
 
 function previousTrack() {
 
-    if (audio.currentTime > 3) {
+    if (
+        audio.currentTime > 3
+    ) {
 
-        audio.currentTime = 0;
+        audio.currentTime =
+            0;
 
         return;
 
@@ -3941,7 +4429,8 @@ audio.addEventListener(
 
         if (isLooping) {
 
-            audio.currentTime = 0;
+            audio.currentTime =
+                0;
 
             audio.play().catch(() => {});
 
@@ -3963,8 +4452,6 @@ async function initializeApp() {
 
     /*
         Render local collection first.
-        This means the page still works even
-        before login/cloud loading finishes.
     */
 
     renderLocations();
@@ -3974,7 +4461,9 @@ async function initializeApp() {
     renderCollection();
 
 
-    audio.volume = 0.6;
+    audio.volume =
+        0.6;
+
 
     loadTrack(
         0,
@@ -3998,13 +4487,6 @@ initializeApp();
    OPTIONAL AUTOPLAY ATTEMPT
 ============================================================ */
 
-/*
-   Modern browsers often block autoplay with sound.
-
-   We try to start the first song when the page loads.
-   If blocked, the user can simply press ▶️.
-*/
-
 window.addEventListener(
     "load",
     function() {
@@ -4014,7 +4496,9 @@ window.addEventListener(
 
                 audio.play().catch(() => {
 
-                    // Autoplay blocked by browser.
+                    /*
+                        Autoplay blocked by browser.
+                    */
 
                 });
 
