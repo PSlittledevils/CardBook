@@ -1739,8 +1739,8 @@ footer strong {
                 📊 SERIES PROGRESS
             </h2>
 
-            <p>
-                Track your collection progress across all 55 series.
+            <p id="seriesProgressDescription">
+                Track your collection progress across all series.
             </p>
 
         </div>
@@ -2278,6 +2278,29 @@ const seriesData = [
     }
 
 ];
+
+
+/* ============================================================
+   GET TOTAL SERIES COUNT
+   Automatically counts all series in seriesData
+============================================================ */
+
+function getTotalSeriesCount() {
+
+    return seriesData.reduce(
+        (
+            total,
+            locationData
+        ) => {
+
+            return total +
+                locationData.series.length;
+
+        },
+        0
+    );
+
+}
 
 
 /* ============================================================
@@ -3525,6 +3548,22 @@ function renderSeriesProgress() {
     if (!container) {
         return;
     }
+
+
+    /* DYNAMIC SERIES COUNT */
+
+    const description =
+        document.getElementById(
+            "seriesProgressDescription"
+        );
+
+    if (description) {
+
+        description.textContent =
+            `Track your collection progress across all ${getTotalSeriesCount()} series.`;
+
+    }
+
 
     container.innerHTML =
         "";
