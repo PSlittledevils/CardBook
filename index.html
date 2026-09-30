@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,1302 +9,854 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 
 <style>
+*{box-sizing:border-box}
 
-* {
-    box-sizing: border-box;
-}
+html{scroll-behavior:smooth}
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: "Cinzel", serif;
-    color: #f5e9ec;
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"Cinzel",serif;
+    color:#f5e9ec;
     background:
-        radial-gradient(circle at top, #26070e 0%, #100609 35%, #050405 75%);
-}
-
-/* ========================================
-   HEADER
-======================================== */
-
-header {
-    text-align: center;
-    padding: 45px 20px 35px;
-    border-bottom: 1px solid rgba(255, 0, 45, 0.25);
-    background:
-        linear-gradient(
-            180deg,
-            rgba(50, 0, 12, 0.95),
-            rgba(10, 5, 7, 0.85)
-        );
-}
-
-.devil {
-    font-size: 42px;
-    margin-bottom: 8px;
-    filter: drop-shadow(0 0 12px rgba(255, 0, 40, 0.55));
-}
-
-header h1 {
-    margin: 0;
-    font-size: clamp(25px, 4vw, 46px);
-    letter-spacing: 4px;
-    font-weight: 800;
-    color: #f7dfe4;
-    text-shadow:
-        0 0 8px rgba(255, 0, 40, 0.35),
-        0 0 30px rgba(180, 0, 30, 0.18);
-}
-
-.subtitle {
-    margin: 14px 0 0;
-    color: #a9959a;
-    font-size: 13px;
-    letter-spacing: 1.5px;
-}
-
-/* ========================================
-   MAIN
-======================================== */
-
-main {
-    width: min(1500px, calc(100% - 32px));
-    margin: 0 auto;
-    padding: 30px 0 70px;
+        radial-gradient(circle at top,#26070e 0%,#100609 35%,#050405 75%);
 }
 
-/* ========================================
-   HOME
-======================================== */
-
-.home-page {
-    display: block;
-}
-
-.home-intro {
-    text-align: center;
-    margin-bottom: 28px;
+header{
+    text-align:center;
+    padding:45px 20px 35px;
+    border-bottom:1px solid rgba(255,0,45,.25);
+    background:linear-gradient(180deg,rgba(50,0,12,.95),rgba(10,5,7,.85));
 }
 
-.home-intro h2 {
-    margin: 0;
-    font-size: 25px;
-    letter-spacing: 3px;
-    color: #f2d8dd;
+.devil{
+    font-size:42px;
+    margin-bottom:8px;
+    filter:drop-shadow(0 0 12px rgba(255,0,40,.55));
 }
 
-.home-intro p {
-    margin: 9px 0 0;
-    color: #79676c;
-    font-size: 11px;
-    letter-spacing: 2px;
+header h1{
+    margin:0;
+    font-size:clamp(25px,4vw,46px);
+    letter-spacing:4px;
+    font-weight:800;
+    color:#f7dfe4;
+    text-shadow:0 0 8px rgba(255,0,40,.35),0 0 30px rgba(180,0,30,.18);
 }
 
-.location-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+.subtitle{
+    margin:14px 0 0;
+    color:#a9959a;
+    font-size:13px;
+    letter-spacing:1.5px;
 }
 
-.location-card {
-    position: relative;
-    min-height: 210px;
-    padding: 30px 25px;
-    border: 1px solid rgba(150, 0, 30, 0.5);
-    border-radius: 14px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(38, 10, 16, 0.95),
-            rgba(9, 6, 8, 0.98)
-        );
-    cursor: pointer;
-    overflow: hidden;
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+main{
+    width:min(1500px,calc(100% - 32px));
+    margin:0 auto;
+    padding:30px 0 70px;
 }
 
-.location-card::before {
-    content: "👿";
-    position: absolute;
-    right: -12px;
-    bottom: -22px;
-    font-size: 115px;
-    opacity: 0.06;
-    transform: rotate(-12deg);
-}
-
-.location-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(255, 0, 45, 0.8);
-    box-shadow:
-        0 0 15px rgba(255, 0, 45, 0.2),
-        0 0 35px rgba(150, 0, 25, 0.15);
-}
+.home-page{display:block}
 
-.location-card h3 {
-    margin: 0 0 12px;
-    color: #f5dce1;
-    font-size: 24px;
-    letter-spacing: 3px;
+.home-intro{
+    text-align:center;
+    margin-bottom:28px;
 }
 
-.location-card .location-count {
-    color: #756369;
-    font-size: 11px;
-    letter-spacing: 1px;
+.home-intro h2{
+    margin:0;
+    font-size:25px;
+    letter-spacing:3px;
+    color:#f2d8dd;
 }
 
-.location-progress {
-    margin-top: 25px;
+.home-intro p{
+    margin:9px 0 0;
+    color:#79676c;
+    font-size:11px;
+    letter-spacing:2px;
 }
 
-.location-progress-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 7px;
-    color: #88757b;
-    font-size: 9px;
+.location-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:20px;
 }
 
-.location-progress-bar {
-    height: 5px;
-    border-radius: 99px;
-    overflow: hidden;
-    background: #21151a;
+.location-card{
+    position:relative;
+    min-height:210px;
+    padding:30px 25px;
+    border:1px solid rgba(150,0,30,.5);
+    border-radius:14px;
+    background:linear-gradient(145deg,rgba(38,10,16,.95),rgba(9,6,8,.98));
+    cursor:pointer;
+    overflow:hidden;
+    transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
 }
 
-.location-progress-fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #8d001e, #ff1648);
-    box-shadow: 0 0 8px rgba(255, 0, 45, 0.45);
-    transition: width 0.3s ease;
+.location-card::before{
+    content:"👿";
+    position:absolute;
+    right:-12px;
+    bottom:-22px;
+    font-size:115px;
+    opacity:.06;
+    transform:rotate(-12deg);
 }
 
-/* ========================================
-   LOCATION PAGE
-======================================== */
-
-.location-page {
-    display: none;
+.location-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,0,45,.8);
+    box-shadow:0 0 15px rgba(255,0,45,.2),0 0 35px rgba(150,0,25,.15);
 }
 
-.location-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 25px;
+.location-card h3{
+    margin:0 0 12px;
+    color:#f5dce1;
+    font-size:24px;
+    letter-spacing:3px;
 }
 
-.back-button {
-    border: 1px solid rgba(170, 0, 35, 0.55);
-    background: rgba(35, 8, 14, 0.9);
-    color: #dcb9c0;
-    border-radius: 8px;
-    padding: 10px 17px;
-    font-family: inherit;
-    font-size: 11px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: 0.2s ease;
+.location-card .location-count{
+    color:#756369;
+    font-size:11px;
+    letter-spacing:1px;
 }
 
-.back-button:hover {
-    background: rgba(100, 0, 20, 0.7);
-    border-color: #ff1648;
-    color: #fff;
-}
+.location-progress{margin-top:25px}
 
-.location-title {
-    text-align: right;
+.location-progress-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:7px;
+    color:#88757b;
+    font-size:9px;
 }
 
-.location-title h2 {
-    margin: 0;
-    color: #f5dce1;
-    letter-spacing: 3px;
-    font-size: 27px;
+.location-progress-bar{
+    height:5px;
+    border-radius:99px;
+    overflow:hidden;
+    background:#21151a;
 }
 
-.location-title p {
-    margin: 5px 0 0;
-    color: #735f65;
-    font-size: 10px;
-    letter-spacing: 1px;
+.location-progress-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#8d001e,#ff1648);
+    box-shadow:0 0 8px rgba(255,0,45,.45);
+    transition:width .3s ease;
 }
 
-/* ========================================
-   SUMMARY DASHBOARD
-======================================== */
+.location-page{display:none}
 
-.summary-dashboard {
-    margin-bottom: 38px;
-    padding: 25px;
-    border: 1px solid rgba(145, 0, 30, 0.45);
-    border-radius: 12px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(27, 9, 14, 0.97),
-            rgba(8, 6, 8, 0.98)
-        );
-    box-shadow:
-        inset 0 0 25px rgba(100, 0, 20, 0.08),
-        0 10px 30px rgba(0, 0, 0, 0.3);
+.location-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:25px;
 }
 
-.summary-heading {
-    text-align: center;
-    margin-bottom: 22px;
+.back-button{
+    border:1px solid rgba(170,0,35,.55);
+    background:rgba(35,8,14,.9);
+    color:#dcb9c0;
+    border-radius:8px;
+    padding:10px 17px;
+    font-family:inherit;
+    font-size:11px;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.2s ease;
 }
 
-.summary-heading h3 {
-    margin: 0;
-    font-size: 18px;
-    letter-spacing: 3px;
-    color: #e9cfd5;
+.back-button:hover{
+    background:rgba(100,0,20,.7);
+    border-color:#ff1648;
+    color:#fff;
 }
 
-.summary-heading p {
-    margin: 6px 0 0;
-    color: #6e5a60;
-    font-size: 9px;
-    letter-spacing: 2px;
-}
-
-.summary-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
+.location-title{text-align:right}
 
-.summary-stat {
-    text-align: center;
-    padding: 14px 8px;
-    border: 1px solid rgba(100, 70, 75, 0.2);
-    background: rgba(20, 10, 13, 0.75);
-    border-radius: 8px;
+.location-title h2{
+    margin:0;
+    color:#f5dce1;
+    letter-spacing:3px;
+    font-size:27px;
 }
 
-.stat-number {
-    display: block;
-    font-size: 25px;
-    font-weight: 700;
-    color: #e3cbd0;
+.location-title p{
+    margin:5px 0 0;
+    color:#735f65;
+    font-size:10px;
+    letter-spacing:1px;
 }
 
-.stat-label {
-    display: block;
-    margin-top: 5px;
-    color: #67545a;
-    font-size: 8px;
-    letter-spacing: 1.5px;
+.summary-dashboard{
+    margin-bottom:38px;
+    padding:25px;
+    border:1px solid rgba(145,0,30,.45);
+    border-radius:12px;
+    background:linear-gradient(145deg,rgba(27,9,14,.97),rgba(8,6,8,.98));
+    box-shadow:inset 0 0 25px rgba(100,0,20,.08),0 10px 30px rgba(0,0,0,.3);
 }
 
-.summary-stat.collected .stat-number {
-    color: #ff3158;
-    text-shadow: 0 0 10px rgba(255, 0, 45, 0.35);
+.summary-heading{
+    text-align:center;
+    margin-bottom:22px;
 }
 
-.summary-stat.missing .stat-number {
-    color: #857177;
+.summary-heading h3{
+    margin:0;
+    font-size:18px;
+    letter-spacing:3px;
+    color:#e9cfd5;
 }
 
-/* ========================================
-   TOTAL PROGRESS
-======================================== */
-
-.total-progress {
-    margin-top: 24px;
+.summary-heading p{
+    margin:6px 0 0;
+    color:#6e5a60;
+    font-size:9px;
+    letter-spacing:2px;
 }
 
-.total-progress-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #9d858b;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    margin-bottom: 8px;
+.summary-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
 }
 
-.total-percentage {
-    color: #ff3158;
-    font-weight: 700;
+.summary-stat{
+    text-align:center;
+    padding:14px 8px;
+    border:1px solid rgba(100,70,75,.2);
+    background:rgba(20,10,13,.75);
+    border-radius:8px;
 }
 
-.big-progress-bar {
-    width: 100%;
-    height: 8px;
-    border-radius: 99px;
-    overflow: hidden;
-    background: #201318;
+.stat-number{
+    display:block;
+    font-size:25px;
+    font-weight:700;
+    color:#e3cbd0;
 }
 
-.big-progress-fill {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, #700016, #ff1749);
-    box-shadow:
-        0 0 10px rgba(255, 0, 45, 0.45);
-    transition: width 0.35s ease;
+.stat-label{
+    display:block;
+    margin-top:5px;
+    color:#67545a;
+    font-size:8px;
+    letter-spacing:1.5px;
 }
 
-/* ========================================
-   SERIES BREAKDOWN
-======================================== */
-
-.series-summary-title {
-    margin-top: 24px;
-    margin-bottom: 10px;
-    color: #806d72;
-    font-size: 9px;
-    letter-spacing: 2px;
+.summary-stat.collected .stat-number{
+    color:#ff3158;
+    text-shadow:0 0 10px rgba(255,0,45,.35);
 }
 
-.series-summary-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-}
+.summary-stat.missing .stat-number{color:#857177}
 
-.series-summary-item {
-    padding: 6px 9px;
-    border: 1px solid rgba(110, 0, 25, 0.35);
-    border-radius: 5px;
-    background: rgba(20, 7, 11, 0.8);
-    color: #766168;
-    font-size: 8px;
-    letter-spacing: 0.4px;
-}
+.total-progress{margin-top:24px}
 
-.series-summary-item.completed {
-    color: #ff496a;
-    border-color: rgba(255, 0, 45, 0.45);
+.total-progress-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#9d858b;
+    font-size:9px;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
 }
 
-/* ========================================
-   SEARCH
-======================================== */
-
-.tools {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
+.total-percentage{
+    color:#ff3158;
+    font-weight:700;
 }
 
-.search-box {
-    flex: 1;
-    border: 1px solid rgba(120, 0, 25, 0.45);
-    background: rgba(15, 7, 10, 0.9);
-    color: #eee0e4;
-    border-radius: 7px;
-    padding: 11px 13px;
-    outline: none;
-    font-family: inherit;
-    font-size: 11px;
-    letter-spacing: 1px;
+.big-progress-bar{
+    width:100%;
+    height:8px;
+    border-radius:99px;
+    overflow:hidden;
+    background:#201318;
 }
 
-.search-box::placeholder {
-    color: #57474c;
+.big-progress-fill{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#700016,#ff1749);
+    box-shadow:0 0 10px rgba(255,0,45,.45);
+    transition:width .35s ease;
 }
 
-.search-box:focus {
-    border-color: rgba(255, 0, 45, 0.65);
-    box-shadow: 0 0 12px rgba(255, 0, 45, 0.08);
+.series-summary-title{
+    margin-top:24px;
+    margin-bottom:10px;
+    color:#806d72;
+    font-size:9px;
+    letter-spacing:2px;
 }
 
-.reset-button {
-    border: 1px solid rgba(150, 0, 30, 0.45);
-    background: #18080d;
-    color: #9d7e85;
-    border-radius: 7px;
-    padding: 0 16px;
-    font-family: inherit;
-    font-size: 9px;
-    letter-spacing: 1px;
-    cursor: pointer;
+.series-summary-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
 }
 
-.reset-button:hover {
-    border-color: #ff1648;
-    color: #ff5472;
+.series-summary-item{
+    padding:6px 9px;
+    border:1px solid rgba(110,0,25,.35);
+    border-radius:5px;
+    background:rgba(20,7,11,.8);
+    color:#766168;
+    font-size:8px;
+    letter-spacing:.4px;
 }
-
-/* ========================================
-   ★ CARD BOOK DIVIDER ★
-======================================== */
 
-.series-section {
-    margin-bottom: 48px;
+.series-summary-item.completed{
+    color:#ff496a;
+    border-color:rgba(255,0,45,.45);
 }
 
-/*
-   卡册分隔页
-*/
-
-.series-divider {
-    position: relative;
-    min-height: 118px;
-    margin: 0 0 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-
-    border-top: 1px solid rgba(255, 0, 45, 0.25);
-    border-bottom: 1px solid rgba(255, 0, 45, 0.25);
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(70, 0, 16, 0.12),
-            rgba(30, 7, 13, 0.85) 20%,
-            rgba(18, 6, 10, 0.98) 50%,
-            rgba(30, 7, 13, 0.85) 80%,
-            rgba(70, 0, 16, 0.12)
-        );
-
-    box-shadow:
-        inset 0 0 35px rgba(120, 0, 25, 0.1),
-        0 10px 20px rgba(0, 0, 0, 0.25);
+.tools{
+    display:flex;
+    gap:10px;
+    margin-bottom:30px;
+}
+
+.search-box{
+    flex:1;
+    border:1px solid rgba(120,0,25,.45);
+    background:rgba(15,7,10,.9);
+    color:#eee0e4;
+    border-radius:7px;
+    padding:11px 13px;
+    outline:none;
+    font-family:inherit;
+    font-size:11px;
+    letter-spacing:1px;
 }
-
-/* 上下小装饰 */
-
-.series-divider::before {
-    content: "◆";
-    position: absolute;
-    top: 9px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgba(255, 0, 45, 0.45);
-    font-size: 8px;
+
+.search-box::placeholder{color:#57474c}
+
+.search-box:focus{
+    border-color:rgba(255,0,45,.65);
+    box-shadow:0 0 12px rgba(255,0,45,.08);
 }
 
-/* 左右装饰线 */
-
-.series-divider::after {
-    content: "";
-    position: absolute;
-    left: 4%;
-    right: 4%;
-    top: 50%;
-    height: 1px;
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(170, 0, 30, 0.35) 20%,
-            rgba(170, 0, 30, 0.35) 80%,
-            transparent
-        );
-    z-index: 0;
+.reset-button{
+    border:1px solid rgba(150,0,30,.45);
+    background:#18080d;
+    color:#9d7e85;
+    border-radius:7px;
+    padding:0 16px;
+    font-family:inherit;
+    font-size:9px;
+    letter-spacing:1px;
+    cursor:pointer;
 }
-
-/* 分隔页里面的内容 */
-
-.series-divider-inner {
-    position: relative;
-    z-index: 2;
-
-    min-width: min(560px, 70%);
-    padding: 18px 45px;
-
-    text-align: center;
 
-    border: 1px solid rgba(145, 0, 30, 0.5);
-    border-radius: 7px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #210910,
-            #0c0709
-        );
-
-    box-shadow:
-        0 0 18px rgba(120, 0, 25, 0.12),
-        inset 0 0 18px rgba(255, 0, 45, 0.035);
+.reset-button:hover{
+    border-color:#ff1648;
+    color:#ff5472;
 }
 
-/* 小编号 */
+/* SERIES DIVIDER */
 
-.series-index {
-    color: #8f182d;
-    font-size: 9px;
-    letter-spacing: 4px;
-    margin-bottom: 5px;
-}
+.series-section{margin-bottom:48px}
 
-/* 系列名字 */
-
-.series-divider-title {
-    margin: 0;
-    color: #efd9de;
-    font-size: clamp(15px, 2vw, 22px);
-    letter-spacing: 3px;
-    line-height: 1.25;
-    text-shadow:
-        0 0 10px rgba(255, 0, 45, 0.18);
+.series-divider{
+    position:relative;
+    min-height:118px;
+    margin:0 0 22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    border-top:1px solid rgba(255,0,45,.25);
+    border-bottom:1px solid rgba(255,0,45,.25);
+    background:linear-gradient(
+        90deg,
+        rgba(70,0,16,.12),
+        rgba(30,7,13,.85) 20%,
+        rgba(18,6,10,.98) 50%,
+        rgba(30,7,13,.85) 80%,
+        rgba(70,0,16,.12)
+    );
+    box-shadow:inset 0 0 35px rgba(120,0,25,.1),0 10px 20px rgba(0,0,0,.25);
 }
-
-/* 收藏数量 */
 
-.series-divider-count {
-    margin-top: 8px;
-    color: #765e65;
-    font-size: 8px;
-    letter-spacing: 2px;
+.series-divider::before{
+    content:"◆";
+    position:absolute;
+    top:9px;
+    left:50%;
+    transform:translateX(-50%);
+    color:rgba(255,0,45,.45);
+    font-size:8px;
 }
 
-/* 已完成系列 */
-
-.series-section.completed .series-divider-inner {
-    border-color: rgba(255, 0, 45, 0.75);
-    box-shadow:
-        0 0 15px rgba(255, 0, 45, 0.12),
-        0 0 35px rgba(150, 0, 30, 0.08);
+.series-divider::after{
+    content:"";
+    position:absolute;
+    left:4%;
+    right:4%;
+    top:50%;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(170,0,30,.35) 20%,
+        rgba(170,0,30,.35) 80%,
+        transparent
+    );
+    z-index:0;
 }
 
-.series-section.completed .series-index {
-    color: #ff3158;
+.series-divider-inner{
+    position:relative;
+    z-index:2;
+    min-width:min(560px,70%);
+    padding:18px 45px;
+    text-align:center;
+    border:1px solid rgba(145,0,30,.5);
+    border-radius:7px;
+    background:linear-gradient(145deg,#210910,#0c0709);
+    box-shadow:0 0 18px rgba(120,0,25,.12),inset 0 0 18px rgba(255,0,45,.035);
 }
 
-.series-section.completed .series-divider-count {
-    color: #ff496a;
+.series-index{
+    color:#8f182d;
+    font-size:9px;
+    letter-spacing:4px;
+    margin-bottom:5px;
 }
 
-/* ========================================
-   CARDS GRID
-======================================== */
-
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(10, minmax(0, 1fr));
-    gap: 12px;
+.series-divider-title{
+    margin:0;
+    color:#efd9de;
+    font-size:clamp(15px,2vw,22px);
+    letter-spacing:3px;
+    line-height:1.25;
+    text-shadow:0 0 10px rgba(255,0,45,.18);
 }
-
-/* ========================================
-   CARD
-======================================== */
-
-.card {
-    position: relative;
-    width: 100%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #151012,
-            #080708
-        );
-
-    border: 1px solid rgba(120, 0, 25, 0.4);
-    border-radius: 7px;
 
-    overflow: hidden;
-    cursor: pointer;
-    user-select: none;
-
-    transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease;
+.series-divider-count{
+    margin-top:8px;
+    color:#765e65;
+    font-size:8px;
+    letter-spacing:2px;
 }
 
-.card:hover {
-    transform: translateY(-4px) scale(1.02);
-    z-index: 5;
+.series-section.completed .series-divider-inner{
+    border-color:rgba(255,0,45,.75);
+    box-shadow:0 0 15px rgba(255,0,45,.12),0 0 35px rgba(150,0,30,.08);
 }
-
-/* ========================================
-   CARD IMAGE
-======================================== */
-
-.card-image {
-    width: 100%;
-    aspect-ratio: 2.5 / 3.5;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #251116,
-            #080708 75%
-        );
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    overflow: hidden;
-}
+.series-section.completed .series-index{color:#ff3158}
+.series-section.completed .series-divider-count{color:#ff496a}
 
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+/* CARDS */
 
-    transition:
-        transform 0.25s ease,
-        filter 0.25s ease;
+.cards-grid{
+    display:grid;
+    grid-template-columns:repeat(10,minmax(0,1fr));
+    gap:12px;
 }
 
-.card:hover .card-image img {
-    transform: scale(1.03);
+.card{
+    position:relative;
+    width:100%;
+    background:linear-gradient(145deg,#151012,#080708);
+    border:1px solid rgba(120,0,25,.4);
+    border-radius:7px;
+    overflow:hidden;
+    cursor:pointer;
+    user-select:none;
+    transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,filter .2s ease;
 }
 
-.no-image {
-    color: #4b393d;
-    font-size: 8px;
-    letter-spacing: 1px;
-    text-align: center;
+.card:hover{
+    transform:translateY(-4px) scale(1.02);
+    z-index:5;
 }
-
-/* ========================================
-   CARD INFO
-======================================== */
-
-.card-info {
-    padding: 7px 6px 8px;
 
-    background:
-        linear-gradient(
-            180deg,
-            #120c0e,
-            #080708
-        );
-
-    text-align: center;
+.card-image{
+    width:100%;
+    aspect-ratio:2.5/3.5;
+    background:radial-gradient(circle at center,#251116,#080708 75%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
 }
 
-.card-number {
-    color: #9e898e;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    line-height: 1;
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .25s ease,filter .25s ease;
 }
-
-.card-status {
-    margin-top: 5px;
-
-    font-size: 7px;
-    line-height: 1.2;
 
-    color: #55464a;
+.card:hover .card-image img{transform:scale(1.03)}
 
-    letter-spacing: 0;
-    white-space: nowrap;
+.no-image{
+    color:#4b393d;
+    font-size:8px;
+    letter-spacing:1px;
+    text-align:center;
 }
 
-/* ========================================
-   NOT OWNED
-======================================== */
-
-.card.not-owned {
-    filter: grayscale(100%) brightness(0.32);
-    opacity: 0.7;
-    border-color: rgba(80, 0, 20, 0.3);
+.card-info{
+    padding:7px 6px 8px;
+    background:linear-gradient(180deg,#120c0e,#080708);
+    text-align:center;
 }
 
-.card.not-owned:hover {
-    filter: grayscale(90%) brightness(0.42);
-    opacity: 0.85;
+.card-number{
+    color:#9e898e;
+    font-size:10px;
+    letter-spacing:1.5px;
+    font-weight:700;
+    line-height:1;
 }
-
-/* ========================================
-   OWNED
-======================================== */
 
-.card.owned {
-    filter: grayscale(0%) brightness(1);
-    opacity: 1;
-
-    border-color: rgba(230, 0, 45, 0.9);
-
-    box-shadow:
-        0 0 7px rgba(240, 0, 45, 0.4),
-        0 0 18px rgba(180, 0, 30, 0.22);
+.card-status{
+    margin-top:5px;
+    font-size:7px;
+    line-height:1.2;
+    color:#55464a;
+    letter-spacing:0;
+    white-space:nowrap;
 }
 
-.card.owned:hover {
-    box-shadow:
-        0 0 10px rgba(255, 0, 50, 0.55),
-        0 0 25px rgba(190, 0, 35, 0.3);
+.card.not-owned{
+    filter:grayscale(100%) brightness(.32);
+    opacity:.7;
+    border-color:rgba(80,0,20,.3);
 }
 
-.card.owned .card-image img {
-    filter: none;
+.card.not-owned:hover{
+    filter:grayscale(90%) brightness(.42);
+    opacity:.85;
 }
 
-.card.owned .card-number {
-    color: #f3dce0;
+.card.owned{
+    filter:grayscale(0) brightness(1);
+    opacity:1;
+    border-color:rgba(230,0,45,.9);
+    box-shadow:0 0 7px rgba(240,0,45,.4),0 0 18px rgba(180,0,30,.22);
 }
-
-.card.owned .card-status {
-    color: #ff4163;
 
-    text-shadow:
-        0 0 6px rgba(255, 0, 40, 0.45);
+.card.owned:hover{
+    box-shadow:0 0 10px rgba(255,0,50,.55),0 0 25px rgba(190,0,35,.3);
 }
-
-/* ========================================
-   OWNED HEART
-======================================== */
-
-.owned-mark {
-    position: absolute;
-
-    top: 4px;
-    right: 4px;
-
-    width: 19px;
-    height: 19px;
-
-    border-radius: 50%;
-
-    background: rgba(80, 0, 15, 0.9);
 
-    border: 1px solid rgba(255, 0, 45, 0.75);
+.card.owned .card-image img{filter:none}
 
-    display: none;
+.card.owned .card-number{color:#f3dce0}
 
-    align-items: center;
-    justify-content: center;
-
-    font-size: 9px;
-
-    box-shadow:
-        0 0 8px rgba(255, 0, 40, 0.45);
-
-    z-index: 3;
+.card.owned .card-status{
+    color:#ff4163;
+    text-shadow:0 0 6px rgba(255,0,40,.45);
 }
 
-.card.owned .owned-mark {
-    display: flex;
+.owned-mark{
+    position:absolute;
+    top:4px;
+    right:4px;
+    width:19px;
+    height:19px;
+    border-radius:50%;
+    background:rgba(80,0,15,.9);
+    border:1px solid rgba(255,0,45,.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    font-size:9px;
+    box-shadow:0 0 8px rgba(255,0,40,.45);
+    z-index:3;
 }
-
-/* ========================================
-   BINDER HOLE EFFECT
-======================================== */
-
-.card::after {
-    content: "";
-
-    position: absolute;
-
-    left: 5px;
-    top: 50%;
-
-    width: 3px;
-    height: 3px;
-
-    border-radius: 50%;
-
-    background: rgba(255,255,255,0.15);
-
-    box-shadow:
-        0 -20px 0 rgba(255,255,255,0.06),
-        0 20px 0 rgba(255,255,255,0.06);
 
-    opacity: 0.35;
+.card.owned .owned-mark{display:flex}
 
-    pointer-events: none;
+.card::after{
+    content:"";
+    position:absolute;
+    left:5px;
+    top:50%;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    box-shadow:0 -20px 0 rgba(255,255,255,.06),0 20px 0 rgba(255,255,255,.06);
+    opacity:.35;
+    pointer-events:none;
 }
 
-/* ========================================
-   SEARCH RESULT
-======================================== */
-
-.search-highlight {
-    border-color: #ff1648 !important;
-
-    box-shadow:
-        0 0 0 2px rgba(255, 0, 45, 0.2),
-        0 0 20px rgba(255, 0, 45, 0.35) !important;
-
-    transform: scale(1.03);
-    z-index: 10;
+.search-highlight{
+    border-color:#ff1648!important;
+    box-shadow:0 0 0 2px rgba(255,0,45,.2),0 0 20px rgba(255,0,45,.35)!important;
+    transform:scale(1.03);
+    z-index:10;
 }
-
-/* ========================================
-   EMPTY SEARCH
-======================================== */
-
-.no-results {
-    display: none;
 
-    text-align: center;
-
-    padding: 50px 20px;
-
-    color: #68565c;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
+.no-results{
+    display:none;
+    text-align:center;
+    padding:50px 20px;
+    color:#68565c;
+    font-size:11px;
+    letter-spacing:2px;
 }
-
-/* ========================================
-   TABLET
-======================================== */
-
-@media (max-width: 1100px) {
 
-    .cards-grid {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: 10px;
+@media(max-width:1100px){
+    .cards-grid{
+        grid-template-columns:repeat(6,minmax(0,1fr));
+        gap:10px;
     }
 
-    .location-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .location-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
     }
-
 }
 
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width: 700px) {
-
-    main {
-        width: min(100% - 18px, 1500px);
-        padding-top: 20px;
+@media(max-width:700px){
+    main{
+        width:min(100% - 18px,1500px);
+        padding-top:20px;
     }
 
-    header {
-        padding: 30px 15px 25px;
+    header{padding:30px 15px 25px}
+
+    header h1{letter-spacing:2px}
+
+    .subtitle{
+        font-size:10px;
+        line-height:1.6;
     }
 
-    header h1 {
-        letter-spacing: 2px;
+    .location-grid{grid-template-columns:1fr}
+
+    .location-card{min-height:170px}
+
+    .location-top{align-items:flex-start}
+
+    .location-title h2{font-size:19px}
+
+    .location-title p{font-size:8px}
+
+    .summary-dashboard{padding:17px}
+
+    .summary-stats{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .subtitle {
-        font-size: 10px;
-        line-height: 1.6;
+    .tools{flex-direction:column}
+
+    .reset-button{min-height:38px}
+
+    .cards-grid{
+        grid-template-columns:repeat(4,minmax(0,1fr));
+        gap:8px;
     }
 
-    .location-grid {
-        grid-template-columns: 1fr;
+    .card-info{padding:6px 4px 7px}
+
+    .card-number{font-size:9px}
+
+    .card-status{font-size:6px}
+
+    .owned-mark{
+        width:17px;
+        height:17px;
+        font-size:8px;
+        top:3px;
+        right:3px;
     }
 
-    .location-card {
-        min-height: 170px;
+    .series-divider{
+        min-height:105px;
+        margin-bottom:18px;
     }
 
-    .location-top {
-        align-items: flex-start;
+    .series-divider-inner{
+        min-width:82%;
+        padding:15px 20px;
     }
 
-    .location-title h2 {
-        font-size: 19px;
+    .series-divider-title{
+        font-size:13px;
+        letter-spacing:1.5px;
     }
 
-    .location-title p {
-        font-size: 8px;
+    .series-divider-count{
+        font-size:7px;
+        letter-spacing:1px;
     }
-
-    .summary-dashboard {
-        padding: 17px;
-    }
-
-    .summary-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .tools {
-        flex-direction: column;
-    }
-
-    .reset-button {
-        min-height: 38px;
-    }
-
-    /*
-       手机 4 张一排
-    */
-
-    .cards-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 8px;
-    }
-
-    .card-info {
-        padding: 6px 4px 7px;
-    }
-
-    .card-number {
-        font-size: 9px;
-    }
-
-    .card-status {
-        font-size: 6px;
-    }
-
-    .owned-mark {
-        width: 17px;
-        height: 17px;
-        font-size: 8px;
-        top: 3px;
-        right: 3px;
-    }
-
-    /*
-       手机版分隔页
-    */
-
-    .series-divider {
-        min-height: 105px;
-        margin-bottom: 18px;
-    }
-
-    .series-divider-inner {
-        min-width: 82%;
-        padding: 15px 20px;
-    }
-
-    .series-divider-title {
-        font-size: 13px;
-        letter-spacing: 1.5px;
-    }
-
-    .series-divider-count {
-        font-size: 7px;
-        letter-spacing: 1px;
-    }
-
 }
 
-/* ========================================
-   SMALL PHONE
-======================================== */
-
-@media (max-width: 480px) {
-
-    .cards-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
+@media(max-width:480px){
+    .cards-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:8px;
     }
 
-    .card-number {
-        font-size: 9px;
+    .card-number{font-size:9px}
+    .card-status{font-size:6px}
+
+    .series-divider{min-height:96px}
+
+    .series-divider-inner{
+        min-width:88%;
+        padding:14px 12px;
     }
-
-    .card-status {
-        font-size: 6px;
-    }
-
-    .series-divider {
-        min-height: 96px;
-    }
-
-    .series-divider-inner {
-        min-width: 88%;
-        padding: 14px 12px;
-    }
-
 }
 
-/* ========================================
-   SCROLLBAR
-======================================== */
-
-::-webkit-scrollbar {
-    width: 8px;
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#080507}
+::-webkit-scrollbar-thumb{
+    background:#3b111b;
+    border-radius:10px;
 }
-
-::-webkit-scrollbar-track {
-    background: #080507;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #3b111b;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #71172a;
-}
-
+::-webkit-scrollbar-thumb:hover{background:#71172a}
 </style>
 </head>
 
 <body>
 
-<!-- ========================================
-     HEADER
-======================================== -->
-
 <header>
-
     <div class="devil">👿</div>
 
-    <h1>
-        PERTHSANTA CARD COLLECTION 👿
-    </h1>
+    <h1>PERTHSANTA CARD COLLECTION 👿</h1>
 
     <p class="subtitle">
         Because of love, every card has its own value. 🖤🤍❤️
     </p>
-
 </header>
-
 
 <main>
 
-    <!-- ====================================
-         HOME PAGE
-    ===================================== -->
+<section id="homePage" class="home-page">
 
-    <section id="homePage" class="home-page">
+    <div class="home-intro">
+        <h2>MY CARD BOOK</h2>
+        <p>CHOOSE A COLLECTION</p>
+    </div>
 
-        <div class="home-intro">
+    <div id="locationGrid" class="location-grid"></div>
 
-            <h2>
-                MY CARD BOOK
-            </h2>
+</section>
 
-            <p>
-                CHOOSE A COLLECTION
-            </p>
+<section id="locationPage" class="location-page">
 
+    <div class="location-top">
+
+        <button class="back-button" onclick="goHome()">
+            ← BACK TO COLLECTIONS
+        </button>
+
+        <div class="location-title">
+            <h2 id="locationTitle">LOCATION</h2>
+            <p>CARD COLLECTION</p>
         </div>
 
-        <div
-            id="locationGrid"
-            class="location-grid">
+    </div>
+
+    <div class="summary-dashboard">
+
+        <div class="summary-heading">
+            <h3>COLLECTION SUMMARY</h3>
+            <p>EVERY CARD COUNTS 🖤🤍❤️</p>
         </div>
 
-    </section>
+        <div class="summary-stats">
 
+            <div class="summary-stat">
+                <span class="stat-number" id="summarySeries">0</span>
+                <span class="stat-label">SERIES</span>
+            </div>
 
-    <!-- ====================================
-         LOCATION PAGE
-    ===================================== -->
+            <div class="summary-stat">
+                <span class="stat-number" id="summaryTotal">0</span>
+                <span class="stat-label">TOTAL CARDS</span>
+            </div>
 
-    <section
-        id="locationPage"
-        class="location-page">
+            <div class="summary-stat collected">
+                <span class="stat-number" id="summaryOwned">0</span>
+                <span class="stat-label">COLLECTED</span>
+            </div>
 
-        <div class="location-top">
-
-            <button
-                class="back-button"
-                onclick="goHome()">
-
-                ← BACK TO COLLECTIONS
-
-            </button>
-
-            <div class="location-title">
-
-                <h2 id="locationTitle">
-                    LOCATION
-                </h2>
-
-                <p>
-                    CARD COLLECTION
-                </p>
-
+            <div class="summary-stat missing">
+                <span class="stat-number" id="summaryMissing">0</span>
+                <span class="stat-label">MISSING</span>
             </div>
 
         </div>
 
+        <div class="total-progress">
 
-        <!-- ==================================
-             SUMMARY DASHBOARD
-        =================================== -->
+            <div class="total-progress-top">
+                <span>COLLECTION PROGRESS</span>
 
-        <div class="summary-dashboard">
-
-            <div class="summary-heading">
-
-                <h3>
-                    COLLECTION SUMMARY
-                </h3>
-
-                <p>
-                    EVERY CARD COUNTS 🖤🤍❤️
-                </p>
-
+                <span class="total-percentage" id="summaryPercentage">
+                    0%
+                </span>
             </div>
 
-
-            <div class="summary-stats">
-
-                <div class="summary-stat">
-
-                    <span
-                        class="stat-number"
-                        id="summarySeries">
-                        0
-                    </span>
-
-                    <span class="stat-label">
-                        SERIES
-                    </span>
-
-                </div>
-
-
-                <div class="summary-stat">
-
-                    <span
-                        class="stat-number"
-                        id="summaryTotal">
-                        0
-                    </span>
-
-                    <span class="stat-label">
-                        TOTAL CARDS
-                    </span>
-
-                </div>
-
-
-                <div class="summary-stat collected">
-
-                    <span
-                        class="stat-number"
-                        id="summaryOwned">
-                        0
-                    </span>
-
-                    <span class="stat-label">
-                        COLLECTED
-                    </span>
-
-                </div>
-
-
-                <div class="summary-stat missing">
-
-                    <span
-                        class="stat-number"
-                        id="summaryMissing">
-                        0
-                    </span>
-
-                    <span class="stat-label">
-                        MISSING
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- TOTAL PROGRESS -->
-
-            <div class="total-progress">
-
-                <div class="total-progress-top">
-
-                    <span>
-                        COLLECTION PROGRESS
-                    </span>
-
-                    <span
-                        class="total-percentage"
-                        id="summaryPercentage">
-                        0%
-                    </span>
-
-                </div>
-
-                <div class="big-progress-bar">
-
-                    <div
-                        class="big-progress-fill"
-                        id="summaryProgressFill">
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- SERIES BREAKDOWN -->
-
-            <div class="series-summary-title">
-                SERIES BREAKDOWN
-            </div>
-
-            <div
-                class="series-summary-list"
-                id="seriesSummaryList">
+            <div class="big-progress-bar">
+                <div class="big-progress-fill" id="summaryProgressFill"></div>
             </div>
 
         </div>
 
-
-        <!-- ==================================
-             SEARCH
-        =================================== -->
-
-        <div class="tools">
-
-            <input
-                id="searchInput"
-                class="search-box"
-                type="text"
-                placeholder="SEARCH CARD NUMBER... e.g. 001"
-                oninput="searchCards()"
-            >
-
-            <button
-                class="reset-button"
-                onclick="resetCollection()">
-
-                RESET COLLECTION
-
-            </button>
-
+        <div class="series-summary-title">
+            SERIES BREAKDOWN
         </div>
 
+        <div class="series-summary-list" id="seriesSummaryList"></div>
 
-        <!-- ==================================
-             CARDS
-        =================================== -->
+    </div>
 
-        <div id="collectionContainer"></div>
+    <div class="tools">
 
-        <div
-            id="noResults"
-            class="no-results">
+        <input
+            id="searchInput"
+            class="search-box"
+            type="text"
+            placeholder="SEARCH CARD NUMBER... e.g. 001"
+            oninput="searchCards()"
+        >
 
-            NO CARD FOUND 😭
+        <button class="reset-button" onclick="resetCollection()">
+            RESET COLLECTION
+        </button>
 
-        </div>
+    </div>
 
-    </section>
+    <div id="collectionContainer"></div>
+
+    <div id="noResults" class="no-results">
+        NO CARD FOUND 😭
+    </div>
+
+</section>
 
 </main>
-
 
 <script>
 
 /* ==================================================
    COLLECTION DATA
+   每个系列都有自己的 imageFolder
 ================================================== */
 
 const locations = [
@@ -1311,299 +864,358 @@ const locations = [
     {
         name: "Perth",
 
+        imageFolder: "Perth",
+
         series: [
 
             {
                 name: "Shining Series",
-                count: 9
+                count: 9,
+                imageFolder: "Shining-Series"
             },
 
             {
                 name: "Stunning Series + Photocard Holder",
-                count: 10
+                count: 10,
+                imageFolder: "Stunning-Series-Photocard-Holder"
             },
 
             {
                 name: "Musicon in Tokyo",
-                count: 2
+                count: 2,
+                imageFolder: "Musicon-in-Tokyo"
             },
 
             {
                 name: "Japan Fanfest",
-                count: 1
+                count: 1,
+                imageFolder: "Japan-Fanfest"
             },
 
             {
                 name: "Book Expo Thailand 2023 Collectible Card Set",
-                count: 18
+                count: 18,
+                imageFolder: "Book-Expo-Thailand-2023-Collectible-Card-Set"
             },
 
             {
                 name: "Fanday 6 in Seoul",
-                count: 4
+                count: 4,
+                imageFolder: "Fanday-6-in-Seoul"
             },
 
             {
                 name: "Happy Weekend Japan",
-                count: 6
+                count: 6,
+                imageFolder: "Happy-Weekend-Japan"
             },
 
             {
                 name: "Blooming Series",
-                count: 9
+                count: 9,
+                imageFolder: "Blooming-Series"
             },
 
             {
                 name: "Love Out Loud 2024 - The Love Pirates",
-                count: 5
+                count: 5,
+                imageFolder: "Love-Out-Loud-2024-The-Love-Pirates"
             },
 
             {
                 name: "Mystery Box 2024",
-                count: 1
+                count: 1,
+                imageFolder: "Mystery-Box-2024"
             },
 
             {
                 name: "Rainbow in Suit",
-                count: 4
+                count: 4,
+                imageFolder: "Rainbow-in-Suit"
             },
 
             {
                 name: "LOL 2024 Boxset",
-                count: 1
+                count: 1,
+                imageFolder: "LOL-2024-Boxset"
             },
 
             {
                 name: "Selfie Random Card",
-                count: 2
+                count: 2,
+                imageFolder: "Selfie-Random-Card"
             },
 
             {
                 name: "Selfie Random Card Japan",
-                count: 3
+                count: 3,
+                imageFolder: "Selfie-Random-Card-Japan"
             },
 
             {
                 name: "Colectible Card Japan",
-                count: 2
+                count: 2,
+                imageFolder: "Colectible-Card-Japan"
             },
 
             {
                 name: "Back to School Series",
-                count: 9
+                count: 9,
+                imageFolder: "Back-to-School-Series"
             },
 
             {
                 name: "Musicon Nanning",
-                count: 5
+                count: 5,
+                imageFolder: "Musicon-Nanning"
             },
 
             {
                 name: "Zodiac Set",
-                count: 9
+                count: 9,
+                imageFolder: "Zodiac-Set"
             },
 
             {
                 name: "Numb Photo Set",
-                count: 10
+                count: 10,
+                imageFolder: "Numb-Photo-Set"
             }
 
         ]
     },
 
-
     {
         name: "Santa",
+
+        imageFolder: "Santa",
 
         series: [
 
             {
                 name: "Santa Collectible Card Set - Fan Event Japan",
-                count: 10
+                count: 10,
+                imageFolder: "Santa-Collectible-Card-Set-Fan-Event-Japan"
             },
 
             {
                 name: "Sadistic Photo Set",
-                count: 4
+                count: 4,
+                imageFolder: "Sadistic-Photo-Set"
             },
 
             {
                 name: "Take it off Photo Set",
-                count: 2
+                count: 2,
+                imageFolder: "Take-it-off-Photo-Set"
             },
 
             {
                 name: "Zodiac Set",
-                count: 9
+                count: 9,
+                imageFolder: "Zodiac-Set"
             },
 
             {
                 name: "Musicon Japan 2025",
-                count: 4
+                count: 4,
+                imageFolder: "Musicon-Japan-2025"
             },
 
             {
                 name: "Touch Photos Set",
-                count: 2
+                count: 2,
+                imageFolder: "Touch-Photos-Set"
             }
 
         ]
     },
 
-
     {
         name: "PerthSanta",
+
+        imageFolder: "PerthSanta",
 
         series: [
 
             {
                 name: "Back to School Collectible Card Set",
-                count: 6
+                count: 6,
+                imageFolder: "Back-to-School-Collectible-Card-Set"
             },
 
             {
                 name: "Calendar 2025",
-                count: 2
+                count: 2,
+                imageFolder: "Calendar-2025"
             },
 
             {
                 name: "Christmas Collectible Card Set",
-                count: 5
+                count: 5,
+                imageFolder: "Christmas-Collectible-Card-Set"
             },
 
             {
                 name: "Starlympics 2024",
-                count: 6
+                count: 6,
+                imageFolder: "Starlympics-2024"
             },
 
             {
                 name: "Black in Color",
-                count: 6
+                count: 6,
+                imageFolder: "Black-in-Color"
             },
 
             {
                 name: "Y Book Fair Merchandise",
-                count: 3
+                count: 3,
+                imageFolder: "Y-Book-Fair-Merchandise"
             },
 
             {
                 name: "Y Book Fair 9 Mini Photo Set",
-                count: 4
+                count: 4,
+                imageFolder: "Y-Book-Fair-9-Mini-Photo-Set"
             },
 
             {
                 name: "Songkran 2025",
-                count: 5
+                count: 5,
+                imageFolder: "Songkran-2025"
             },
 
             {
                 name: "Domiia Card Holder",
-                count: 1
+                count: 1,
+                imageFolder: "Domiia-Card-Holder"
             },
 
             {
                 name: "Perfect 10 Liners Thai card",
-                count: 11
+                count: 11,
+                imageFolder: "Perfect-10-Liners-Thai-card"
             },
 
             {
                 name: "Perfect 10 Liners Boxset",
-                count: 2
+                count: 2,
+                imageFolder: "Perfect-10-Liners-Boxset"
             },
 
             {
                 name: "Pop-Up Store Tokyo 2025 + phone charm",
-                count: 4
+                count: 4,
+                imageFolder: "Pop-Up-Store-Tokyo-2025-phone-charm"
             },
 
             {
                 name: "Mystery Box 2025",
-                count: 8
+                count: 8,
+                imageFolder: "Mystery-Box-2025"
             },
 
             {
                 name: "Time Stopper Photobook",
-                count: 9
+                count: 9,
+                imageFolder: "Time-Stopper-Photobook"
             },
 
             {
                 name: "Perfect 10 Liners Japan",
-                count: 11
+                count: 11,
+                imageFolder: "Perfect-10-Liners-Japan"
             },
 
             {
                 name: "Love Out Loud 2025 - Lovemosphere",
-                count: 9
+                count: 9,
+                imageFolder: "Love-Out-Loud-2025-Lovemosphere"
             },
 
             {
                 name: "Love Out Loud 2025 Photo Set + Photo holder + Photobox + Boxset",
-                count: 6
+                count: 6,
+                imageFolder: "Love-Out-Loud-2025-Photo-Set-Photo-holder-Photobox-Boxset"
             },
 
             {
                 name: "Time Stopper Fancon Collectible Card Set",
-                count: 35
+                count: 35,
+                imageFolder: "Time-Stopper-Fancon-Collectible-Card-Set"
             },
 
             {
                 name: "Time Stopper Merchandise",
-                count: 7
+                count: 7,
+                imageFolder: "Time-Stopper-Merchandise"
             },
 
             {
                 name: "Mood Quest",
-                count: 3
+                count: 3,
+                imageFolder: "Mood-Quest"
             },
 
             {
                 name: "Pop-Up Store Nagoya",
-                count: 3
+                count: 3,
+                imageFolder: "Pop-Up-Store-Nagoya"
             },
 
             {
                 name: "Too Cute Too Spook",
-                count: 3
+                count: 3,
+                imageFolder: "Too-Cute-Too-Spook"
             },
 
             {
                 name: "Mesmerizing Series",
-                count: 9
+                count: 9,
+                imageFolder: "Mesmerizing-Series"
             },
 
             {
                 name: "Fanival Scrunchie / Phone Charm",
-                count: 2
+                count: 2,
+                imageFolder: "Fanival-Scrunchie-Phone-Charm"
             },
 
             {
                 name: "2026 Calendar",
-                count: 2
+                count: 2,
+                imageFolder: "2026-Calendar"
             },
 
             {
                 name: "Pop-Up Store Osaka",
-                count: 3
+                count: 3,
+                imageFolder: "Pop-Up-Store-Osaka"
             },
 
             {
                 name: "Pop-Up Store Osaka Merchandise",
-                count: 4
+                count: 4,
+                imageFolder: "Pop-Up-Store-Osaka-Merchandise"
             },
 
             {
                 name: "Starlympics 2025",
-                count: 7
+                count: 7,
+                imageFolder: "Starlympics-2025"
             },
 
             {
                 name: "Me and Thee Finale Card & Boxset",
-                count: 10
+                count: 10,
+                imageFolder: "Me-and-Thee-Finale-Card-Boxset"
             },
 
             {
                 name: "Happy Fam Bonds",
-                count: 4
+                count: 4,
+                imageFolder: "Happy-Fam-Bonds"
             }
 
         ]
@@ -1628,7 +1240,7 @@ let collection =
    SAVE
 ================================================== */
 
-function saveCollection() {
+function saveCollection(){
 
     localStorage.setItem(
         "myCardCollection",
@@ -1642,10 +1254,10 @@ function saveCollection() {
    TOTAL CARDS
 ================================================== */
 
-function getTotalCards(location) {
+function getTotalCards(location){
 
     return location.series.reduce(
-        (total, series) =>
+        (total,series)=>
             total + series.count,
         0
     );
@@ -1657,7 +1269,7 @@ function getTotalCards(location) {
    OWNED COUNT
 ================================================== */
 
-function getOwnedCount(locationIndex) {
+function getOwnedCount(locationIndex){
 
     const location =
         locations[locationIndex];
@@ -1665,18 +1277,18 @@ function getOwnedCount(locationIndex) {
     let count = 0;
 
     location.series.forEach(
-        (series, seriesIndex) => {
+        (series,seriesIndex)=>{
 
-            for (
-                let cardNumber = 1;
-                cardNumber <= series.count;
+            for(
+                let cardNumber=1;
+                cardNumber<=series.count;
                 cardNumber++
-            ) {
+            ){
 
                 const key =
                     `${locationIndex}-${seriesIndex}-${cardNumber}`;
 
-                if (collection[key]) {
+                if(collection[key]){
                     count++;
                 }
 
@@ -1697,7 +1309,7 @@ function getOwnedCount(locationIndex) {
 function getSeriesOwnedCount(
     locationIndex,
     seriesIndex
-) {
+){
 
     const series =
         locations[locationIndex]
@@ -1705,16 +1317,16 @@ function getSeriesOwnedCount(
 
     let count = 0;
 
-    for (
-        let cardNumber = 1;
-        cardNumber <= series.count;
+    for(
+        let cardNumber=1;
+        cardNumber<=series.count;
         cardNumber++
-    ) {
+    ){
 
         const key =
             `${locationIndex}-${seriesIndex}-${cardNumber}`;
 
-        if (collection[key]) {
+        if(collection[key]){
             count++;
         }
 
@@ -1729,17 +1341,15 @@ function getSeriesOwnedCount(
    RENDER HOME
 ================================================== */
 
-function renderHome() {
+function renderHome(){
 
     const grid =
-        document.getElementById(
-            "locationGrid"
-        );
+        document.getElementById("locationGrid");
 
-    grid.innerHTML = "";
+    grid.innerHTML="";
 
     locations.forEach(
-        (location, index) => {
+        (location,index)=>{
 
             const total =
                 getTotalCards(location);
@@ -1748,22 +1358,21 @@ function renderHome() {
                 getOwnedCount(index);
 
             const percentage =
-                total === 0
+                total===0
                     ? 0
                     : Math.round(
-                        owned / total * 100
+                        owned/total*100
                     );
 
             const card =
                 document.createElement("div");
 
-            card.className =
-                "location-card";
+            card.className="location-card";
 
-            card.onclick = () =>
+            card.onclick=()=>
                 openLocation(index);
 
-            card.innerHTML = `
+            card.innerHTML=`
 
                 <h3>
                     ${location.name}
@@ -1814,34 +1423,34 @@ function renderHome() {
    OPEN LOCATION
 ================================================== */
 
-function openLocation(index) {
+function openLocation(index){
 
-    currentLocationIndex = index;
+    currentLocationIndex=index;
 
     document.getElementById(
         "homePage"
-    ).style.display = "none";
+    ).style.display="none";
 
     document.getElementById(
         "locationPage"
-    ).style.display = "block";
+    ).style.display="block";
 
     document.getElementById(
         "locationTitle"
-    ).textContent =
+    ).textContent=
         locations[index].name;
 
     document.getElementById(
         "searchInput"
-    ).value = "";
+    ).value="";
 
     renderSummaryDashboard();
 
     renderCollection();
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
     });
 
 }
@@ -1851,27 +1460,27 @@ function openLocation(index) {
    GO HOME
 ================================================== */
 
-function goHome() {
+function goHome(){
 
-    currentLocationIndex = null;
+    currentLocationIndex=null;
 
     document.getElementById(
         "locationPage"
-    ).style.display = "none";
+    ).style.display="none";
 
     document.getElementById(
         "homePage"
-    ).style.display = "block";
+    ).style.display="block";
 
     document.getElementById(
         "searchInput"
-    ).value = "";
+    ).value="";
 
     renderHome();
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
     });
 
 }
@@ -1881,11 +1490,9 @@ function goHome() {
    SUMMARY DASHBOARD
 ================================================== */
 
-function renderSummaryDashboard() {
+function renderSummaryDashboard(){
 
-    if (
-        currentLocationIndex === null
-    ) {
+    if(currentLocationIndex===null){
         return;
     }
 
@@ -1896,69 +1503,57 @@ function renderSummaryDashboard() {
         getTotalCards(location);
 
     const owned =
-        getOwnedCount(
-            currentLocationIndex
-        );
+        getOwnedCount(currentLocationIndex);
 
     const missing =
-        total - owned;
+        total-owned;
 
     const percentage =
-        total === 0
+        total===0
             ? 0
             : Math.round(
-                owned / total * 100
+                owned/total*100
             );
-
 
     document.getElementById(
         "summarySeries"
-    ).textContent =
+    ).textContent=
         location.series.length;
-
 
     document.getElementById(
         "summaryTotal"
-    ).textContent =
+    ).textContent=
         total;
-
 
     document.getElementById(
         "summaryOwned"
-    ).textContent =
+    ).textContent=
         owned;
-
 
     document.getElementById(
         "summaryMissing"
-    ).textContent =
+    ).textContent=
         missing;
-
 
     document.getElementById(
         "summaryPercentage"
-    ).textContent =
+    ).textContent=
         `${percentage}%`;
-
 
     document.getElementById(
         "summaryProgressFill"
-    ).style.width =
+    ).style.width=
         `${percentage}%`;
-
-
-    /* SERIES BREAKDOWN */
 
     const list =
         document.getElementById(
             "seriesSummaryList"
         );
 
-    list.innerHTML = "";
-
+    list.innerHTML="";
 
     location.series.forEach(
-        (series, seriesIndex) => {
+        (series,seriesIndex)=>{
 
             const seriesOwned =
                 getSeriesOwnedCount(
@@ -1969,24 +1564,17 @@ function renderSummaryDashboard() {
             const item =
                 document.createElement("div");
 
-            item.className =
+            item.className=
                 "series-summary-item";
 
-
-            if (
-                seriesOwned === series.count
-            ) {
-
-                item.classList.add(
-                    "completed"
-                );
-
+            if(
+                seriesOwned===series.count
+            ){
+                item.classList.add("completed");
             }
 
-
-            item.textContent =
+            item.textContent=
                 `${series.name} ${seriesOwned}/${series.count}`;
-
 
             list.appendChild(item);
 
@@ -2000,11 +1588,9 @@ function renderSummaryDashboard() {
    RENDER COLLECTION
 ================================================== */
 
-function renderCollection() {
+function renderCollection(){
 
-    if (
-        currentLocationIndex === null
-    ) {
+    if(currentLocationIndex===null){
         return;
     }
 
@@ -2013,22 +1599,19 @@ function renderCollection() {
             "collectionContainer"
         );
 
-    container.innerHTML = "";
-
+    container.innerHTML="";
 
     const location =
         locations[currentLocationIndex];
 
-
     location.series.forEach(
-        (series, seriesIndex) => {
+        (series,seriesIndex)=>{
 
             const section =
                 document.createElement("section");
 
-            section.className =
+            section.className=
                 "series-section";
-
 
             const seriesOwned =
                 getSeriesOwnedCount(
@@ -2036,38 +1619,30 @@ function renderCollection() {
                     seriesIndex
                 );
 
-
-            /* 完成系列 */
-
-            if (
-                seriesOwned === series.count
-            ) {
-
-                section.classList.add(
-                    "completed"
-                );
-
+            if(
+                seriesOwned===series.count
+            ){
+                section.classList.add("completed");
             }
 
 
             /* ==================================
-               卡册分隔页
+               SERIES DIVIDER
             ================================== */
 
             const divider =
                 document.createElement("div");
 
-            divider.className =
+            divider.className=
                 "series-divider";
 
-
-            divider.innerHTML = `
+            divider.innerHTML=`
 
                 <div class="series-divider-inner">
 
                     <div class="series-index">
                         SERIES
-                        ${String(seriesIndex + 1).padStart(2, "0")}
+                        ${String(seriesIndex+1).padStart(2,"0")}
                     </div>
 
                     <h3 class="series-divider-title">
@@ -2083,64 +1658,70 @@ function renderCollection() {
 
             `;
 
-
             section.appendChild(divider);
 
 
             /* ==================================
-               卡片区域
+               CARD GRID
             ================================== */
 
             const grid =
                 document.createElement("div");
 
-            grid.className =
-                "cards-grid";
+            grid.className="cards-grid";
 
 
-            for (
-                let cardNumber = 1;
-                cardNumber <= series.count;
+            for(
+                let cardNumber=1;
+                cardNumber<=series.count;
                 cardNumber++
-            ) {
+            ){
 
                 const number =
                     String(cardNumber)
-                        .padStart(3, "0");
-
+                        .padStart(3,"0");
 
                 const key =
                     `${currentLocationIndex}-${seriesIndex}-${cardNumber}`;
 
-
                 const isOwned =
                     !!collection[key];
-
 
                 const card =
                     document.createElement("div");
 
-
-                card.className =
+                card.className=
                     `card ${
                         isOwned
                             ? "owned"
                             : "not-owned"
                     }`;
 
+                card.dataset.number=number;
 
-                card.dataset.number =
-                    number;
-
-
-                card.onclick = () =>
+                card.onclick=()=>
                     toggleCard(
                         key,
                         card
                     );
 
 
-                card.innerHTML = `
+                /*
+                   ★ 这里就是新的照片路径 ★
+
+                   例如：
+                   images/Perth/Shining-Series/001.jpg
+
+                   images/Santa/Zodiac-Set/001.jpg
+
+                   images/PerthSanta/Mystery-Box-2025/001.jpg
+                */
+
+                const imagePath =
+                    `images/${location.imageFolder}/${series.imageFolder}/${number}.jpg`;
+
+
+                card.innerHTML=`
 
                     <div class="owned-mark">
                         ❤️
@@ -2149,7 +1730,7 @@ function renderCollection() {
                     <div class="card-image">
 
                         <img
-                            src="images/${number}.jpg"
+                            src="${imagePath}"
                             alt="${series.name} ${number}"
                             onerror="
                                 this.style.display='none';
@@ -2177,11 +1758,9 @@ function renderCollection() {
 
                 `;
 
-
                 grid.appendChild(card);
 
             }
-
 
             section.appendChild(grid);
 
@@ -2200,15 +1779,15 @@ function renderCollection() {
 function toggleCard(
     key,
     cardElement
-) {
+){
 
-    collection[key] =
+    collection[key]=
         !collection[key];
 
     saveCollection();
 
 
-    if (collection[key]) {
+    if(collection[key]){
 
         cardElement.classList.remove(
             "not-owned"
@@ -2218,7 +1797,7 @@ function toggleCard(
             "owned"
         );
 
-    } else {
+    }else{
 
         cardElement.classList.remove(
             "owned"
@@ -2231,16 +1810,14 @@ function toggleCard(
     }
 
 
-    /* 更新状态文字 */
-
     const status =
         cardElement.querySelector(
             ".card-status"
         );
 
-    if (status) {
+    if(status){
 
-        status.innerHTML =
+        status.innerHTML=
             collection[key]
                 ? "- 🖤🤍❤️ get"
                 : "- havent get 😭";
@@ -2248,18 +1825,14 @@ function toggleCard(
     }
 
 
-    /*
-       更新 ❤️
-    */
-
     const mark =
         cardElement.querySelector(
             ".owned-mark"
         );
 
-    if (mark) {
+    if(mark){
 
-        mark.style.display =
+        mark.style.display=
             collection[key]
                 ? "flex"
                 : "none";
@@ -2267,23 +1840,9 @@ function toggleCard(
     }
 
 
-    /*
-       更新 Dashboard
-    */
-
     renderSummaryDashboard();
 
-
-    /*
-       更新首页地点进度
-    */
-
     renderHome();
-
-
-    /*
-       更新当前系列分隔页的收藏数量
-    */
 
     updateSeriesDivider(
         cardElement
@@ -2298,25 +1857,20 @@ function toggleCard(
 
 function updateSeriesDivider(
     cardElement
-) {
+){
 
-    if (
-        currentLocationIndex === null
-    ) {
+    if(currentLocationIndex===null){
         return;
     }
-
 
     const section =
         cardElement.closest(
             ".series-section"
         );
 
-
-    if (!section) {
+    if(!section){
         return;
     }
-
 
     const sections =
         Array.from(
@@ -2325,20 +1879,16 @@ function updateSeriesDivider(
             )
         );
 
-
     const seriesIndex =
         sections.indexOf(section);
 
-
-    if (seriesIndex < 0) {
+    if(seriesIndex<0){
         return;
     }
-
 
     const series =
         locations[currentLocationIndex]
             .series[seriesIndex];
-
 
     const owned =
         getSeriesOwnedCount(
@@ -2346,34 +1896,25 @@ function updateSeriesDivider(
             seriesIndex
         );
 
-
     const countElement =
         section.querySelector(
             ".series-divider-count"
         );
 
+    if(countElement){
 
-    if (countElement) {
-
-        countElement.textContent =
+        countElement.textContent=
             `${owned} / ${series.count} COLLECTED`;
 
     }
 
-
-    /*
-       全部收藏后给分隔页增加完成状态
-    */
-
-    if (
-        owned === series.count
-    ) {
+    if(owned===series.count){
 
         section.classList.add(
             "completed"
         );
 
-    } else {
+    }else{
 
         section.classList.remove(
             "completed"
@@ -2385,10 +1926,10 @@ function updateSeriesDivider(
 
 
 /* ==================================================
-   SEARCH CARDS
+   SEARCH
 ================================================== */
 
-function searchCards() {
+function searchCards(){
 
     const input =
         document.getElementById(
@@ -2400,30 +1941,24 @@ function searchCards() {
             .trim()
             .toLowerCase();
 
-
     const cards =
         document.querySelectorAll(
             ".card"
         );
 
-
-    let found = 0;
+    let found=0;
 
 
     cards.forEach(
-        card => {
+        card=>{
 
             card.classList.remove(
                 "search-highlight"
             );
 
+            if(keyword===""){
 
-            if (
-                keyword === ""
-            ) {
-
-                card.style.display =
-                    "";
+                card.style.display="";
 
                 found++;
 
@@ -2431,18 +1966,13 @@ function searchCards() {
 
             }
 
-
             const number =
                 card.dataset.number
                     .toLowerCase();
 
+            if(number.includes(keyword)){
 
-            if (
-                number.includes(keyword)
-            ) {
-
-                card.style.display =
-                    "";
+                card.style.display="";
 
                 card.classList.add(
                     "search-highlight"
@@ -2450,10 +1980,9 @@ function searchCards() {
 
                 found++;
 
-            } else {
+            }else{
 
-                card.style.display =
-                    "none";
+                card.style.display="none";
 
             }
 
@@ -2466,19 +1995,16 @@ function searchCards() {
             "noResults"
         );
 
+    if(
+        keyword!=="" &&
+        found===0
+    ){
 
-    if (
-        keyword !== "" &&
-        found === 0
-    ) {
+        noResults.style.display="block";
 
-        noResults.style.display =
-            "block";
+    }else{
 
-    } else {
-
-        noResults.style.display =
-            "none";
+        noResults.style.display="none";
 
     }
 
@@ -2489,35 +2015,28 @@ function searchCards() {
    RESET COLLECTION
 ================================================== */
 
-function resetCollection() {
+function resetCollection(){
 
     const confirmed =
         confirm(
             "Are you sure you want to reset your entire collection?"
         );
 
-
-    if (!confirmed) {
+    if(!confirmed){
         return;
     }
 
-
-    collection = {};
-
+    collection={};
 
     saveCollection();
 
-
-    if (
-        currentLocationIndex !== null
-    ) {
+    if(currentLocationIndex!==null){
 
         renderSummaryDashboard();
 
         renderCollection();
 
     }
-
 
     renderHome();
 
@@ -2534,3 +2053,4 @@ renderHome();
 
 </body>
 </html>
+```
