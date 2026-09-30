@@ -1,3020 +1,2530 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>PERTHSANTA CARD COLLECTION 🖤🤍❤️</title>
+<title>PERTHSANTA CARD COLLECTION</title>
 
-  <style>
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(120,0,0,0.22), transparent 35%),
+        linear-gradient(135deg, #050505, #140000 55%, #050505);
+    color: white;
+    min-height: 100vh;
+}
 
-    body {
-      margin: 0;
-      background:
-        radial-gradient(
-          circle at top,
-          #3a0000 0%,
-          #120000 35%,
-          #050505 75%
+/* =========================
+   HEADER
+========================= */
+
+header {
+    text-align: center;
+    padding: 35px 20px 30px;
+    border-bottom: 2px solid #550000;
+    background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(20,0,0,0.9));
+    box-shadow: 0 10px 40px rgba(120,0,0,0.25);
+}
+
+.logo {
+    display: block;
+    width: min(320px, 75vw);
+    max-height: 180px;
+    object-fit: contain;
+    margin: 0 auto 18px;
+    filter:
+        drop-shadow(0 0 10px rgba(255,0,0,0.35))
+        drop-shadow(0 0 25px rgba(255,0,0,0.15));
+}
+
+.logo-fallback {
+    display: none;
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(24px, 4vw, 42px);
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow:
+        0 0 5px #ff0000,
+        0 0 15px #660000;
+}
+
+.subtitle {
+    margin-top: 12px;
+    color: #d7d7d7;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/* =========================
+   MUSIC PLAYER
+========================= */
+
+.music-player {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+
+    width: 330px;
+    padding: 14px;
+
+    background: rgba(8, 8, 8, 0.96);
+    border: 1px solid #750000;
+    border-radius: 14px;
+
+    box-shadow:
+        0 0 20px rgba(180,0,0,0.25),
+        inset 0 0 20px rgba(100,0,0,0.08);
+
+    backdrop-filter: blur(10px);
+}
+
+.music-title {
+    font-size: 11px;
+    color: #ff5555;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.music-track {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.music-btn {
+    border: 1px solid #660000;
+    background: #160000;
+    color: white;
+
+    min-width: 38px;
+    height: 34px;
+
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.music-btn:hover {
+    background: #650000;
+    border-color: #ff2222;
+    transform: translateY(-1px);
+}
+
+.music-btn.main {
+    background: #850000;
+    min-width: 45px;
+}
+
+.music-btn.main:hover {
+    background: #b00000;
+}
+
+.volume-area {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.volume-area input {
+    width: 65px;
+    accent-color: #b00000;
+}
+
+.loop-active {
+    background: #850000 !important;
+    border-color: #ff2222 !important;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.container {
+    width: min(1500px, 94%);
+    margin: auto;
+}
+
+.home {
+    padding: 45px 0 25px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 27px;
+    letter-spacing: 2px;
+}
+
+.section-title p {
+    color: #aaa;
+    margin-top: 8px;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.location-card {
+    position: relative;
+    padding: 35px 20px;
+
+    border: 1px solid #570000;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(145deg, #120000, #080808);
+
+    text-align: center;
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    overflow: hidden;
+}
+
+.location-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(circle at center, rgba(150,0,0,0.18), transparent 65%);
+
+    pointer-events: none;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff2222;
+
+    box-shadow:
+        0 0 30px rgba(170,0,0,0.3),
+        inset 0 0 30px rgba(120,0,0,0.08);
+}
+
+.location-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.location-name {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.location-count {
+    color: #aaa;
+    margin-top: 8px;
+}
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary {
+    margin: 25px 0 50px;
+    padding: 28px;
+
+    background:
+        linear-gradient(145deg, rgba(35,0,0,0.9), rgba(8,8,8,0.95));
+
+    border: 1px solid #600000;
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 25px rgba(100,0,0,0.12);
+}
+
+.summary-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 22px;
+    letter-spacing: 2px;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.stat {
+    background: rgba(0,0,0,0.45);
+    border: 1px solid #3d0000;
+    border-radius: 12px;
+    padding: 17px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 27px;
+    font-weight: bold;
+    color: #ff4444;
+}
+
+.stat-label {
+    margin-top: 5px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.progress-wrapper {
+    margin-bottom: 25px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    font-size: 13px;
+    color: #bbb;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background: #170000;
+    border: 1px solid #470000;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background:
+        linear-gradient(90deg, #6d0000, #ff2222);
+    box-shadow: 0 0 12px rgba(255,0,0,0.5);
+    transition: width 0.5s;
+}
+
+.breakdown {
+    display: grid;
+    gap: 8px;
+}
+
+.breakdown-row {
+    display: grid;
+    grid-template-columns: 45px 1fr 100px 100px;
+    align-items: center;
+    gap: 10px;
+
+    padding: 9px 12px;
+
+    background: rgba(0,0,0,0.25);
+    border-radius: 8px;
+}
+
+.breakdown-number {
+    color: #ff4444;
+    font-weight: bold;
+}
+
+.breakdown-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.breakdown-count {
+    color: #aaa;
+    text-align: right;
+}
+
+.breakdown-percent {
+    color: #ff6666;
+    text-align: right;
+}
+
+/* =========================
+   LOCATION SECTION
+========================= */
+
+.location-section {
+    margin-top: 50px;
+    scroll-margin-top: 30px;
+}
+
+.location-header {
+    position: relative;
+
+    padding: 25px 30px;
+    margin-bottom: 25px;
+
+    border-top: 2px solid #680000;
+    border-bottom: 2px solid #680000;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(70,0,0,0.4),
+            rgba(0,0,0,0.15),
+            rgba(70,0,0,0.4)
         );
 
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      min-height: 100vh;
+    text-align: center;
+}
+
+.location-header h2 {
+    margin: 0;
+    font-size: clamp(26px, 4vw, 38px);
+    letter-spacing: 4px;
+}
+
+.location-header p {
+    color: #999;
+    margin: 8px 0 0;
+}
+
+/* =========================
+   SERIES
+========================= */
+
+.series {
+    margin-bottom: 55px;
+}
+
+.series-divider {
+    position: relative;
+
+    padding: 18px 22px;
+    margin-bottom: 18px;
+
+    border-left: 5px solid #b00000;
+    border-radius: 0 12px 12px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(100,0,0,0.35),
+            rgba(10,10,10,0.9)
+        );
+
+    box-shadow:
+        inset 0 0 20px rgba(100,0,0,0.08);
+}
+
+.series.complete .series-divider {
+    border-left-color: #ff2222;
+
+    box-shadow:
+        0 0 20px rgba(255,0,0,0.15),
+        inset 0 0 20px rgba(255,0,0,0.08);
+}
+
+.series-number {
+    color: #ff3333;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.series-title {
+    font-size: 21px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.series-count {
+    color: #aaa;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+}
+
+.card {
+    position: relative;
+
+    aspect-ratio: 2 / 3;
+
+    border-radius: 8px;
+    overflow: hidden;
+
+    background: #050505;
+    border: 1px solid #2b2b2b;
+
+    cursor: pointer;
+
+    filter:
+        grayscale(1)
+        brightness(0.28);
+
+    transition:
+        transform 0.2s,
+        filter 0.25s,
+        border-color 0.25s,
+        box-shadow 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: #8d0000;
+    filter:
+        grayscale(0.7)
+        brightness(0.55);
+}
+
+.card.owned {
+    filter:
+        grayscale(0)
+        brightness(1);
+
+    border-color: #a90000;
+
+    box-shadow:
+        0 0 10px rgba(255,0,0,0.3),
+        0 0 20px rgba(255,0,0,0.12);
+}
+
+.card.owned:hover {
+    border-color: #ff2222;
+
+    box-shadow:
+        0 0 15px rgba(255,0,0,0.5),
+        0 0 30px rgba(255,0,0,0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-no-image {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #555;
+    font-size: 11px;
+    text-align: center;
+    padding: 5px;
+}
+
+.card-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+
+    padding: 3px 6px;
+
+    border-radius: 5px;
+
+    background: rgba(0,0,0,0.78);
+    color: #ddd;
+
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.card-status {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 5px 3px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.95)
+        );
+
+    color: #aaa;
+
+    font-size: 9px;
+    text-align: center;
+
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.card:hover .card-status,
+.card.owned .card-status {
+    opacity: 1;
+}
+
+.card.owned .card-status {
+    color: #ffdddd;
+}
+
+.heart {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+
+    font-size: 12px;
+
+    opacity: 0;
+    transform: scale(0.5);
+
+    transition: 0.2s;
+}
+
+.card.owned .heart {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* =========================
+   SEARCH / ACTIONS
+========================= */
+
+.tools {
+    position: sticky;
+    bottom: 12px;
+
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin: 20px auto;
+
+    padding: 10px;
+
+    width: fit-content;
+
+    background: rgba(0,0,0,0.9);
+    border: 1px solid #510000;
+    border-radius: 12px;
+
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.search-box {
+    width: 200px;
+
+    padding: 10px 13px;
+
+    background: #0b0b0b;
+    color: white;
+
+    border: 1px solid #470000;
+    border-radius: 8px;
+
+    outline: none;
+}
+
+.search-box:focus {
+    border-color: #c00000;
+}
+
+.action-btn {
+    padding: 10px 15px;
+
+    border: 1px solid #600000;
+    border-radius: 8px;
+
+    background: #180000;
+    color: white;
+
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background: #750000;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 70px;
+    padding: 35px 20px;
+
+    text-align: center;
+
+    color: #666;
+
+    border-top: 1px solid #310000;
+    background: #050505;
+}
+
+footer strong {
+    color: #aaa;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 1200px) {
+
+    .cards-grid {
+        grid-template-columns: repeat(6, 1fr);
     }
 
+    .summary-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
-    /* =========================
-       HEADER
-    ========================= */
+@media (max-width: 700px) {
 
     header {
-      text-align: center;
-      padding: 45px 20px 30px;
+        padding-top: 30px;
+    }
 
-      border-bottom: 2px solid #5c0000;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(90, 0, 0, 0.55),
-          rgba(10, 0, 0, 0.9)
-        );
-
-      box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.8);
+    .logo {
+        width: min(260px, 70vw);
+        max-height: 130px;
     }
 
     header h1 {
-      margin: 0;
-
-      font-size:
-        clamp(28px, 5vw, 54px);
-
-      letter-spacing: 3px;
-
-      text-shadow:
-        0 0 5px #ff0000,
-        0 0 15px #ff0000,
-        0 0 35px #700000;
+        font-size: 22px;
+        letter-spacing: 2px;
     }
 
-    header p {
-      margin: 15px 0 0;
-
-      color: #dddddd;
-
-      font-size:
-        clamp(14px, 2vw, 18px);
-
-      letter-spacing: 1px;
+    .subtitle {
+        font-size: 12px;
+        line-height: 1.6;
     }
-
-
-    /* =========================
-       MUSIC PLAYER
-    ========================= */
 
     .music-player {
+        position: fixed;
+        top: auto;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
 
-      position: fixed;
+        width: auto;
 
-      top: 18px;
-      right: 18px;
-
-      z-index: 9999;
-
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      padding: 10px 14px;
-
-      border: 1px solid #7d0000;
-      border-radius: 12px;
-
-      background:
-        rgba(10, 0, 0, 0.94);
-
-      box-shadow:
-        0 0 10px rgba(255, 0, 0, 0.25),
-        0 0 30px rgba(100, 0, 0, 0.4);
-
-      backdrop-filter: blur(10px);
+        padding: 10px;
     }
 
-    .music-title {
-
-      color: #ff6666;
-
-      font-size: 12px;
-
-      font-weight: bold;
-
-      letter-spacing: 1px;
+    .music-controls {
+        gap: 5px;
     }
 
-    #musicButton {
-
-      border: 1px solid #b00000;
-
-      background: #210000;
-
-      color: white;
-
-      padding: 8px 12px;
-
-      border-radius: 8px;
-
-      cursor: pointer;
-
-      font-weight: bold;
-
-      font-size: 12px;
-
-      transition: 0.2s;
+    .music-btn {
+        height: 32px;
+        min-width: 35px;
     }
 
-    #musicButton:hover {
-
-      background: #650000;
-
-      box-shadow:
-        0 0 15px rgba(255, 0, 0, 0.5);
+    .volume-area {
+        display: none;
     }
-
-
-    /* =========================
-       MAIN
-    ========================= */
-
-    main {
-
-      width: min(1500px, 94%);
-
-      margin: auto;
-
-      padding-bottom: 80px;
-    }
-
-
-    /* =========================
-       HOME
-    ========================= */
-
-    .home-section {
-
-      padding: 40px 0 25px;
-    }
-
-    .home-section h2 {
-
-      text-align: center;
-
-      margin-bottom: 25px;
-
-      font-size: 28px;
-
-      color: #ff5555;
-
-      letter-spacing: 2px;
-    }
-
 
     .location-grid {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 22px;
+        grid-template-columns: 1fr;
     }
-
 
     .location-card {
-
-      position: relative;
-
-      min-height: 190px;
-
-      border: 1px solid #620000;
-
-      border-radius: 16px;
-
-      overflow: hidden;
-
-      cursor: pointer;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(80, 0, 0, 0.8),
-          rgba(8, 8, 8, 0.95)
-        );
-
-      box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.65),
-        inset 0 0 30px rgba(120, 0, 0, 0.15);
-
-      transition:
-        transform 0.25s,
-        box-shadow 0.25s;
+        padding: 25px;
     }
 
-
-    .location-card:hover {
-
-      transform:
-        translateY(-6px);
-
-      box-shadow:
-        0 12px 40px rgba(0, 0, 0, 0.8),
-        0 0 25px rgba(255, 0, 0, 0.25);
+    .summary {
+        padding: 18px;
     }
 
-
-    .location-card-content {
-
-      position: relative;
-
-      z-index: 2;
-
-      min-height: 190px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-
-      align-items: center;
-
-      text-align: center;
-
-      padding: 25px;
+    .summary-stats {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-
-    .devil {
-
-      font-size: 45px;
-
-      margin-bottom: 8px;
-
-      letter-spacing: 5px;
+    .stat-number {
+        font-size: 22px;
     }
 
-
-    .location-name {
-
-      font-size: 30px;
-
-      font-weight: bold;
-
-      letter-spacing: 3px;
-
-      text-shadow:
-        0 0 12px #ff0000;
+    .breakdown-row {
+        grid-template-columns: 35px 1fr 60px;
     }
 
-
-    .location-count {
-
-      margin-top: 10px;
-
-      color: #bbbbbb;
-
-      font-size: 14px;
+    .breakdown-percent {
+        display: none;
     }
 
-
-    /* =========================
-       DASHBOARD
-    ========================= */
-
-    .dashboard {
-
-      margin: 30px 0 45px;
-
-      padding: 25px;
-
-      border: 1px solid #620000;
-
-      border-radius: 16px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(40, 0, 0, 0.7),
-          rgba(10, 10, 10, 0.95)
-        );
-
-      box-shadow:
-        inset 0 0 30px rgba(120, 0, 0, 0.1),
-        0 10px 30px rgba(0, 0, 0, 0.6);
+    .cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 7px;
     }
-
-
-    .dashboard h2 {
-
-      margin-top: 0;
-
-      text-align: center;
-
-      color: #ff4444;
-
-      letter-spacing: 2px;
-    }
-
-
-    .summary-grid {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 15px;
-
-      margin-top: 20px;
-    }
-
-
-    .summary-box {
-
-      text-align: center;
-
-      padding: 18px 10px;
-
-      border: 1px solid #400000;
-
-      border-radius: 12px;
-
-      background:
-        rgba(0, 0, 0, 0.55);
-    }
-
-
-    .summary-number {
-
-      font-size: 30px;
-
-      font-weight: bold;
-
-      color: #ff5555;
-    }
-
-
-    .summary-label {
-
-      margin-top: 6px;
-
-      color: #aaaaaa;
-
-      font-size: 13px;
-    }
-
-
-    .progress-container {
-
-      margin-top: 25px;
-    }
-
-
-    .progress-label {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      margin-bottom: 8px;
-
-      color: #dddddd;
-
-      font-size: 14px;
-    }
-
-
-    .progress-bar {
-
-      height: 15px;
-
-      background: #1b1b1b;
-
-      border: 1px solid #450000;
-
-      border-radius: 999px;
-
-      overflow: hidden;
-    }
-
-
-    .progress-fill {
-
-      height: 100%;
-
-      width: 0%;
-
-      background:
-        linear-gradient(
-          90deg,
-          #6b0000,
-          #ff0000
-        );
-
-      box-shadow:
-        0 0 15px rgba(255, 0, 0, 0.7);
-
-      transition:
-        width 0.4s ease;
-    }
-
-
-    .series-breakdown {
-
-      margin-top: 25px;
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 8px 20px;
-    }
-
-
-    .breakdown-item {
-
-      font-size: 13px;
-
-      color: #bbbbbb;
-
-      border-bottom:
-        1px solid #250000;
-
-      padding: 7px 0;
-    }
-
-
-    .breakdown-item span {
-
-      color: #ff5555;
-
-      font-weight: bold;
-    }
-
-
-    /* =========================
-       CONTROLS
-    ========================= */
-
-    .controls {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 12px;
-
-      justify-content: center;
-
-      margin-bottom: 40px;
-    }
-
-
-    .control-button {
-
-      padding: 11px 18px;
-
-      border-radius: 9px;
-
-      border: 1px solid #710000;
-
-      background: #170000;
-
-      color: #ffffff;
-
-      cursor: pointer;
-
-      font-weight: bold;
-
-      transition: 0.2s;
-    }
-
-
-    .control-button:hover {
-
-      background: #650000;
-
-      box-shadow:
-        0 0 15px rgba(255, 0, 0, 0.35);
-    }
-
-
-    .search-box {
-
-      min-width: 220px;
-
-      padding: 11px 15px;
-
-      border-radius: 9px;
-
-      border: 1px solid #710000;
-
-      background: #080808;
-
-      color: white;
-
-      outline: none;
-    }
-
-
-    .search-box:focus {
-
-      border-color: #ff2222;
-
-      box-shadow:
-        0 0 12px rgba(255, 0, 0, 0.25);
-    }
-
-
-    /* =========================
-       LOCATION
-    ========================= */
-
-    .location-section {
-
-      margin-bottom: 70px;
-    }
-
-
-    .location-heading {
-
-      padding: 20px;
-
-      margin-bottom: 30px;
-
-      border-top:
-        2px solid #7c0000;
-
-      border-bottom:
-        2px solid #7c0000;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(100, 0, 0, 0.3),
-          rgba(0, 0, 0, 0.8),
-          rgba(100, 0, 0, 0.3)
-        );
-
-      text-align: center;
-    }
-
-
-    .location-heading h2 {
-
-      margin: 0;
-
-      font-size:
-        clamp(25px, 4vw, 40px);
-
-      letter-spacing: 4px;
-
-      text-shadow:
-        0 0 15px #ff0000;
-    }
-
-
-    .location-heading p {
-
-      margin: 8px 0 0;
-
-      color: #aaa;
-    }
-
-
-    /* =========================
-       SERIES
-    ========================= */
-
-    .series-section {
-
-      margin-bottom: 55px;
-    }
-
 
     .series-divider {
-
-      position: relative;
-
-      margin-bottom: 22px;
-
-      padding: 18px 20px;
-
-      border-left:
-        5px solid #a00000;
-
-      border-top:
-        1px solid #480000;
-
-      border-bottom:
-        1px solid #480000;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(90, 0, 0, 0.5),
-          rgba(12, 12, 12, 0.9)
-        );
-
-      box-shadow:
-        inset 0 0 20px
-        rgba(120, 0, 0, 0.08);
+        padding: 15px;
     }
-
-
-    .series-divider.completed {
-
-      box-shadow:
-        0 0 18px
-        rgba(255, 0, 0, 0.2),
-
-        inset 0 0 25px
-        rgba(255, 0, 0, 0.08);
-    }
-
-
-    .series-number {
-
-      color: #ff4444;
-
-      font-size: 13px;
-
-      font-weight: bold;
-
-      letter-spacing: 2px;
-    }
-
 
     .series-title {
-
-      margin: 5px 0;
-
-      font-size:
-        clamp(19px, 2.5vw, 28px);
-
-      font-weight: bold;
+        font-size: 17px;
     }
 
+    .tools {
+        position: relative;
+        bottom: auto;
 
-    .series-count {
+        width: 94%;
 
-      color: #999999;
-
-      font-size: 13px;
+        flex-wrap: wrap;
     }
 
-
-    /* =========================
-       CARDS
-    ========================= */
-
-    .card-grid {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(10, 1fr);
-
-      gap: 10px;
-    }
-
-
-    .card {
-
-      position: relative;
-
-      min-width: 0;
-
-      aspect-ratio: 2 / 3;
-
-      border:
-        1px solid #2c2c2c;
-
-      border-radius: 8px;
-
-      overflow: hidden;
-
-      background: #111111;
-
-      cursor: pointer;
-
-      filter:
-        grayscale(100%)
-        brightness(0.25);
-
-      opacity: 0.7;
-
-      transition:
-        transform 0.2s,
-        filter 0.25s,
-        opacity 0.25s,
-        box-shadow 0.25s;
-    }
-
-
-    .card:hover {
-
-      transform:
-        translateY(-4px)
-        scale(1.02);
-
-      z-index: 5;
-    }
-
-
-    .card.owned {
-
-      filter:
-        grayscale(0%)
-        brightness(1);
-
-      opacity: 1;
-
-      border-color:
-        #d00000;
-
-      box-shadow:
-        0 0 8px
-        rgba(255, 0, 0, 0.55),
-
-        0 0 20px
-        rgba(255, 0, 0, 0.3);
-    }
-
-
-    .card img {
-
-      width: 100%;
-
-      height: 100%;
-
-      display: block;
-
-      object-fit: cover;
-    }
-
-
-    .no-image {
-
-      width: 100%;
-
-      height: 100%;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      text-align: center;
-
-      padding: 5px;
-
-      color: #555555;
-
-      font-size: 11px;
-
-      font-weight: bold;
-
-      background: #111111;
-    }
-
-
-    .card-number {
-
-      position: absolute;
-
-      top: 5px;
-
-      left: 5px;
-
-      padding: 3px 5px;
-
-      border-radius: 5px;
-
-      background:
-        rgba(0, 0, 0, 0.8);
-
-      color: white;
-
-      font-size: 10px;
-
-      font-weight: bold;
-    }
-
-
-    .card-status {
-
-      position: absolute;
-
-      bottom: 0;
-
-      left: 0;
-
-      right: 0;
-
-      padding: 6px 3px;
-
-      background:
-        rgba(0, 0, 0, 0.82);
-
-      text-align: center;
-
-      color: #888888;
-
-      font-size: 9px;
-
-      font-weight: bold;
-    }
-
-
-    .card.owned .card-status {
-
-      color: #ff7777;
-    }
-
-
-    .heart {
-
-      position: absolute;
-
-      top: 5px;
-
-      right: 5px;
-
-      font-size: 15px;
-
-      opacity: 0;
-
-      transition:
-        opacity 0.2s;
-    }
-
-
-    .card.owned .heart {
-
-      opacity: 1;
-
-      text-shadow:
-        0 0 10px #ff0000;
-    }
-
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-
-      text-align: center;
-
-      padding: 35px 20px;
-
-      border-top:
-        1px solid #3d0000;
-
-      color: #666666;
-
-      font-size: 12px;
-    }
-
-
-    /* =========================
-       HIDDEN
-    ========================= */
-
-    .hidden {
-
-      display: none !important;
-    }
-
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 1100px) {
-
-      .card-grid {
-
-        grid-template-columns:
-          repeat(6, 1fr);
-      }
-
-
-      .location-grid {
-
-        grid-template-columns: 1fr;
-      }
-
-
-      .summary-grid {
-
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-    }
-
-
-    @media (max-width: 650px) {
-
-      header {
-
-        padding-top: 90px;
-      }
-
-
-      .music-player {
-
-        top: 12px;
-
-        left: 12px;
-
-        right: 12px;
-
-        justify-content:
-          space-between;
-      }
-
-
-      .card-grid {
-
-        grid-template-columns:
-          repeat(4, 1fr);
-
-        gap: 7px;
-      }
-
-
-      .series-breakdown {
-
-        grid-template-columns:
-          1fr;
-      }
-
-
-      .dashboard {
-
-        padding: 17px;
-      }
-
-
-      .summary-grid {
-
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-
-      .controls {
-
-        flex-direction:
-          column;
-      }
-
-
-      .search-box,
-      .control-button {
-
+    .search-box {
         width: 100%;
-      }
+    }
+}
 
+@media (max-width: 430px) {
+
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 
-
-    @media (max-width: 400px) {
-
-      .card-grid {
-
-        grid-template-columns:
-          repeat(3, 1fr);
-      }
-
+    .summary-stats {
+        grid-template-columns: repeat(2, 1fr);
     }
-
-  </style>
+}
+</style>
 </head>
-
 
 <body>
 
+<!-- =========================
+     MUSIC PLAYER
+========================= -->
 
-  <!-- =====================================
-       MUSIC
-  ====================================== -->
-
-  <div class="music-player">
+<div class="music-player">
 
     <div class="music-title">
-      🎵 NOW PLAYING
+        🎵 NOW PLAYING
     </div>
 
+    <div class="music-track" id="musicTrackName">
+        song 1
+    </div>
 
-    <button
-      id="musicButton"
-      onclick="toggleMusic()">
+    <div class="music-controls">
 
-      ▶️ PLAY MUSIC
+        <button
+            class="music-btn"
+            onclick="previousTrack()"
+            title="Previous"
+        >
+            ⏮
+        </button>
 
-    </button>
+        <button
+            class="music-btn main"
+            id="playPauseButton"
+            onclick="toggleMusic()"
+            title="Play / Pause"
+        >
+            ▶️
+        </button>
 
+        <button
+            class="music-btn"
+            onclick="nextTrack()"
+            title="Next"
+        >
+            ⏭
+        </button>
 
-    <iframe
-      id="youtubePlayer"
+        <button
+            class="music-btn"
+            id="loopButton"
+            onclick="toggleLoop()"
+            title="Loop"
+        >
+            🔁
+        </button>
 
-      width="1"
-      height="1"
+        <div class="volume-area">
+            🔊
+            <input
+                id="volumeControl"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.6"
+            >
+        </div>
 
-      src="https://www.youtube.com/embed/itsxy1gUIYY?enablejsapi=1&loop=1&playlist=itsxy1gUIYY"
+    </div>
 
-      title="YouTube music"
+</div>
 
-      frameborder="0"
+<audio id="audioPlayer" preload="auto"></audio>
 
-      allow="autoplay; encrypted-media"
+<!-- =========================
+     HEADER
+========================= -->
 
-      style="
-        position:absolute;
-        width:1px;
-        height:1px;
-        opacity:0;
-        pointer-events:none;
-      ">
+<header>
 
-    </iframe>
-
-  </div>
-
-
-
-  <!-- =====================================
-       HEADER
-  ====================================== -->
-
-  <header>
+    <img
+        src="logo.png"
+        alt="PerthSanta Card Collection Logo"
+        class="logo"
+        onerror="this.style.display='none';"
+    >
 
     <h1>
-      PERTHSANTA CARD COLLECTION 🖤🤍❤️
+        PERTHSANTA CARD COLLECTION 🖤🤍❤️
     </h1>
 
-    <p>
-      Because of love, every card has its own value. 🖤🤍❤️
-    </p>
+    <div class="subtitle">
+        Because of love, every card has its own value. 🖤🤍❤️
+    </div>
 
-  </header>
-
-
-
-  <main>
+</header>
 
 
-    <!-- =====================================
+<main class="container">
+
+    <!-- =========================
          HOME
-    ====================================== -->
+    ========================= -->
 
-    <section class="home-section">
+    <section class="home">
 
-      <h2>
-        🖤 MY CARD WORLD 🤍
-      </h2>
+        <div class="section-title">
+            <h2>MY CARD COLLECTION</h2>
+            <p>Choose your collection</p>
+        </div>
 
-
-      <div
-        id="locationGrid"
-        class="location-grid">
-
-      </div>
+        <div class="location-grid" id="locationGrid"></div>
 
     </section>
 
 
+    <!-- =========================
+         SUMMARY
+    ========================= -->
 
-    <!-- =====================================
-         DASHBOARD
-    ====================================== -->
+    <section class="summary">
 
-    <section class="dashboard">
+        <div class="summary-title">
+            📊 COLLECTION SUMMARY
+        </div>
 
-      <h2>
-        🖤 COLLECTION SUMMARY 🤍
-      </h2>
+        <div class="summary-stats">
 
+            <div class="stat">
+                <div class="stat-number" id="seriesTotal">
+                    0
+                </div>
+                <div class="stat-label">
+                    SERIES
+                </div>
+            </div>
 
-      <div class="summary-grid">
+            <div class="stat">
+                <div class="stat-number" id="cardTotal">
+                    0
+                </div>
+                <div class="stat-label">
+                    TOTAL CARDS
+                </div>
+            </div>
 
+            <div class="stat">
+                <div class="stat-number" id="cardCollected">
+                    0
+                </div>
+                <div class="stat-label">
+                    COLLECTED
+                </div>
+            </div>
 
-        <div class="summary-box">
+            <div class="stat">
+                <div class="stat-number" id="cardMissing">
+                    0
+                </div>
+                <div class="stat-label">
+                    MISSING
+                </div>
+            </div>
 
-          <div
-            id="seriesTotal"
-            class="summary-number">
-
-            0
-
-          </div>
-
-          <div class="summary-label">
-
-            SERIES
-
-          </div>
+            <div class="stat">
+                <div class="stat-number" id="cardPercent">
+                    0%
+                </div>
+                <div class="stat-label">
+                    COMPLETE
+                </div>
+            </div>
 
         </div>
 
 
-        <div class="summary-box">
+        <div class="progress-wrapper">
 
-          <div
-            id="cardTotal"
-            class="summary-number">
+            <div class="progress-label">
+                <span>Overall Progress</span>
+                <span id="progressText">0%</span>
+            </div>
 
-            0
-
-          </div>
-
-          <div class="summary-label">
-
-            TOTAL CARDS
-
-          </div>
+            <div class="progress-bar">
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                ></div>
+            </div>
 
         </div>
 
 
-        <div class="summary-box">
-
-          <div
-            id="collectedTotal"
-            class="summary-number">
-
-            0
-
-          </div>
-
-          <div class="summary-label">
-
-            COLLECTED
-
-          </div>
-
-        </div>
-
-
-        <div class="summary-box">
-
-          <div
-            id="missingTotal"
-            class="summary-number">
-
-            0
-
-          </div>
-
-          <div class="summary-label">
-
-            MISSING
-
-          </div>
-
-        </div>
-
-
-      </div>
-
-
-
-      <div class="progress-container">
-
-        <div class="progress-label">
-
-          <span>
-            TOTAL COLLECTION
-          </span>
-
-          <span id="percentage">
-            0%
-          </span>
-
-        </div>
-
-
-        <div class="progress-bar">
-
-          <div
-            id="progressFill"
-            class="progress-fill">
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <div
-        id="seriesBreakdown"
-        class="series-breakdown">
-
-      </div>
+        <div
+            class="breakdown"
+            id="breakdown"
+        ></div>
 
     </section>
 
 
+    <!-- =========================
+         TOOLS
+    ========================= -->
 
-    <!-- =====================================
-         CONTROLS
-    ====================================== -->
+    <div class="tools">
 
-    <div class="controls">
+        <input
+            class="search-box"
+            id="searchInput"
+            type="text"
+            placeholder="🔎 Search card number..."
+        >
 
+        <button
+            class="action-btn"
+            onclick="resetSearch()"
+        >
+            CLEAR
+        </button>
 
-      <input
-        id="searchInput"
-
-        class="search-box"
-
-        type="text"
-
-        placeholder="🔍 Search card number e.g. 001"
-
-        oninput="searchCards()"
-      >
-
-
-      <button
-        class="control-button"
-        onclick="resetSearch()">
-
-        SHOW ALL
-
-      </button>
-
-
-      <button
-        class="control-button"
-        onclick="resetCollection()">
-
-        🔄 RESET COLLECTION
-
-      </button>
-
+        <button
+            class="action-btn"
+            onclick="resetCollection()"
+        >
+            RESET COLLECTION
+        </button>
 
     </div>
 
 
+    <!-- =========================
+         COLLECTION
+    ========================= -->
 
-    <!-- =====================================
-         LOCATIONS
-    ====================================== -->
+    <div id="collectionContainer"></div>
 
-    <div id="locationsContainer"></div>
-
-
-  </main>
+</main>
 
 
+<footer>
 
-  <!-- =====================================
-       FOOTER
-  ====================================== -->
+    <strong>
+        PERTHSANTA CARD COLLECTION
+    </strong>
 
-  <footer>
+    <br><br>
 
-    🖤🤍❤️ PerthSanta Card Collection ❤️🤍🖤
+    Because of love, every card has its own value. 🖤🤍❤️
 
-    <br>
-    <br>
-
-    Made with love for the collection. 👿
-
-  </footer>
+</footer>
 
 
+<script>
 
-  <!-- =====================================
-       JAVASCRIPT
-  ====================================== -->
+/* ============================================================
+   LOCATION DATA
+============================================================ */
 
-  <script>
+const locations = [
 
-
-    /* =====================================
-       LOCATION ICON
-    ====================================== */
-
-    function getLocationIcon(locationName) {
-
-      if (locationName === "Perth") {
-
-        return "🐯🖤";
-
-      }
-
-
-      if (locationName === "Santa") {
-
-        return "🐱🤍";
-
-      }
-
-
-      if (locationName === "PerthSanta") {
-
-        return "🖤🤍❤️";
-
-      }
-
-
-      return "👿";
-
-    }
-
-
-
-    /* =====================================
-       LOCATION DATA
-    ====================================== */
-
-    const locations = [
-
-
-      /* ===================================
-         PERTH
-      =================================== */
-
-      {
-
+    {
         name: "Perth",
+        icon: "🐯🖤",
+        imageFolder: "Perth"
+    },
 
-        imageFolder: "Perth",
-
-        series: [
-
-          {
-            name: "Shining Series",
-            count: 9,
-            imageFolder: "Shining-Series"
-          },
-
-          {
-            name: "Stunning Series + Photocard Holder",
-            count: 10,
-            imageFolder: "Stunning-Series-Photocard-Holder"
-          },
-
-          {
-            name: "Musicon in Tokyo",
-            count: 2,
-            imageFolder: "Musicon-in-Tokyo"
-          },
-
-          {
-            name: "Japan Fanfest",
-            count: 1,
-            imageFolder: "Japan-Fanfest"
-          },
-
-          {
-            name: "Book Expo Thailand 2023 Collectible Card Set",
-            count: 18,
-            imageFolder: "Book-Expo-Thailand-2023-Collectible-Card-Set"
-          },
-
-          {
-            name: "Fanday 6 in Seoul",
-            count: 4,
-            imageFolder: "Fanday-6-in-Seoul"
-          },
-
-          {
-            name: "Happy Weekend Japan",
-            count: 6,
-            imageFolder: "Happy-Weekend-Japan"
-          },
-
-          {
-            name: "Blooming Series",
-            count: 9,
-            imageFolder: "Blooming-Series"
-          },
-
-          {
-            name: "Love Out Loud 2024 - The Love Pirates",
-            count: 5,
-            imageFolder: "Love-Out-Loud-2024-The-Love-Pirates"
-          },
-
-          {
-            name: "Mystery Box 2024",
-            count: 1,
-            imageFolder: "Mystery-Box-2024"
-          },
-
-          {
-            name: "Rainbow in Suit",
-            count: 4,
-            imageFolder: "Rainbow-in-Suit"
-          },
-
-          {
-            name: "LOL 2024 Boxset",
-            count: 1,
-            imageFolder: "LOL-2024-Boxset"
-          },
-
-          {
-            name: "Selfie Random Card",
-            count: 2,
-            imageFolder: "Selfie-Random-Card"
-          },
-
-          {
-            name: "Selfie Random Card Japan",
-            count: 3,
-            imageFolder: "Selfie-Random-Card-Japan"
-          },
-
-          {
-            name: "Colectible Card Japan",
-            count: 2,
-            imageFolder: "Colectible-Card-Japan"
-          },
-
-          {
-            name: "Back to School Series",
-            count: 9,
-            imageFolder: "Back-to-School-Series"
-          },
-
-          {
-            name: "Musicon Nanning",
-            count: 5,
-            imageFolder: "Musicon-Nanning"
-          },
-
-          {
-            name: "Zodiac Set",
-            count: 9,
-            imageFolder: "Zodiac-Set"
-          },
-
-          {
-            name: "Numb Photo Set",
-            count: 10,
-            imageFolder: "Numb-Photo-Set"
-          }
-
-        ]
-
-      },
-
-
-
-      /* ===================================
-         SANTA
-      =================================== */
-
-      {
-
+    {
         name: "Santa",
+        icon: "🐱🤍",
+        imageFolder: "Santa"
+    },
 
-        imageFolder: "Santa",
-
-        series: [
-
-          {
-            name: "Santa Collectible Card Set - Fan Event Japan",
-            count: 10,
-            imageFolder: "Santa-Collectible-Card-Set-Fan-Event-Japan"
-          },
-
-          {
-            name: "Sadistic Photo Set",
-            count: 4,
-            imageFolder: "Sadistic-Photo-Set"
-          },
-
-          {
-            name: "Take it off Photo Set",
-            count: 2,
-            imageFolder: "Take-it-off-Photo-Set"
-          },
-
-          {
-            name: "Zodiac Set",
-            count: 9,
-            imageFolder: "Zodiac-Set"
-          },
-
-          {
-            name: "Musicon Japan 2025",
-            count: 4,
-            imageFolder: "Musicon-Japan-2025"
-          },
-
-          {
-            name: "Touch Photos Set",
-            count: 2,
-            imageFolder: "Touch-Photos-Set"
-          }
-
-        ]
-
-      },
-
-
-
-      /* ===================================
-         PERTHSANTA
-      =================================== */
-
-      {
-
+    {
         name: "PerthSanta",
+        icon: "🖤🤍❤️",
+        imageFolder: "PerthSanta"
+    }
 
-        imageFolder: "PerthSanta",
+];
 
+
+/* ============================================================
+   SERIES DATA
+============================================================ */
+
+const seriesData = [
+
+    /* =========================
+       PERTH
+    ========================= */
+
+    {
+        location: "Perth",
+        series: [
+            {
+                title: "Shining Series",
+                count: 9,
+                imageFolder: "Shining-Series"
+            },
+
+            {
+                title: "Stunning Series + Photocard Holder",
+                count: 10,
+                imageFolder: "Stunning-Series-Photocard-Holder"
+            },
+
+            {
+                title: "Musicon in Tokyo",
+                count: 2,
+                imageFolder: "Musicon-in-Tokyo"
+            },
+
+            {
+                title: "Japan Fanfest",
+                count: 1,
+                imageFolder: "Japan-Fanfest"
+            },
+
+            {
+                title: "Book Expo Thailand 2023 Collectible Card Set",
+                count: 18,
+                imageFolder: "Book-Expo-Thailand-2023-Collectible-Card-Set"
+            },
+
+            {
+                title: "Fanday 6 in Seoul",
+                count: 4,
+                imageFolder: "Fanday-6-in-Seoul"
+            },
+
+            {
+                title: "Happy Weekend Japan",
+                count: 6,
+                imageFolder: "Happy-Weekend-Japan"
+            },
+
+            {
+                title: "Blooming Series",
+                count: 9,
+                imageFolder: "Blooming-Series"
+            },
+
+            {
+                title: "Love Out Loud 2024 - The Love Pirates",
+                count: 5,
+                imageFolder: "Love-Out-Loud-2024-The-Love-Pirates"
+            },
+
+            {
+                title: "Mystery Box 2024",
+                count: 1,
+                imageFolder: "Mystery-Box-2024"
+            },
+
+            {
+                title: "Rainbow in Suit",
+                count: 4,
+                imageFolder: "Rainbow-in-Suit"
+            },
+
+            {
+                title: "LOL 2024 Boxset",
+                count: 1,
+                imageFolder: "LOL-2024-Boxset"
+            },
+
+            {
+                title: "Selfie Random Card",
+                count: 2,
+                imageFolder: "Selfie-Random-Card"
+            },
+
+            {
+                title: "Selfie Random Card Japan",
+                count: 3,
+                imageFolder: "Selfie-Random-Card-Japan"
+            },
+
+            {
+                title: "Colectible Card Japan",
+                count: 2,
+                imageFolder: "Colectible-Card-Japan"
+            },
+
+            {
+                title: "Back to School Series",
+                count: 9,
+                imageFolder: "Back-to-School-Series"
+            },
+
+            {
+                title: "Musicon Nanning",
+                count: 5,
+                imageFolder: "Musicon-Nanning"
+            },
+
+            {
+                title: "Zodiac Set",
+                count: 9,
+                imageFolder: "Zodiac-Set"
+            },
+
+            {
+                title: "Numb Photo Set",
+                count: 10,
+                imageFolder: "Numb-Photo-Set"
+            }
+        ]
+    },
+
+
+    /* =========================
+       SANTA
+    ========================= */
+
+    {
+        location: "Santa",
         series: [
 
-          {
-            name: "Back to School Collectible Card Set",
-            count: 6,
-            imageFolder: "Back-to-School-Collectible-Card-Set"
-          },
+            {
+                title: "Santa Collectible Card Set - Fan Event Japan",
+                count: 10,
+                imageFolder: "Santa-Collectible-Card-Set-Fan-Event-Japan"
+            },
 
-          {
-            name: "Calendar 2025",
-            count: 2,
-            imageFolder: "Calendar-2025"
-          },
+            {
+                title: "Sadistic Photo Set",
+                count: 4,
+                imageFolder: "Sadistic-Photo-Set"
+            },
 
-          {
-            name: "Christmas Collectible Card Set",
-            count: 5,
-            imageFolder: "Christmas-Collectible-Card-Set"
-          },
+            {
+                title: "Take it off Photo Set",
+                count: 2,
+                imageFolder: "Take-it-off-Photo-Set"
+            },
 
-          {
-            name: "Starlympics 2024",
-            count: 6,
-            imageFolder: "Starlympics-2024"
-          },
+            {
+                title: "Zodiac Set",
+                count: 9,
+                imageFolder: "Zodiac-Set"
+            },
 
-          {
-            name: "Black in Color",
-            count: 6,
-            imageFolder: "Black-in-Color"
-          },
+            {
+                title: "Musicon Japan 2025",
+                count: 4,
+                imageFolder: "Musicon-Japan-2025"
+            },
 
-          {
-            name: "Y Book Fair Merchandise",
-            count: 3,
-            imageFolder: "Y-Book-Fair-Merchandise"
-          },
-
-          {
-            name: "Y Book Fair 9 Mini Photo Set",
-            count: 4,
-            imageFolder: "Y-Book-Fair-9-Mini-Photo-Set"
-          },
-
-          {
-            name: "Songkran 2025",
-            count: 5,
-            imageFolder: "Songkran-2025"
-          },
-
-          {
-            name: "Domiia Card Holder",
-            count: 1,
-            imageFolder: "Domiia-Card-Holder"
-          },
-
-          {
-            name: "Perfect 10 Liners Thai card",
-            count: 11,
-            imageFolder: "Perfect-10-Liners-Thai-card"
-          },
-
-          {
-            name: "Perfect 10 Liners Boxset",
-            count: 2,
-            imageFolder: "Perfect-10-Liners-Boxset"
-          },
-
-          {
-            name: "Pop-Up Store Tokyo 2025 + phone charm",
-            count: 4,
-            imageFolder: "Pop-Up-Store-Tokyo-2025-phone-charm"
-          },
-
-          {
-            name: "Mystery Box 2025",
-            count: 8,
-            imageFolder: "Mystery-Box-2025"
-          },
-
-          {
-            name: "Time Stopper Photobook",
-            count: 9,
-            imageFolder: "Time-Stopper-Photobook"
-          },
-
-          {
-            name: "Perfect 10 Liners Japan",
-            count: 11,
-            imageFolder: "Perfect-10-Liners-Japan"
-          },
-
-          {
-            name: "Love Out Loud 2025 - Lovemosphere",
-            count: 9,
-            imageFolder: "Love-Out-Loud-2025-Lovemosphere"
-          },
-
-          {
-            name: "Love Out Loud 2025 Photo Set + Photo holder + Photobox + Boxset",
-            count: 6,
-            imageFolder: "Love-Out-Loud-2025-Photo-Set-Photo-holder-Photobox-Boxset"
-          },
-
-          {
-            name: "Time Stopper Fancon Collectible Card Set",
-            count: 35,
-            imageFolder: "Time-Stopper-Fancon-Collectible-Card-Set"
-          },
-
-          {
-            name: "Time Stopper Merchandise",
-            count: 7,
-            imageFolder: "Time-Stopper-Merchandise"
-          },
-
-          {
-            name: "Mood Quest",
-            count: 3,
-            imageFolder: "Mood-Quest"
-          },
-
-          {
-            name: "Pop-Up Store Nagoya",
-            count: 3,
-            imageFolder: "Pop-Up-Store-Nagoya"
-          },
-
-          {
-            name: "Too Cute Too Spook",
-            count: 3,
-            imageFolder: "Too-Cute-Too-Spook"
-          },
-
-          {
-            name: "Mesmerizing Series",
-            count: 9,
-            imageFolder: "Mesmerizing-Series"
-          },
-
-          {
-            name: "Fanival Scrunchie / Phone Charm",
-            count: 2,
-            imageFolder: "Fanival-Scrunchie-Phone-Charm"
-          },
-
-          {
-            name: "2026 Calendar",
-            count: 2,
-            imageFolder: "2026-Calendar"
-          },
-
-          {
-            name: "Pop-Up Store Osaka",
-            count: 3,
-            imageFolder: "Pop-Up-Store-Osaka"
-          },
-
-          {
-            name: "Pop-Up Store Osaka Merchandise",
-            count: 4,
-            imageFolder: "Pop-Up-Store-Osaka-Merchandise"
-          },
-
-          {
-            name: "Starlympics 2025",
-            count: 7,
-            imageFolder: "Starlympics-2025"
-          },
-
-          {
-            name: "Me and Thee Finale Card & Boxset",
-            count: 10,
-            imageFolder: "Me-and-Thee-Finale-Card-Boxset"
-          },
-
-          {
-            name: "Happy Fam Bonds",
-            count: 4,
-            imageFolder: "Happy-Fam-Bonds"
-          }
+            {
+                title: "Touch Photos Set",
+                count: 2,
+                imageFolder: "Touch-Photos-Set"
+            }
 
         ]
-
-      }
-
-    ];
+    },
 
 
+    /* =========================
+       PERTHSANTA
+    ========================= */
 
-    /* =====================================
-       COLLECTION STORAGE
-    ====================================== */
+    {
+        location: "PerthSanta",
+        series: [
 
-    let ownedCards =
-      JSON.parse(
-        localStorage.getItem(
-          "myCardCollection"
-        ) || "{}"
-      );
+            {
+                title: "Back to School Collectible Card Set",
+                count: 6,
+                imageFolder: "Back-to-School-Collectible-Card-Set"
+            },
 
+            {
+                title: "Calendar 2025",
+                count: 2,
+                imageFolder: "Calendar-2025"
+            },
 
+            {
+                title: "Christmas Collectible Card Set",
+                count: 5,
+                imageFolder: "Christmas-Collectible-Card-Set"
+            },
 
-    function saveCollection() {
+            {
+                title: "Starlympics 2024",
+                count: 6,
+                imageFolder: "Starlympics-2024"
+            },
 
-      localStorage.setItem(
-        "myCardCollection",
-        JSON.stringify(
-          ownedCards
-        )
-      );
+            {
+                title: "Black in Color",
+                count: 6,
+                imageFolder: "Black-in-Color"
+            },
 
-    }
+            {
+                title: "Y Book Fair Merchandise",
+                count: 3,
+                imageFolder: "Y-Book-Fair-Merchandise"
+            },
 
+            {
+                title: "Y Book Fair 9 Mini Photo Set",
+                count: 4,
+                imageFolder: "Y-Book-Fair-9-Mini-Photo-Set"
+            },
 
+            {
+                title: "Songkran 2025",
+                count: 5,
+                imageFolder: "Songkran-2025"
+            },
 
-    /* =====================================
-       TOTAL CARDS
-    ====================================== */
+            {
+                title: "Domiia Card Holder",
+                count: 1,
+                imageFolder: "Domiia-Card-Holder"
+            },
 
-    function getTotalCards() {
+            {
+                title: "Perfect 10 Liners Thai card",
+                count: 11,
+                imageFolder: "Perfect-10-Liners-Thai-card"
+            },
 
-      let total = 0;
+            {
+                title: "Perfect 10 Liners Boxset",
+                count: 2,
+                imageFolder: "Perfect-10-Liners-Boxset"
+            },
 
+            {
+                title: "Pop-Up Store Tokyo 2025 + phone charm",
+                count: 4,
+                imageFolder: "Pop-Up-Store-Tokyo-2025-phone-charm"
+            },
 
-      locations.forEach(
-        location => {
+            {
+                title: "Mystery Box 2025",
+                count: 8,
+                imageFolder: "Mystery-Box-2025"
+            },
 
-          location.series.forEach(
-            series => {
+            {
+                title: "Time Stopper Photobook",
+                count: 9,
+                imageFolder: "Time-Stopper-Photobook"
+            },
 
-              total +=
-                series.count;
+            {
+                title: "Perfect 10 Liners Japan",
+                count: 11,
+                imageFolder: "Perfect-10-Liners-Japan"
+            },
 
+            {
+                title: "Love Out Loud 2025 - Lovemosphere",
+                count: 9,
+                imageFolder: "Love-Out-Loud-2025-Lovemosphere"
+            },
+
+            {
+                title: "Love Out Loud 2025 Photo Set + Photo holder + Photobox + Boxset",
+                count: 6,
+                imageFolder: "Love-Out-Loud-2025-Photo-Set-Photo-holder-Photobox-Boxset"
+            },
+
+            {
+                title: "Time Stopper Fancon Collectible Card Set",
+                count: 35,
+                imageFolder: "Time-Stopper-Fancon-Collectible-Card-Set"
+            },
+
+            {
+                title: "Time Stopper Merchandise",
+                count: 7,
+                imageFolder: "Time-Stopper-Merchandise"
+            },
+
+            {
+                title: "Mood Quest",
+                count: 3,
+                imageFolder: "Mood-Quest"
+            },
+
+            {
+                title: "Pop-Up Store Nagoya",
+                count: 3,
+                imageFolder: "Pop-Up-Store-Nagoya"
+            },
+
+            {
+                title: "Too Cute Too Spook",
+                count: 3,
+                imageFolder: "Too-Cute-Too-Spook"
+            },
+
+            {
+                title: "Mesmerizing Series",
+                count: 9,
+                imageFolder: "Mesmerizing-Series"
+            },
+
+            {
+                title: "Fanival Scrunchie / Phone Charm",
+                count: 2,
+                imageFolder: "Fanival-Scrunchie-Phone-Charm"
+            },
+
+            {
+                title: "2026 Calendar",
+                count: 2,
+                imageFolder: "2026-Calendar"
+            },
+
+            {
+                title: "Pop-Up Store Osaka",
+                count: 3,
+                imageFolder: "Pop-Up-Store-Osaka"
+            },
+
+            {
+                title: "Pop-Up Store Osaka Merchandise",
+                count: 4,
+                imageFolder: "Pop-Up-Store-Osaka-Merchandise"
+            },
+
+            {
+                title: "Starlympics 2025",
+                count: 7,
+                imageFolder: "Starlympics-2025"
+            },
+
+            {
+                title: "Me and Thee Finale Card & Boxset",
+                count: 10,
+                imageFolder: "Me-and-Thee-Finale-Card-Boxset"
+            },
+
+            {
+                title: "Happy Fam Bonds",
+                count: 4,
+                imageFolder: "Happy-Fam-Bonds"
             }
 
-          );
+        ]
+    }
 
+];
+
+
+/* ============================================================
+   STORAGE
+============================================================ */
+
+const STORAGE_KEY = "myCardCollection";
+
+let collection = JSON.parse(
+    localStorage.getItem(STORAGE_KEY) || "{}"
+);
+
+
+/* ============================================================
+   LOCATION ICON
+============================================================ */
+
+function getLocationIcon(locationName) {
+
+    if (locationName === "Perth") {
+        return "🐯🖤";
+    }
+
+    if (locationName === "Santa") {
+        return "🐱🤍";
+    }
+
+    if (locationName === "PerthSanta") {
+        return "🖤🤍❤️";
+    }
+
+    return "👿";
+}
+
+
+/* ============================================================
+   CARD KEY
+============================================================ */
+
+function getCardKey(location, seriesIndex, cardNumber) {
+
+    return `${location}-${seriesIndex}-${cardNumber}`;
+
+}
+
+
+/* ============================================================
+   SAVE
+============================================================ */
+
+function saveCollection() {
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(collection)
+    );
+
+}
+
+
+/* ============================================================
+   TOTALS
+============================================================ */
+
+function getTotals() {
+
+    let totalCards = 0;
+    let collected = 0;
+    let totalSeries = 0;
+
+    seriesData.forEach(locationData => {
+
+        locationData.series.forEach(series => {
+
+            totalSeries++;
+            totalCards += series.count;
+
+        });
+
+    });
+
+
+    Object.values(collection).forEach(value => {
+
+        if (value === true) {
+            collected++;
         }
-      );
+
+    });
 
 
-      return total;
+    const missing =
+        Math.max(totalCards - collected, 0);
 
-    }
-
-
-
-    /* =====================================
-       CARD KEY
-    ====================================== */
-
-    function getCardKey(
-      location,
-      series,
-      number
-    ) {
-
-      return `
-        ${location.name}|||
-        ${series.name}|||
-        ${number}
-      `.replace(/\s+/g, "");
-
-    }
-
-
-
-    /* =====================================
-       SAFE ID
-    ====================================== */
-
-    function makeSafeId(text) {
-
-      return text
-        .replace(
-          /[^a-zA-Z0-9]/g,
-          "-"
-        )
-        .toLowerCase();
-
-    }
-
-
-
-    /* =====================================
-       LOCATION HOME CARDS
-    ====================================== */
-
-    function renderLocationCards() {
-
-      const container =
-        document.getElementById(
-          "locationGrid"
-        );
-
-
-      container.innerHTML = "";
-
-
-      locations.forEach(
-        location => {
-
-          let total = 0;
-
-
-          location.series.forEach(
-            series => {
-
-              total +=
-                series.count;
-
-            }
-          );
-
-
-          const card =
-            document.createElement(
-              "div"
+    const percent =
+        totalCards === 0
+            ? 0
+            : Math.round(
+                (collected / totalCards) * 100
             );
 
+    return {
+        totalCards,
+        collected,
+        missing,
+        percent,
+        totalSeries
+    };
 
-          card.className =
-            "location-card";
-
-
-          card.onclick = () => {
-
-            const target =
-              document.getElementById(
-                `location-${location.name}`
-              );
+}
 
 
-            if (target) {
+/* ============================================================
+   RENDER LOCATION HOME
+============================================================ */
 
-              target.scrollIntoView({
-                behavior: "smooth"
-              });
+function renderLocations() {
 
-            }
+    const container =
+        document.getElementById("locationGrid");
 
-          };
-
-
-          card.innerHTML = `
-
-            <div class="location-card-content">
-
-              <div class="devil">
-
-                ${getLocationIcon(
-                  location.name
-                )}
-
-              </div>
+    container.innerHTML = "";
 
 
-              <div class="location-name">
+    seriesData.forEach(locationData => {
 
-                ${location.name}
+        let total = 0;
 
-              </div>
-
-
-              <div class="location-count">
-
-                ${location.series.length}
-                series ·
-                ${total}
-                cards
-
-              </div>
-
-            </div>
-
-          `;
+        locationData.series.forEach(series => {
+            total += series.count;
+        });
 
 
-          container.appendChild(
-            card
-          );
+        let collected = 0;
 
-        }
-      );
+        locationData.series.forEach(
+            (series, seriesIndex) => {
 
-    }
+                for (
+                    let number = 1;
+                    number <= series.count;
+                    number++
+                ) {
 
+                    const key = getCardKey(
+                        locationData.location,
+                        seriesIndex,
+                        number
+                    );
 
+                    if (collection[key]) {
+                        collected++;
+                    }
 
-    /* =====================================
-       RENDER LOCATIONS
-    ====================================== */
-
-    function renderLocations() {
-
-      const container =
-        document.getElementById(
-          "locationsContainer"
-        );
-
-
-      container.innerHTML = "";
-
-
-      locations.forEach(
-        location => {
-
-
-          const locationSection =
-            document.createElement(
-              "section"
-            );
-
-
-          locationSection.className =
-            "location-section";
-
-
-          locationSection.id =
-            `location-${location.name}`;
-
-
-          let totalCards = 0;
-
-
-          location.series.forEach(
-            series => {
-
-              totalCards +=
-                series.count;
+                }
 
             }
-          );
-
-
-          locationSection.innerHTML = `
-
-            <div class="location-heading">
-
-              <h2>
-
-                ${getLocationIcon(
-                  location.name
-                )}
-
-                ${location.name}
-
-              </h2>
-
-
-              <p>
-
-                ${location.series.length}
-                series ·
-                ${totalCards}
-                cards
-
-              </p>
-
-            </div>
-
-
-            <div class="series-container"></div>
-
-          `;
-
-
-          container.appendChild(
-            locationSection
-          );
-
-
-          const seriesContainer =
-            locationSection.querySelector(
-              ".series-container"
-            );
-
-
-          location.series.forEach(
-            (
-              series,
-              seriesIndex
-            ) => {
-
-              renderSeries(
-                location,
-                series,
-                seriesIndex,
-                seriesContainer
-              );
-
-            }
-          );
-
-        }
-      );
-
-    }
-
-
-
-    /* =====================================
-       RENDER SERIES
-    ====================================== */
-
-    function renderSeries(
-      location,
-      series,
-      seriesIndex,
-      container
-    ) {
-
-      const seriesSection =
-        document.createElement(
-          "section"
         );
-
-
-      seriesSection.className =
-        "series-section";
-
-
-      const divider =
-        document.createElement(
-          "div"
-        );
-
-
-      divider.className =
-        "series-divider";
-
-
-      divider.innerHTML = `
-
-        <div class="series-number">
-
-          SERIES
-          ${String(
-            seriesIndex + 1
-          ).padStart(2, "0")}
-
-        </div>
-
-
-        <div class="series-title">
-
-          ${series.name}
-
-        </div>
-
-
-        <div class="series-count">
-
-          0 /
-          ${series.count}
-          collected
-
-        </div>
-
-      `;
-
-
-      const grid =
-        document.createElement(
-          "div"
-        );
-
-
-      grid.className =
-        "card-grid";
-
-
-      for (
-        let i = 1;
-        i <= series.count;
-        i++
-      ) {
-
-        const number =
-          String(i).padStart(
-            3,
-            "0"
-          );
 
 
         const card =
-          createCard(
-            location,
-            series,
-            number
-          );
+            document.createElement("div");
+
+        card.className = "location-card";
+
+        card.onclick = () => {
+
+            const target =
+                document.getElementById(
+                    `location-${locationData.location}`
+                );
+
+            if (target) {
+
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        };
 
 
-        grid.appendChild(
-          card
+        card.innerHTML = `
+
+            <div class="location-icon">
+                ${getLocationIcon(locationData.location)}
+            </div>
+
+            <div class="location-name">
+                ${locationData.location}
+            </div>
+
+            <div class="location-count">
+                ${collected} / ${total} collected
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* ============================================================
+   RENDER SUMMARY
+============================================================ */
+
+function renderSummary() {
+
+    const totals = getTotals();
+
+
+    document.getElementById("seriesTotal")
+        .textContent = totals.totalSeries;
+
+    document.getElementById("cardTotal")
+        .textContent = totals.totalCards;
+
+    document.getElementById("cardCollected")
+        .textContent = totals.collected;
+
+    document.getElementById("cardMissing")
+        .textContent = totals.missing;
+
+    document.getElementById("cardPercent")
+        .textContent = totals.percent + "%";
+
+    document.getElementById("progressText")
+        .textContent = totals.percent + "%";
+
+    document.getElementById("progressFill")
+        .style.width = totals.percent + "%";
+
+
+    const breakdown =
+        document.getElementById("breakdown");
+
+    breakdown.innerHTML = "";
+
+
+    let globalSeriesNumber = 0;
+
+
+    seriesData.forEach(locationData => {
+
+        locationData.series.forEach(
+            (series, seriesIndex) => {
+
+                globalSeriesNumber++;
+
+
+                let collected = 0;
+
+
+                for (
+                    let number = 1;
+                    number <= series.count;
+                    number++
+                ) {
+
+                    const key = getCardKey(
+                        locationData.location,
+                        seriesIndex,
+                        number
+                    );
+
+                    if (collection[key]) {
+                        collected++;
+                    }
+
+                }
+
+
+                const percent =
+                    series.count === 0
+                        ? 0
+                        : Math.round(
+                            (collected / series.count) * 100
+                        );
+
+
+                const row =
+                    document.createElement("div");
+
+                row.className =
+                    "breakdown-row";
+
+
+                row.innerHTML = `
+
+                    <div class="breakdown-number">
+                        ${String(globalSeriesNumber).padStart(2, "0")}
+                    </div>
+
+                    <div class="breakdown-name">
+                        ${getLocationIcon(locationData.location)}
+                        ${series.title}
+                    </div>
+
+                    <div class="breakdown-count">
+                        ${collected}/${series.count}
+                    </div>
+
+                    <div class="breakdown-percent">
+                        ${percent}%
+                    </div>
+
+                `;
+
+
+                breakdown.appendChild(row);
+
+            }
         );
 
-      }
+    });
+
+}
 
 
-      seriesSection.appendChild(
-        divider
-      );
+/* ============================================================
+   IMAGE FALLBACK
+============================================================ */
 
+function imageError(img) {
 
-      seriesSection.appendChild(
-        grid
-      );
+    img.style.display = "none";
 
+    const fallback =
+        img.parentElement.querySelector(
+            ".card-no-image"
+        );
 
-      container.appendChild(
-        seriesSection
-      );
-
-
-      updateSeriesCount(
-        location,
-        series,
-        divider
-      );
-
+    if (fallback) {
+        fallback.style.display = "flex";
     }
 
+}
 
 
-    /* =====================================
-       CREATE CARD
-    ====================================== */
+/* ============================================================
+   RENDER COLLECTION
+============================================================ */
 
-    function createCard(
-      location,
-      series,
-      number
-    ) {
+function renderCollection() {
 
-      const key =
-        getCardKey(
-          location,
-          series,
-          number
+    const container =
+        document.getElementById(
+            "collectionContainer"
+        );
+
+    container.innerHTML = "";
+
+
+    seriesData.forEach(locationData => {
+
+        const locationSection =
+            document.createElement("section");
+
+        locationSection.className =
+            "location-section";
+
+        locationSection.id =
+            `location-${locationData.location}`;
+
+
+        const locationHeader =
+            document.createElement("div");
+
+        locationHeader.className =
+            "location-header";
+
+
+        let locationTotal = 0;
+        let locationCollected = 0;
+
+
+        locationData.series.forEach(
+            (series, seriesIndex) => {
+
+                locationTotal += series.count;
+
+
+                for (
+                    let number = 1;
+                    number <= series.count;
+                    number++
+                ) {
+
+                    const key = getCardKey(
+                        locationData.location,
+                        seriesIndex,
+                        number
+                    );
+
+                    if (collection[key]) {
+                        locationCollected++;
+                    }
+
+                }
+
+            }
         );
 
 
-      const card =
-        document.createElement(
-          "div"
+        locationHeader.innerHTML = `
+
+            <h2>
+                ${getLocationIcon(locationData.location)}
+                ${locationData.location}
+            </h2>
+
+            <p>
+                ${locationCollected} / ${locationTotal}
+                cards collected
+            </p>
+
+        `;
+
+
+        locationSection.appendChild(
+            locationHeader
         );
 
 
-      card.className =
-        "card";
+        locationData.series.forEach(
+            (series, seriesIndex) => {
+
+                let collected = 0;
 
 
-      card.dataset.number =
-        number;
+                for (
+                    let number = 1;
+                    number <= series.count;
+                    number++
+                ) {
+
+                    const key = getCardKey(
+                        locationData.location,
+                        seriesIndex,
+                        number
+                    );
+
+                    if (collection[key]) {
+                        collected++;
+                    }
+
+                }
 
 
-      if (
-        ownedCards[key]
-      ) {
+                const seriesElement =
+                    document.createElement("div");
 
-        card.classList.add(
-          "owned"
+                seriesElement.className =
+                    "series";
+
+
+                if (collected === series.count) {
+                    seriesElement.classList.add(
+                        "complete"
+                    );
+                }
+
+
+                const seriesDivider =
+                    document.createElement("div");
+
+                seriesDivider.className =
+                    "series-divider";
+
+
+                seriesDivider.innerHTML = `
+
+                    <div class="series-number">
+                        SERIES ${String(
+                            seriesIndex + 1
+                        ).padStart(2, "0")}
+                    </div>
+
+                    <div class="series-title">
+                        ${series.title}
+                    </div>
+
+                    <div class="series-count">
+                        ${collected} / ${series.count}
+                        collected
+                    </div>
+
+                `;
+
+
+                seriesElement.appendChild(
+                    seriesDivider
+                );
+
+
+                const grid =
+                    document.createElement("div");
+
+                grid.className =
+                    "cards-grid";
+
+
+                for (
+                    let number = 1;
+                    number <= series.count;
+                    number++
+                ) {
+
+                    const key = getCardKey(
+                        locationData.location,
+                        seriesIndex,
+                        number
+                    );
+
+
+                    const owned =
+                        collection[key] === true;
+
+
+                    const card =
+                        document.createElement("div");
+
+                    card.className =
+                        "card" +
+                        (owned ? " owned" : "");
+
+
+                    card.dataset.number =
+                        String(number).padStart(
+                            3,
+                            "0"
+                        );
+
+
+                    const imagePath =
+                        `images/${locationData.imageFolder}/${series.imageFolder}/${String(number).padStart(3, "0")}.jpg`;
+
+
+                    card.innerHTML = `
+
+                        <img
+                            src="${imagePath}"
+                            alt="${series.title} ${String(number).padStart(3, "0")}"
+                            onerror="imageError(this)"
+                        >
+
+                        <div
+                            class="card-no-image"
+                            style="display:none;"
+                        >
+                            NO IMAGE
+                        </div>
+
+                        <div class="card-number">
+                            ${String(number).padStart(3, "0")}
+                        </div>
+
+                        <div class="heart">
+                            🖤
+                        </div>
+
+                        <div class="card-status">
+                            ${
+                                owned
+                                    ? "- 🖤🤍❤️ get"
+                                    : "- havent get 😭"
+                            }
+                        </div>
+
+                    `;
+
+
+                    card.onclick = () => {
+
+                        collection[key] =
+                            !collection[key];
+
+                        saveCollection();
+
+                        renderCollection();
+                        renderLocations();
+                        renderSummary();
+
+                    };
+
+
+                    grid.appendChild(card);
+
+                }
+
+
+                seriesElement.appendChild(grid);
+
+                locationSection.appendChild(
+                    seriesElement
+                );
+
+            }
         );
 
-      }
 
-
-      const imagePath =
-        `images/${location.imageFolder}/${series.imageFolder}/${number}.jpg`;
-
-
-      card.innerHTML = `
-
-        <img
-          src="${imagePath}"
-
-          alt="${series.name} ${number}"
-
-          onerror="
-            this.style.display='none';
-
-            this.parentElement.innerHTML=
-            '<div class=&quot;no-image&quot;>NO IMAGE</div>';
-          "
-        >
-
-
-        <div class="card-number">
-
-          ${number}
-
-        </div>
-
-
-        <div class="heart">
-
-          🖤
-
-        </div>
-
-
-        <div class="card-status">
-
-          ${
-            ownedCards[key]
-              ? "- 🖤🤍❤️ get"
-              : "- havent get 😭"
-          }
-
-        </div>
-
-      `;
-
-
-      card.addEventListener(
-        "click",
-        () => {
-
-          toggleCard(
-            key,
-            card
-          );
-
-        }
-      );
-
-
-      return card;
-
-    }
-
-
-
-    /* =====================================
-       TOGGLE CARD
-    ====================================== */
-
-    function toggleCard(
-      key,
-      card
-    ) {
-
-      ownedCards[key] =
-        !ownedCards[key];
-
-
-      if (
-        ownedCards[key]
-      ) {
-
-        card.classList.add(
-          "owned"
+        container.appendChild(
+            locationSection
         );
 
-      } else {
+    });
 
-        card.classList.remove(
-          "owned"
-        );
-
-      }
+}
 
 
-      updateCardText(
-        card
-      );
+/* ============================================================
+   SEARCH
+============================================================ */
+
+function searchCards() {
+
+    const value =
+        document.getElementById(
+            "searchInput"
+        ).value.trim();
 
 
-      saveCollection();
+    const cards =
+        document.querySelectorAll(".card");
 
 
-      updateDashboard();
+    if (!value) {
 
-    }
+        cards.forEach(card => {
 
+            card.style.display = "";
 
+        });
 
-    /* =====================================
-       UPDATE CARD TEXT
-    ====================================== */
-
-    function updateCardText(
-      card
-    ) {
-
-      const status =
-        card.querySelector(
-          ".card-status"
-        );
-
-
-      if (!status) {
         return;
-      }
-
-
-      if (
-        card.classList.contains(
-          "owned"
-        )
-      ) {
-
-        status.textContent =
-          "- 🖤🤍❤️ get";
-
-      } else {
-
-        status.textContent =
-          "- havent get 😭";
-
-      }
 
     }
 
 
-
-    /* =====================================
-       UPDATE SERIES
-    ====================================== */
-
-    function updateSeriesCount(
-      location,
-      series,
-      divider
-    ) {
-
-      let collected = 0;
-
-
-      for (
-        let i = 1;
-        i <= series.count;
-        i++
-      ) {
+    cards.forEach(card => {
 
         const number =
-          String(i).padStart(
-            3,
-            "0"
-          );
-
-
-        const key =
-          getCardKey(
-            location,
-            series,
-            number
-          );
+            card.dataset.number;
 
 
         if (
-          ownedCards[key]
+            number.includes(value) ||
+            number === value.padStart(3, "0")
         ) {
 
-          collected++;
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
 
         }
 
-      }
+    });
 
+}
 
-      const countElement =
-        divider.querySelector(
-          ".series-count"
-        );
 
+function resetSearch() {
 
-      if (
-        countElement
-      ) {
-
-        countElement.textContent =
-          `${collected} / ${series.count} collected`;
-
-      }
-
-
-      if (
-        collected ===
-        series.count
-      ) {
-
-        divider.classList.add(
-          "completed"
-        );
-
-      } else {
-
-        divider.classList.remove(
-          "completed"
-        );
-
-      }
-
-    }
-
-
-
-    /* =====================================
-       UPDATE ALL SERIES
-    ====================================== */
-
-    function updateAllSeriesCounts() {
-
-      const sections =
-        document.querySelectorAll(
-          ".location-section"
-        );
-
-
-      locations.forEach(
-        location => {
-
-          const locationElement =
-            document.getElementById(
-              `location-${location.name}`
-            );
-
-
-          if (
-            !locationElement
-          ) {
-            return;
-          }
-
-
-          const dividers =
-            locationElement.querySelectorAll(
-              ".series-divider"
-            );
-
-
-          location.series.forEach(
-            (
-              series,
-              index
-            ) => {
-
-              if (
-                dividers[index]
-              ) {
-
-                updateSeriesCount(
-                  location,
-                  series,
-                  dividers[index]
-                );
-
-              }
-
-            }
-          );
-
-        }
-      );
-
-    }
-
-
-
-    /* =====================================
-       DASHBOARD
-    ====================================== */
-
-    function updateDashboard() {
-
-      const totalSeries =
-        locations.reduce(
-          (
-            total,
-            location
-          ) =>
-            total +
-            location.series.length,
-          0
-        );
-
-
-      const totalCards =
-        getTotalCards();
-
-
-      let collected = 0;
-
-
-      Object.keys(
-        ownedCards
-      ).forEach(
-        key => {
-
-          if (
-            ownedCards[key]
-          ) {
-
-            collected++;
-
-          }
-
-        }
-      );
-
-
-      const missing =
-        Math.max(
-          0,
-          totalCards -
-          collected
-        );
-
-
-      const percentage =
-        totalCards === 0
-
-          ? 0
-
-          : Math.round(
-              (
-                collected /
-                totalCards
-              ) * 100
-            );
-
-
-      document.getElementById(
-        "seriesTotal"
-      ).textContent =
-        totalSeries;
-
-
-      document.getElementById(
-        "cardTotal"
-      ).textContent =
-        totalCards;
-
-
-      document.getElementById(
-        "collectedTotal"
-      ).textContent =
-        collected;
-
-
-      document.getElementById(
-        "missingTotal"
-      ).textContent =
-        missing;
-
-
-      document.getElementById(
-        "percentage"
-      ).textContent =
-        `${percentage}%`;
-
-
-      document.getElementById(
-        "progressFill"
-      ).style.width =
-        `${percentage}%`;
-
-
-      renderBreakdown();
-
-
-      updateAllSeriesCounts();
-
-    }
-
-
-
-    /* =====================================
-       BREAKDOWN
-    ====================================== */
-
-    function renderBreakdown() {
-
-      const container =
-        document.getElementById(
-          "seriesBreakdown"
-        );
-
-
-      container.innerHTML = "";
-
-
-      locations.forEach(
-        location => {
-
-          location.series.forEach(
-            series => {
-
-              let collected = 0;
-
-
-              for (
-                let i = 1;
-                i <= series.count;
-                i++
-              ) {
-
-                const number =
-                  String(i).padStart(
-                    3,
-                    "0"
-                  );
-
-
-                const key =
-                  getCardKey(
-                    location,
-                    series,
-                    number
-                  );
-
-
-                if (
-                  ownedCards[key]
-                ) {
-
-                  collected++;
-
-                }
-
-              }
-
-
-              const item =
-                document.createElement(
-                  "div"
-                );
-
-
-              item.className =
-                "breakdown-item";
-
-
-              item.innerHTML = `
-
-                ${getLocationIcon(
-                  location.name
-                )}
-
-                ${location.name}
-
-                ·
-
-                ${series.name}
-
-                :
-
-                <span>
-
-                  ${collected}/${series.count}
-
-                </span>
-
-              `;
-
-
-              container.appendChild(
-                item
-              );
-
-            }
-          );
-
-        }
-      );
-
-    }
-
-
-
-    /* =====================================
-       SEARCH
-    ====================================== */
-
-    function searchCards() {
-
-      const input =
-        document.getElementById(
-          "searchInput"
-        );
-
-
-      const search =
-        input.value
-          .trim()
-          .toLowerCase();
-
-
-      const cards =
-        document.querySelectorAll(
-          ".card"
-        );
-
-
-      cards.forEach(
-        card => {
-
-          const number =
-            card.dataset.number
-              .toLowerCase();
-
-
-          if (
-            search === "" ||
-            number.includes(
-              search
-            )
-          ) {
-
-            card.classList.remove(
-              "hidden"
-            );
-
-          } else {
-
-            card.classList.add(
-              "hidden"
-            );
-
-          }
-
-        }
-      );
-
-    }
-
-
-
-    /* =====================================
-       RESET SEARCH
-    ====================================== */
-
-    function resetSearch() {
-
-      document.getElementById(
+    document.getElementById(
         "searchInput"
-      ).value = "";
+    ).value = "";
+
+    searchCards();
+
+}
 
 
-      document.querySelectorAll(
-        ".card"
-      ).forEach(
-        card => {
+document.getElementById(
+    "searchInput"
+).addEventListener(
+    "input",
+    searchCards
+);
 
-          card.classList.remove(
-            "hidden"
-          );
 
-        }
-      );
+/* ============================================================
+   RESET COLLECTION
+============================================================ */
+
+function resetCollection() {
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to reset your entire collection?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    collection = {};
+
+    saveCollection();
+
+    renderCollection();
+    renderLocations();
+    renderSummary();
+
+}
+
+
+/* ============================================================
+   MUSIC PLAYER
+============================================================ */
+
+const playlist = [
+
+    {
+        title: "song 1",
+        src: "music/song%201.mp3"
+    },
+
+    {
+        title: "song 2",
+        src: "music/song%202.mp3"
+    },
+
+    {
+        title: "song 3",
+        src: "music/song%203.mp3"
+    },
+
+    {
+        title: "song 4",
+        src: "music/song%204.mp3"
+    }
+
+];
+
+
+const audio =
+    document.getElementById(
+        "audioPlayer"
+    );
+
+
+const playPauseButton =
+    document.getElementById(
+        "playPauseButton"
+    );
+
+
+const trackName =
+    document.getElementById(
+        "musicTrackName"
+    );
+
+
+const loopButton =
+    document.getElementById(
+        "loopButton"
+    );
+
+
+const volumeControl =
+    document.getElementById(
+        "volumeControl"
+    );
+
+
+let currentTrack = 0;
+
+let isLooping = false;
+
+
+/* =========================
+   LOAD TRACK
+========================= */
+
+function loadTrack(
+    index,
+    autoPlay = false
+) {
+
+    currentTrack =
+        (index + playlist.length)
+        % playlist.length;
+
+
+    audio.src =
+        playlist[currentTrack].src;
+
+
+    trackName.textContent =
+        playlist[currentTrack].title;
+
+
+    if (autoPlay) {
+
+        audio.play().catch(() => {
+
+            /*
+                Browser may block autoplay.
+                User can press Play.
+            */
+
+        });
 
     }
 
 
+    updateMusicButton();
 
-    /* =====================================
-       RESET COLLECTION
-    ====================================== */
-
-    function resetCollection() {
-
-      const confirmReset =
-        confirm(
-          "Are you sure you want to reset your entire collection?"
-        );
+}
 
 
-      if (
-        !confirmReset
-      ) {
+/* =========================
+   PLAY / PAUSE
+========================= */
+
+function toggleMusic() {
+
+    if (audio.paused) {
+
+        audio.play().catch(() => {
+
+            alert(
+                "Please press Play again to start the music."
+            );
+
+        });
+
+    } else {
+
+        audio.pause();
+
+    }
+
+}
+
+
+/* =========================
+   UPDATE BUTTON
+========================= */
+
+function updateMusicButton() {
+
+    if (audio.paused) {
+
+        playPauseButton.textContent =
+            "▶️";
+
+    } else {
+
+        playPauseButton.textContent =
+            "⏸️";
+
+    }
+
+}
+
+
+/* =========================
+   NEXT
+========================= */
+
+function nextTrack() {
+
+    if (isLooping) {
+
+        audio.currentTime = 0;
+
+        audio.play().catch(() => {});
 
         return;
 
-      }
+    }
 
 
-      ownedCards = {};
+    loadTrack(
+        currentTrack + 1,
+        true
+    );
+
+}
 
 
-      saveCollection();
+/* =========================
+   PREVIOUS
+========================= */
 
+function previousTrack() {
 
-      renderLocations();
+    if (audio.currentTime > 3) {
 
+        audio.currentTime = 0;
 
-      updateDashboard();
-
-
-      resetSearch();
+        return;
 
     }
 
 
+    loadTrack(
+        currentTrack - 1,
+        true
+    );
 
-    /* =====================================
-       INITIAL LOAD
-    ====================================== */
+}
 
-    renderLocationCards();
+
+/* =========================
+   LOOP
+========================= */
+
+function toggleLoop() {
+
+    isLooping =
+        !isLooping;
+
+
+    if (isLooping) {
+
+        loopButton.classList.add(
+            "loop-active"
+        );
+
+        loopButton.textContent =
+            "🔁 ON";
+
+    } else {
+
+        loopButton.classList.remove(
+            "loop-active"
+        );
+
+        loopButton.textContent =
+            "🔁";
+
+    }
+
+}
+
+
+/* =========================
+   VOLUME
+========================= */
+
+volumeControl.addEventListener(
+    "input",
+    function() {
+
+        audio.volume =
+            this.value;
+
+    }
+);
+
+
+/* =========================
+   AUDIO EVENTS
+========================= */
+
+audio.addEventListener(
+    "play",
+    updateMusicButton
+);
+
+
+audio.addEventListener(
+    "pause",
+    updateMusicButton
+);
+
+
+audio.addEventListener(
+    "ended",
+    function() {
+
+        if (isLooping) {
+
+            audio.currentTime = 0;
+
+            audio.play().catch(() => {});
+
+        } else {
+
+            nextTrack();
+
+        }
+
+    }
+);
+
+
+/* ============================================================
+   INITIALIZE
+============================================================ */
+
+function initializeApp() {
 
     renderLocations();
 
-    updateDashboard();
+    renderSummary();
+
+    renderCollection();
 
 
+    audio.volume = 0.6;
 
-    /* =====================================
-       YOUTUBE
-    ====================================== */
+    loadTrack(0, false);
 
-    let player = null;
-
-    let isPlaying = false;
+}
 
 
-
-    function onYouTubeIframeAPIReady() {
-
-      player =
-        new YT.Player(
-          "youtubePlayer",
-          {
-
-            events: {
-
-              onReady: function() {
-
-                /*
-                  尝试自动播放。
-                  浏览器允许就自动播放。
-                  浏览器禁止则需要点击 PLAY。
-                */
-
-                try {
-
-                  player.playVideo();
-
-                } catch (error) {
-
-                  console.log(
-                    "Autoplay was blocked."
-                  );
-
-                }
-
-              },
+initializeApp();
 
 
-              onStateChange:
-                function(event) {
+/* ============================================================
+   OPTIONAL AUTOPLAY ATTEMPT
+============================================================ */
 
+/*
+   Modern browsers often block autoplay with sound.
 
-                  if (
-                    event.data ===
-                    YT.PlayerState.PLAYING
-                  ) {
+   We try to start the first song when the page loads.
+   If blocked, the user can simply press ▶️.
+*/
 
-                    isPlaying =
-                      true;
+window.addEventListener(
+    "load",
+    function() {
 
+        setTimeout(() => {
 
-                    document.getElementById(
-                      "musicButton"
-                    ).textContent =
-                      "⏸️ PAUSE MUSIC";
+            audio.play().catch(() => {
 
-                  }
+                // Autoplay blocked by browser.
 
+            });
 
-                  if (
-                    event.data ===
-                    YT.PlayerState.PAUSED
-                  ) {
-
-                    isPlaying =
-                      false;
-
-
-                    document.getElementById(
-                      "musicButton"
-                    ).textContent =
-                      "▶️ PLAY MUSIC";
-
-                  }
-
-
-                  if (
-                    event.data ===
-                    YT.PlayerState.ENDED
-                  ) {
-
-                    isPlaying =
-                      false;
-
-
-                    document.getElementById(
-                      "musicButton"
-                    ).textContent =
-                      "▶️ PLAY MUSIC";
-
-                  }
-
-                }
-
-            }
-
-          }
-        );
+        }, 500);
 
     }
+);
 
-
-
-    /* =====================================
-       PLAY / PAUSE
-    ====================================== */
-
-    function toggleMusic() {
-
-      if (
-        !player
-      ) {
-
-        return;
-
-      }
-
-
-      if (
-        isPlaying
-      ) {
-
-        player.pauseVideo();
-
-      } else {
-
-        player.playVideo();
-
-      }
-
-    }
-
-  </script>
-
-
-
-  <!-- =====================================
-       YOUTUBE IFRAME API
-  ====================================== -->
-
-  <script
-    src="https://www.youtube.com/iframe_api">
-  </script>
-
+</script>
 
 </body>
 </html>
