@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,6 +11,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
+/* ============================================================
+   RESET
+============================================================ */
 
 * {
     box-sizing: border-box;
@@ -20,179 +26,146 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at top, rgba(120,0,0,0.22), transparent 35%),
-        linear-gradient(135deg, #050505, #140000 55%, #050505);
-    color: white;
-    min-height: 100vh;
+    background: #050505;
+    color: #ffffff;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 }
+
 
 /* ============================================================
    HEADER
 ============================================================ */
 
 header {
+    position: relative;
     text-align: center;
-    padding: 35px 20px 30px;
-    border-bottom: 2px solid #550000;
+    padding: 30px 20px 35px;
+    border-bottom: 2px solid #222;
     background:
-        linear-gradient(rgba(0,0,0,0.7), rgba(20,0,0,0.9));
-    box-shadow: 0 10px 40px rgba(120,0,0,0.25);
+        linear-gradient(
+            180deg,
+            #111111 0%,
+            #050505 100%
+        );
 }
 
 .logo {
     display: block;
-    width: min(320px, 75vw);
+    width: min(260px, 70vw);
     max-height: 180px;
     object-fit: contain;
-    margin: 0 auto 18px;
-    filter:
-        drop-shadow(0 0 10px rgba(255,0,0,0.35))
-        drop-shadow(0 0 25px rgba(255,0,0,0.15));
+    margin: 0 auto 15px;
 }
 
 header h1 {
     margin: 0;
     font-size: clamp(24px, 4vw, 42px);
-    letter-spacing: 3px;
-    color: #fff;
-    text-shadow:
-        0 0 5px #ff0000,
-        0 0 15px #660000;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
 .subtitle {
-    margin-top: 12px;
-    color: #d7d7d7;
-    font-size: 15px;
-    letter-spacing: 1px;
+    margin-top: 10px;
+    color: #bbbbbb;
+    font-size: 14px;
 }
 
+
 /* ============================================================
-   LOGIN
+   ACCOUNT AREA
 ============================================================ */
 
 .account-area {
-    margin: 22px auto 0;
-    width: min(560px, 95%);
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
 }
 
 .login-panel {
-    padding: 15px;
-    border: 1px solid #620000;
+    width: min(520px, 95vw);
+    padding: 20px;
+    border: 1px solid #333;
     border-radius: 14px;
-    background:
-        linear-gradient(145deg, rgba(35,0,0,0.9), rgba(8,8,8,0.95));
-    box-shadow:
-        0 0 20px rgba(120,0,0,0.18);
+    background: #111;
 }
 
 .login-title {
-    font-size: 12px;
-    color: #ff6666;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 8px;
 }
 
 .login-description {
     color: #aaa;
-    font-size: 12px;
-    margin-bottom: 12px;
+    font-size: 13px;
     line-height: 1.5;
+    margin-bottom: 15px;
 }
 
 .google-login-btn {
     width: 100%;
-    padding: 12px 18px;
-    border: 1px solid #7d0000;
-    border-radius: 9px;
-    background:
-        linear-gradient(135deg, #8b0000, #450000);
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 18px;
+    background: #ffffff;
+    color: #000000;
+    font-weight: 900;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .google-login-btn:hover {
-    background:
-        linear-gradient(135deg, #b00000, #650000);
-    border-color: #ff3333;
-    transform: translateY(-1px);
-    box-shadow:
-        0 0 18px rgba(255,0,0,0.25);
+    transform: translateY(-2px);
+    opacity: 0.9;
 }
 
-.google-login-btn:disabled {
-    opacity: 0.6;
-    cursor: wait;
+.sync-message {
+    min-height: 20px;
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 12px;
 }
 
 .user-panel {
     display: none;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
 }
 
 .user-info {
     text-align: left;
-    min-width: 0;
 }
 
 .user-name {
-    font-weight: bold;
-    color: white;
-    font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-weight: 900;
 }
 
 .user-email {
-    color: #999;
-    font-size: 11px;
     margin-top: 3px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: #999;
+    font-size: 12px;
 }
 
 .cloud-status {
-    color: #ff6666;
-    font-size: 11px;
-    margin-top: 7px;
+    margin-top: 6px;
+    color: #aaa;
+    font-size: 12px;
 }
 
 .logout-btn {
+    border: 1px solid #555;
+    background: #050505;
+    color: #fff;
+    border-radius: 8px;
     padding: 9px 13px;
-    border: 1px solid #570000;
-    border-radius: 8px;
-    background: #120000;
-    color: white;
     cursor: pointer;
+    font-weight: 800;
 }
 
-.logout-btn:hover {
-    background: #650000;
-    border-color: #ff2222;
-}
-
-.sync-message {
-    display: none;
-    margin-top: 10px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    background: rgba(80,0,0,0.35);
-    color: #ccc;
-    font-size: 11px;
-}
-
-.sync-message.error {
-    color: #ff8888;
-    border: 1px solid #700000;
-}
 
 /* ============================================================
    MUSIC PLAYER
@@ -204,32 +177,30 @@ header h1 {
     right: 15px;
     z-index: 9999;
 
-    width: 330px;
-    padding: 14px;
+    width: 280px;
+    padding: 12px;
 
-    background: rgba(8,8,8,0.96);
-    border: 1px solid #750000;
-    border-radius: 14px;
+    border: 1px solid #333;
+    border-radius: 12px;
+
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(8px);
 
     box-shadow:
-        0 0 20px rgba(180,0,0,0.25),
-        inset 0 0 20px rgba(100,0,0,0.08);
-
-    backdrop-filter: blur(10px);
+        0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .music-title {
-    font-size: 11px;
-    color: #ff5555;
-    letter-spacing: 2px;
-    margin-bottom: 4px;
+    font-size: 10px;
+    font-weight: 900;
+    color: #888;
+    letter-spacing: 1px;
 }
 
 .music-track {
-    font-size: 14px;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 10px;
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 900;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -238,33 +209,35 @@ header h1 {
 .music-controls {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
+    margin-top: 9px;
 }
 
 .music-btn {
-    border: 1px solid #660000;
-    background: #160000;
-    color: white;
-    min-width: 38px;
-    height: 34px;
-    border-radius: 8px;
+    min-width: 34px;
+    height: 32px;
+
+    border: 1px solid #333;
+    border-radius: 7px;
+
+    background: #181818;
+    color: #fff;
+
     cursor: pointer;
-    transition: 0.2s;
+    font-size: 14px;
 }
 
 .music-btn:hover {
-    background: #650000;
-    border-color: #ff2222;
-    transform: translateY(-1px);
+    background: #252525;
 }
 
 .music-btn.main {
-    background: #850000;
-    min-width: 45px;
+    background: #ffffff;
+    color: #000000;
 }
 
-.music-btn.main:hover {
-    background: #b00000;
+.loop-active {
+    border-color: #fff;
 }
 
 .volume-area {
@@ -272,735 +245,479 @@ header h1 {
     align-items: center;
     gap: 5px;
     margin-left: auto;
+    font-size: 12px;
 }
 
 .volume-area input {
     width: 65px;
-    accent-color: #b00000;
 }
 
-.loop-active {
-    background: #850000 !important;
-    border-color: #ff2222 !important;
-}
 
 /* ============================================================
    MAIN
 ============================================================ */
 
-.container {
-    width: min(1500px, 94%);
-    margin: auto;
+main {
+    width: min(1500px, 96vw);
+    margin: 0 auto;
+    padding-bottom: 60px;
 }
+
 
 /* ============================================================
-   HOME
+   HOME LOCATION GRID
 ============================================================ */
 
-.home {
-    padding: 45px 0 25px;
+.home-section {
+    padding: 35px 0 20px;
 }
 
-.section-title {
+.home-section h2 {
     text-align: center;
-    margin-bottom: 28px;
-}
-
-.section-title h2 {
-    margin: 0;
-    font-size: 27px;
-    letter-spacing: 2px;
-}
-
-.section-title p {
-    color: #aaa;
-    margin-top: 8px;
+    margin: 0 0 20px;
+    font-size: 25px;
 }
 
 .location-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 15px;
 }
 
 .location-card {
-    position: relative;
-    padding: 35px 20px;
-    border: 1px solid #570000;
-    border-radius: 18px;
-    background:
-        linear-gradient(145deg, #120000, #080808);
+    padding: 25px 15px;
+    border: 1px solid #333;
+    border-radius: 14px;
+    background: #101010;
     text-align: center;
     cursor: pointer;
-    transition: 0.3s;
-    overflow: hidden;
-}
-
-.location-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(150,0,0,0.18),
-            transparent 65%
-        );
-    pointer-events: none;
+    transition: 0.2s;
 }
 
 .location-card:hover {
-    transform: translateY(-5px);
-    border-color: #ff2222;
-    box-shadow:
-        0 0 30px rgba(170,0,0,0.3),
-        inset 0 0 30px rgba(120,0,0,0.08);
+    transform: translateY(-4px);
+    border-color: #666;
+    background: #151515;
 }
 
 .location-icon {
-    font-size: 48px;
-    margin-bottom: 10px;
+    font-size: 35px;
 }
 
 .location-name {
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 2px;
+    margin-top: 10px;
+    font-weight: 900;
+    font-size: 20px;
 }
 
 .location-count {
-    color: #aaa;
-    margin-top: 8px;
+    margin-top: 7px;
+    color: #999;
+    font-size: 12px;
 }
+
 
 /* ============================================================
    SUMMARY
 ============================================================ */
 
 .summary {
-    margin: 25px 0 25px;
-    padding: 28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(35,0,0,0.9),
-            rgba(8,8,8,0.95)
-        );
-
-    border: 1px solid #600000;
-    border-radius: 18px;
-
-    box-shadow:
-        0 0 25px rgba(100,0,0,0.12);
+    padding-top: 30px;
 }
 
-.summary-title {
+.summary h2 {
     text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 22px;
-    letter-spacing: 2px;
+    margin-bottom: 20px;
 }
 
-/* THREE BIG BOXES */
-
-.summary-stats {
+.summary-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: 22px;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 12px;
 }
 
-.stat {
-    min-height: 145px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    padding: 18px 15px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,0,0,0.65),
-            rgba(30,0,0,0.55)
-        );
-
-    border: 1px solid #500000;
-    border-radius: 15px;
-
+.stat-box {
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: #101010;
     text-align: center;
-
-    box-shadow:
-        inset 0 0 20px rgba(100,0,0,0.08);
-}
-
-.stat-top {
-    padding-bottom: 13px;
-    border-bottom: 1px solid #3d0000;
-}
-
-.stat-bottom {
-    padding-top: 13px;
-}
-
-.stat-number {
-    font-size: clamp(28px, 4vw, 38px);
-    font-weight: bold;
-    color: #ff4444;
-    line-height: 1.1;
 }
 
 .stat-label {
-    margin-top: 7px;
-    color: #aaa;
+    color: #999;
     font-size: 11px;
-    line-height: 1.4;
-    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.stat-bottom .stat-number {
-    font-size: 25px;
+.stat-number {
+    margin-top: 7px;
+    font-size: 28px;
+    font-weight: 900;
 }
 
-.hidden-stat {
-    border-color: #705d18;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(45,35,5,0.35),
-            rgba(0,0,0,0.55)
-        );
-}
-
-.hidden-stat .stat-number {
-    color: #e6c85c;
-}
-
-.hidden-stat .stat-label {
-    color: #c9b96a;
-}
-
-.summary-series-stat {
-    border-color: #4d0000;
-}
-
-.summary-series-stat .stat-number {
-    color: #ff5555;
-}
-
-.summary-series-stat .stat-bottom .stat-number {
-    color: #ff9999;
-}
 
 /* ============================================================
    OVERALL PROGRESS
 ============================================================ */
 
-.progress-wrapper {
-    margin-top: 18px;
+.overall-progress {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: #101010;
 }
 
-.progress-label {
+.progress-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 7px;
-    font-size: 13px;
-    color: #bbb;
+    gap: 10px;
+    font-weight: 900;
 }
 
 .progress-bar {
-    width: 100%;
     height: 14px;
-    background: #170000;
-    border: 1px solid #470000;
-    border-radius: 20px;
+    margin-top: 12px;
     overflow: hidden;
+    border-radius: 999px;
+    background: #242424;
 }
 
 .progress-fill {
-    height: 100%;
     width: 0%;
-    background:
-        linear-gradient(90deg, #6d0000, #ff2222);
-    box-shadow:
-        0 0 12px rgba(255,0,0,0.5);
-    transition: width 0.5s;
+    height: 100%;
+    border-radius: inherit;
+    background: #ffffff;
+    transition: width 0.3s ease;
 }
 
-/* Hide old 55-row breakdown from main page */
-
-.breakdown {
-    display: none;
+.progress-text {
+    margin-top: 8px;
+    text-align: center;
+    color: #aaa;
+    font-size: 12px;
 }
+
 
 /* ============================================================
    SERIES PROGRESS BUTTON
 ============================================================ */
 
-.progress-view-button-wrapper {
+#progressButtonWrapper {
     display: flex;
     justify-content: center;
-    margin: 0 0 45px;
+    margin: 20px 0;
 }
 
-.progress-view-button {
-    padding: 14px 28px;
-
-    border: 1px solid #850000;
+.series-progress-button {
+    padding: 13px 22px;
+    border: 1px solid #555;
     border-radius: 10px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #850000,
-            #350000
-        );
-
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 1px;
-
+    background: #fff;
+    color: #000;
+    font-weight: 900;
     cursor: pointer;
-
-    transition: 0.25s;
-
-    box-shadow:
-        0 0 15px rgba(150,0,0,0.15);
 }
 
-.progress-view-button:hover {
-    transform: translateY(-2px);
-
-    background:
-        linear-gradient(
-            135deg,
-            #b00000,
-            #500000
-        );
-
-    border-color: #ff3333;
-
-    box-shadow:
-        0 0 25px rgba(255,0,0,0.25);
+.series-progress-button:hover {
+    opacity: 0.85;
 }
+
 
 /* ============================================================
-   SERIES PROGRESS VIEW
+   SERIES PROGRESS PAGE
 ============================================================ */
 
 #seriesProgressView {
     display: none;
-    padding: 35px 0 70px;
+    padding-top: 30px;
 }
 
 .progress-page-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .progress-page-header h2 {
     margin: 0;
-    font-size: clamp(25px, 4vw, 38px);
-    letter-spacing: 3px;
-    text-shadow:
-        0 0 8px #660000;
+    font-size: 27px;
 }
 
 .progress-page-header p {
+    margin-top: 8px;
     color: #999;
-    margin-top: 10px;
+    font-size: 13px;
 }
 
-.progress-back-button-wrapper {
+.progress-series-list {
     display: flex;
-    justify-content: center;
-    margin-bottom: 28px;
-}
-
-.progress-back-button {
-    padding: 11px 22px;
-
-    border: 1px solid #650000;
-    border-radius: 9px;
-
-    background: #160000;
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.progress-back-button:hover {
-    background: #750000;
-    border-color: #ff2222;
-}
-
-.progress-list {
-    display: grid;
-    gap: 10px;
+    flex-direction: column;
+    gap: 7px;
 }
 
 .progress-series-row {
     display: grid;
-
     grid-template-columns:
-        55px
+        65px
         minmax(0, 1fr)
-        100px
-        90px;
+        90px
+        70px;
 
     align-items: center;
     gap: 15px;
 
-    padding: 15px 18px;
+    padding: 13px 15px;
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(45,0,0,0.65),
-            rgba(5,5,5,0.9)
-        );
-
-    border: 1px solid #390000;
-    border-left: 4px solid #680000;
+    border: 1px solid #292929;
     border-radius: 10px;
 
-    transition: 0.2s;
-}
-
-.progress-series-row:hover {
-    border-color: #850000;
-    transform: translateX(2px);
+    background: #0e0e0e;
 }
 
 .progress-series-row.complete {
-    border-left-color: #ff2222;
-
-    box-shadow:
-        0 0 15px rgba(255,0,0,0.12);
+    border-color: #666;
+    background: #151515;
 }
 
 .progress-series-number {
-    color: #ff4444;
-    font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
-.progress-series-name {
-    min-width: 0;
+    font-size: 18px;
+    font-weight: 900;
 }
 
 .progress-series-title {
-    font-weight: bold;
-    font-size: 15px;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-weight: 900;
+    font-size: 14px;
 }
 
 .progress-series-location {
-    color: #888;
-    font-size: 10px;
     margin-top: 4px;
+    color: #888;
+    font-size: 11px;
 }
 
 .progress-series-count {
     text-align: right;
-    color: #bbb;
-    font-size: 13px;
+    color: #aaa;
+    font-size: 12px;
 }
 
 .progress-series-percent {
     text-align: right;
-    color: #ff6666;
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: 900;
 }
 
-.progress-series-row.complete .progress-series-percent {
-    color: #ffaaaa;
-}
 
 /* ============================================================
-   CATALOG TITLE
+   COLLECTION TOOLS
+============================================================ */
+
+.collection-tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0 15px;
+}
+
+.collection-tools input {
+    flex: 1;
+    min-width: 0;
+
+    padding: 12px 14px;
+
+    border: 1px solid #333;
+    border-radius: 9px;
+
+    background: #101010;
+    color: #fff;
+    outline: none;
+}
+
+.collection-tools input:focus {
+    border-color: #666;
+}
+
+.tool-button {
+    padding: 11px 14px;
+
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    background: #151515;
+    color: #fff;
+
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.tool-button:hover {
+    background: #222;
+}
+
+.reset-button {
+    border-color: #722;
+}
+
+
+/* ============================================================
+   CATALOG HEADING
 ============================================================ */
 
 .catalog-heading {
-    text-align: center;
-    margin: 55px 0 30px;
-}
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
 
-.catalog-line {
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #680000,
-            transparent
-        );
+    margin: 30px 0 15px;
 }
 
 .catalog-heading h2 {
-    margin: 18px 0 10px;
-    font-size: 25px;
-    letter-spacing: 3px;
+    margin: 0;
 }
 
-.collection-legend {
-    margin-top: 12px;
-    color: #888;
+.legend {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: #999;
     font-size: 11px;
-    letter-spacing: 1px;
 }
 
-.collection-legend .gold {
-    color: #e6c85c;
-}
 
 /* ============================================================
    LOCATION SECTION
 ============================================================ */
 
 .location-section {
-    margin-top: 50px;
-    scroll-margin-top: 30px;
+    margin-top: 35px;
 }
 
 .location-header {
-    position: relative;
+    padding: 18px 20px;
 
-    padding: 25px 30px;
-    margin-bottom: 25px;
+    border: 1px solid #333;
+    border-radius: 12px;
 
-    border-top: 2px solid #680000;
-    border-bottom: 2px solid #680000;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(70,0,0,0.4),
-            rgba(0,0,0,0.15),
-            rgba(70,0,0,0.4)
-        );
-
-    text-align: center;
+    background: #111;
 }
 
 .location-header h2 {
     margin: 0;
-    font-size: clamp(26px, 4vw, 38px);
-    letter-spacing: 4px;
+    font-size: 24px;
 }
 
 .location-header p {
+    margin: 6px 0 0;
     color: #999;
-    margin: 8px 0 0;
+    font-size: 12px;
 }
+
 
 /* ============================================================
    SERIES
 ============================================================ */
 
 .series {
-    margin-bottom: 55px;
+    margin-top: 22px;
+}
+
+.series.complete {
+    opacity: 1;
 }
 
 .series-divider {
-    position: relative;
+    display: grid;
+    grid-template-columns:
+        100px
+        minmax(0, 1fr)
+        auto
+        auto;
 
-    padding: 18px 22px;
-    margin-bottom: 18px;
+    align-items: center;
+    gap: 15px;
 
-    border-left: 5px solid #b00000;
-    border-radius: 0 12px 12px 0;
+    margin-bottom: 12px;
+    padding: 12px 15px;
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(100,0,0,0.35),
-            rgba(10,10,10,0.9)
-        );
+    border-left: 3px solid #444;
 
-    box-shadow:
-        inset 0 0 20px rgba(100,0,0,0.08);
-}
-
-.series.complete .series-divider {
-    border-left-color: #ff2222;
-
-    box-shadow:
-        0 0 20px rgba(255,0,0,0.15),
-        inset 0 0 20px rgba(255,0,0,0.08);
+    background: #0c0c0c;
 }
 
 .series-number {
-    color: #ff3333;
-    font-weight: bold;
-    font-size: 13px;
-    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 900;
+    color: #aaa;
 }
 
 .series-title {
-    font-size: 21px;
-    font-weight: bold;
-    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 900;
 }
 
 .series-count {
     color: #aaa;
-    font-size: 13px;
-    margin-top: 5px;
+    font-size: 11px;
+    white-space: nowrap;
 }
 
 .series-hidden-info {
-    color: #c9b96a;
+    color: #aaa;
     font-size: 11px;
-    margin-top: 4px;
+    white-space: nowrap;
 }
 
+
 /* ============================================================
-   CARDS
+   CARD GRID
 ============================================================ */
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 10px;
-    align-items: start;
+    grid-template-columns:
+        repeat(10, minmax(0, 1fr));
+    gap: 8px;
 }
+
+
+/* ============================================================
+   CARD
+============================================================ */
 
 .card {
     position: relative;
-
     aspect-ratio: 2 / 3;
 
-    min-width: 0;
-
-    border-radius: 8px;
     overflow: hidden;
 
-    background: #050505;
-    border: 1px solid #2b2b2b;
+    border: 1px solid #2a2a2a;
+    border-radius: 7px;
+
+    background: #111;
 
     cursor: pointer;
 
-    filter:
-        grayscale(1)
-        brightness(0.28);
-
     transition:
-        transform 0.2s,
-        filter 0.25s,
-        border-color 0.25s,
-        box-shadow 0.25s;
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        opacity 0.15s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px) scale(1.03);
-    border-color: #8d0000;
-
-    filter:
-        grayscale(0.7)
-        brightness(0.55);
-}
-
-.card.horizontal-card {
-    aspect-ratio: 3 / 2;
-    grid-column: span 2;
-}
-
-.card.owned {
-    filter:
-        grayscale(0)
-        brightness(1);
-
-    border-color: #a90000;
-
-    box-shadow:
-        0 0 10px rgba(255,0,0,0.3),
-        0 0 20px rgba(255,0,0,0.12);
-}
-
-.card.owned:hover {
-    border-color: #ff2222;
-
-    box-shadow:
-        0 0 15px rgba(255,0,0,0.5),
-        0 0 30px rgba(255,0,0,0.2);
-}
-
-.card.hidden-card {
-    border: 2px solid #c9a227;
-
-    box-shadow:
-        0 0 8px rgba(201,162,39,0.28),
-        inset 0 0 8px rgba(201,162,39,0.08);
-}
-
-.card.hidden-card:hover {
-    border-color: #f4d76a;
-
-    box-shadow:
-        0 0 14px rgba(244,215,106,0.45),
-        0 0 28px rgba(201,162,39,0.20);
-}
-
-.card.hidden-card.owned {
-    border: 2px solid #e6c85c;
-
-    box-shadow:
-        0 0 12px rgba(230,200,92,0.60),
-        0 0 25px rgba(201,162,39,0.28);
-}
-
-.card.hidden-card.owned:hover {
-    border-color: #ffe98a;
-
-    box-shadow:
-        0 0 18px rgba(255,225,100,0.75),
-        0 0 35px rgba(201,162,39,0.35);
-}
-
-.hidden-badge {
-    position: absolute;
-
-    top: 5px;
-    right: 5px;
-
-    padding: 3px 5px;
-
-    border-radius: 5px;
-
-    background: rgba(25,18,0,0.90);
-
-    border: 1px solid #c9a227;
-
-    color: #f4d76a;
-
-    font-size: 8px;
-    font-weight: bold;
-
-    letter-spacing: 0.5px;
-
-    z-index: 5;
+    transform: translateY(-3px);
+    border-color: #777;
 }
 
 .card img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
-}
 
-.card.horizontal-card img {
+    display: block;
+
     object-fit: cover;
 }
 
@@ -1008,356 +725,314 @@ header h1 {
     position: absolute;
     inset: 0;
 
-    display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #555;
-    font-size: 11px;
-    text-align: center;
-    padding: 5px;
+    background: #171717;
+    color: #666;
+
+    font-size: 10px;
+    font-weight: 900;
 }
+
+
+/* ============================================================
+   HORIZONTAL CARD
+============================================================ */
+
+.card.horizontal-card {
+    aspect-ratio: 3 / 2;
+}
+
+.card.horizontal-card img {
+    object-fit: cover;
+}
+
+
+/* ============================================================
+   CARD NUMBER
+============================================================ */
 
 .card-number {
     position: absolute;
-
     top: 5px;
     left: 5px;
 
-    padding: 3px 6px;
+    padding: 3px 5px;
 
-    border-radius: 5px;
+    border-radius: 4px;
 
-    background: rgba(0,0,0,0.78);
-    color: #ddd;
-
-    font-size: 10px;
-    font-weight: bold;
-
-    z-index: 4;
-}
-
-.card-status {
-    position: absolute;
-
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    padding: 5px 3px;
-
-    background:
-        linear-gradient(
-            transparent,
-            rgba(0,0,0,0.95)
-        );
-
-    color: #aaa;
+    background: rgba(0, 0, 0, 0.75);
 
     font-size: 9px;
-    text-align: center;
-
-    opacity: 0;
-    transition: 0.2s;
-
-    z-index: 3;
+    font-weight: 900;
 }
 
-.card:hover .card-status,
-.card.owned .card-status {
-    opacity: 1;
-}
 
-.card.owned .card-status {
-    color: #ffdddd;
-}
+/* ============================================================
+   HEART
+============================================================ */
 
 .heart {
     position: absolute;
-
-    right: 5px;
     top: 5px;
+    right: 5px;
 
-    font-size: 12px;
-
-    opacity: 0;
-    transform: scale(0.5);
-
-    transition: 0.2s;
-
-    z-index: 4;
+    opacity: 0.4;
+    font-size: 11px;
 }
 
 .card.owned .heart {
     opacity: 1;
-    transform: scale(1);
 }
+
 
 /* ============================================================
-   TOOLS
+   CARD STATUS
 ============================================================ */
 
-.tools {
-    position: sticky;
-    bottom: 12px;
+.card-status {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-    z-index: 100;
+    padding: 5px 3px;
 
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+    background: rgba(0, 0, 0, 0.8);
 
-    margin: 20px auto;
+    text-align: center;
 
-    padding: 10px;
-
-    width: fit-content;
-
-    background: rgba(0,0,0,0.9);
-    border: 1px solid #510000;
-    border-radius: 12px;
-
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    font-size: 8px;
+    font-weight: 900;
 }
 
-.search-box {
-    width: 200px;
 
-    padding: 10px 13px;
+/* ============================================================
+   OWNED
+============================================================ */
 
-    background: #0b0b0b;
-    color: white;
-
-    border: 1px solid #470000;
-    border-radius: 8px;
-
-    outline: none;
+.card.owned {
+    border-color: #777;
 }
 
-.search-box:focus {
-    border-color: #c00000;
+.card.owned img {
+    filter: brightness(1.05);
 }
 
-.action-btn {
-    padding: 10px 15px;
 
-    border: 1px solid #600000;
-    border-radius: 8px;
+/* ============================================================
+   HIDDEN CARD
+============================================================ */
 
-    background: #180000;
-    color: white;
-
-    cursor: pointer;
+.card.hidden-card {
+    border-color: #555;
 }
 
-.action-btn:hover {
-    background: #750000;
+.hidden-badge {
+    position: absolute;
+
+    left: 3px;
+    right: 3px;
+    bottom: 25px;
+
+    padding: 3px;
+
+    border-radius: 4px;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    text-align: center;
+
+    font-size: 7px;
+    font-weight: 900;
 }
+
 
 /* ============================================================
    FOOTER
 ============================================================ */
 
 footer {
-    margin-top: 70px;
     padding: 35px 20px;
+    border-top: 1px solid #222;
 
     text-align: center;
-
     color: #666;
 
-    border-top: 1px solid #310000;
-    background: #050505;
+    font-size: 11px;
 }
 
-footer strong {
-    color: #aaa;
-}
 
 /* ============================================================
-   TABLET
+   RESPONSIVE 1200
 ============================================================ */
 
 @media (max-width: 1200px) {
 
     .cards-grid {
-        grid-template-columns: repeat(6, 1fr);
-    }
-
-    .summary-stats {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns:
+            repeat(6, minmax(0, 1fr));
     }
 
 }
 
+
 /* ============================================================
-   MOBILE
+   RESPONSIVE 700
 ============================================================ */
 
 @media (max-width: 700px) {
 
     header {
-        padding-top: 30px;
-    }
-
-    .logo {
-        width: min(260px, 70vw);
-        max-height: 130px;
-    }
-
-    header h1 {
-        font-size: 22px;
-        letter-spacing: 2px;
-    }
-
-    .subtitle {
-        font-size: 12px;
-        line-height: 1.6;
-    }
-
-    .account-area {
-        width: 94%;
-    }
-
-    .user-panel {
-        justify-content: space-between;
+        padding-top: 25px;
     }
 
     .music-player {
-        position: fixed;
-
         top: auto;
-        bottom: 10px;
-        left: 10px;
         right: 10px;
-
+        left: 10px;
+        bottom: 10px;
         width: auto;
-
-        padding: 10px;
-    }
-
-    .music-controls {
-        gap: 5px;
-    }
-
-    .music-btn {
-        height: 32px;
-        min-width: 35px;
-    }
-
-    .volume-area {
-        display: none;
     }
 
     .location-grid {
         grid-template-columns: 1fr;
     }
 
-    .location-card {
-        padding: 25px;
-    }
-
-    .summary {
-        padding: 18px;
-    }
-
-    .summary-stats {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .stat {
-        min-height: 125px;
-    }
-
-    .stat-number {
-        font-size: 30px;
-    }
-
-    .stat-bottom .stat-number {
-        font-size: 23px;
-    }
-
-    .cards-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 7px;
-    }
-
-    .series-divider {
-        padding: 15px;
-    }
-
-    .series-title {
-        font-size: 17px;
-    }
-
-    .tools {
-        position: relative;
-        bottom: auto;
-
-        width: 94%;
-
-        flex-wrap: wrap;
-    }
-
-    .search-box {
-        width: 100%;
-    }
-
-    .collection-legend {
-        line-height: 1.8;
+    .summary-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
     }
 
     .progress-series-row {
         grid-template-columns:
-            42px
+            45px
             minmax(0, 1fr)
-            70px;
+            65px
+            50px;
+
         gap: 8px;
-        padding: 13px 10px;
-    }
-
-    .progress-series-percent {
-        display: none;
-    }
-
-    .progress-series-count {
-        font-size: 11px;
+        padding: 10px;
     }
 
     .progress-series-title {
-        font-size: 13px;
+        font-size: 12px;
+    }
+
+    .progress-series-count,
+    .progress-series-percent {
+        font-size: 10px;
+    }
+
+    .series-divider {
+        grid-template-columns:
+            70px
+            minmax(0, 1fr);
+
+        gap: 5px;
+    }
+
+    .series-count,
+    .series-hidden-info {
+        grid-column: 2;
+    }
+
+    .cards-grid {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
     }
 
 }
 
+
 /* ============================================================
-   SMALL PHONE
+   RESPONSIVE 430
 ============================================================ */
 
 @media (max-width: 430px) {
 
-    .cards-grid {
-        grid-template-columns: repeat(3, 1fr);
+    main {
+        width: 94vw;
     }
 
-    .card.horizontal-card {
-        grid-column: span 2;
+    .summary-grid {
+        gap: 6px;
     }
+
+    .stat-box {
+        padding: 13px 5px;
+    }
+
+    .stat-number {
+        font-size: 20px;
+    }
+
+    .stat-label {
+        font-size: 8px;
+    }
+
+    .collection-tools {
+        flex-wrap: wrap;
+    }
+
+    .collection-tools input {
+        flex-basis: 100%;
+    }
+
+    .catalog-heading {
+        display: block;
+    }
+
+    .legend {
+        margin-top: 10px;
+    }
+
+    .cards-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ============================================================
+   SMALL SCREEN SERIES PROGRESS
+============================================================ */
+
+@media (max-width: 430px) {
 
     .progress-series-row {
         grid-template-columns:
-            38px
+            32px
             minmax(0, 1fr)
-            62px;
+            50px
+            40px;
+
+        gap: 5px;
+    }
+
+    .progress-series-number {
+        font-size: 13px;
+    }
+
+    .progress-series-title {
+        font-size: 10px;
+    }
+
+    .progress-series-location {
+        font-size: 8px;
     }
 
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <!-- ============================================================
      MUSIC PLAYER
@@ -1369,7 +1044,10 @@ footer strong {
         🎵 NOW PLAYING
     </div>
 
-    <div class="music-track" id="musicTrackName">
+    <div
+        class="music-track"
+        id="musicTrackName"
+    >
         song 1
     </div>
 
@@ -1428,7 +1106,11 @@ footer strong {
 
 </div>
 
-<audio id="audioPlayer" preload="auto"></audio>
+
+<audio
+    id="audioPlayer"
+    preload="auto"
+></audio>
 
 
 <!-- ============================================================
@@ -1452,7 +1134,10 @@ footer strong {
         Because of love, every card has its own value. 🖤🤍❤️
     </div>
 
+
     <div class="account-area">
+
+        <!-- LOGIN -->
 
         <div
             class="login-panel"
@@ -1482,6 +1167,9 @@ footer strong {
             ></div>
 
         </div>
+
+
+        <!-- USER -->
 
         <div
             class="login-panel user-panel"
@@ -1525,329 +1213,319 @@ footer strong {
 </header>
 
 
-<main class="container">
+<!-- ============================================================
+     MAIN
+============================================================ -->
 
-    <!-- ========================================================
-         HOME
-    ======================================================== -->
-
-    <section class="home">
-
-        <div class="section-title">
-
-            <h2>
-                MY CARD COLLECTION
-            </h2>
-
-            <p>
-                Choose your collection
-            </p>
-
-        </div>
-
-        <div
-            class="location-grid"
-            id="locationGrid"
-        ></div>
-
-    </section>
+<main>
 
 
-    <!-- ========================================================
-         COLLECTION SUMMARY
-    ======================================================== -->
+<!-- ============================================================
+     HOME
+============================================================ -->
 
-    <section class="summary">
+<section class="home-section">
 
-        <div class="summary-title">
-            COLLECTION SUMMARY
-        </div>
-
-        <div class="summary-stats">
-
-            <!-- BOX 1 -->
-
-            <div class="stat">
-
-                <div class="stat-top">
-
-                    <div
-                        class="stat-number"
-                        id="cardTotal"
-                    >
-                        0
-                    </div>
-
-                    <div class="stat-label">
-                        TOTAL CARDS
-                    </div>
-
-                </div>
-
-                <div class="stat-bottom">
-
-                    <div
-                        class="stat-number"
-                        id="cardCollected"
-                    >
-                        0
-                    </div>
-
-                    <div class="stat-label">
-                        TOTAL CARDS COLLECTED
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- BOX 2 -->
-
-            <div class="stat hidden-stat">
-
-                <div class="stat-top">
-
-                    <div
-                        class="stat-number"
-                        id="hiddenTotal"
-                    >
-                        0
-                    </div>
-
-                    <div class="stat-label">
-                        ✨ HIDDEN CARDS
-                    </div>
-
-                </div>
-
-                <div class="stat-bottom">
-
-                    <div
-                        class="stat-number"
-                        id="hiddenCollected"
-                    >
-                        0
-                    </div>
-
-                    <div class="stat-label">
-                        ✨ TOTAL HIDDEN CARDS COLLECTED
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- BOX 3 -->
-
-            <div class="stat summary-series-stat">
-
-                <div class="stat-top">
-
-                    <div
-                        class="stat-number"
-                        id="seriesTotal"
-                    >
-                        0
-                    </div>
-
-                    <div class="stat-label">
-                        SERIES
-                    </div>
-
-                </div>
-
-                <div class="stat-bottom">
-
-                    <div
-                        class="stat-number"
-                        id="seriesComplete"
-                    >
-                        0
-                    </div>
-
-                    <div class="stat-label">
-                        TOTAL SERIES COMPLETE
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- OVERALL PROGRESS -->
-
-        <div class="progress-wrapper">
-
-            <div class="progress-label">
-
-                <span>
-                    Overall Progress
-                </span>
-
-                <span id="progressText">
-                    0%
-                </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <div
-                    class="progress-fill"
-                    id="progressFill"
-                ></div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ========================================================
-         VIEW SERIES PROGRESS BUTTON
-    ======================================================== -->
+    <h2>
+        📍 COLLECTION
+    </h2>
 
     <div
-        class="progress-view-button-wrapper"
-        id="progressButtonWrapper"
-    >
+        class="location-grid"
+        id="locationGrid"
+    ></div>
 
-        <button
-            class="progress-view-button"
-            onclick="showSeriesProgress()"
-        >
-            📊 VIEW SERIES PROGRESS
-        </button>
-
-    </div>
+</section>
 
 
-    <!-- ========================================================
-         SERIES PROGRESS VIEW
-    ======================================================== -->
+<!-- ============================================================
+     SUMMARY
+============================================================ -->
 
-    <section id="seriesProgressView">
+<section class="summary">
 
-        <div class="progress-page-header">
+    <h2>
+        📦 COLLECTION SUMMARY
+    </h2>
 
-            <h2>
-                📊 SERIES PROGRESS
-            </h2>
+    <div class="summary-grid">
 
-            <p>
-                Track your collection progress across all 55 series.
-            </p>
+        <div class="stat-box">
 
-        </div>
+            <div class="stat-label">
+                Total Cards
+            </div>
 
-        <div class="progress-back-button-wrapper">
-
-            <button
-                class="progress-back-button"
-                onclick="showCollection()"
+            <div
+                class="stat-number"
+                id="cardTotal"
             >
-                ← BACK TO COLLECTION
-            </button>
+                0
+            </div>
 
         </div>
 
-        <div
-            class="progress-list"
-            id="seriesProgressList"
-        ></div>
 
-    </section>
+        <div class="stat-box">
+
+            <div class="stat-label">
+                Cards Collected
+            </div>
+
+            <div
+                class="stat-number"
+                id="cardCollected"
+            >
+                0
+            </div>
+
+        </div>
 
 
-    <!-- ========================================================
-         TOOLS
-    ======================================================== -->
+        <div class="stat-box">
 
-    <div
-        class="tools"
-        id="collectionTools"
-    >
+            <div class="stat-label">
+                Missing Cards
+            </div>
 
-        <input
-            class="search-box"
-            id="searchInput"
-            type="text"
-            placeholder="🔎 Search card number..."
-        >
+            <div
+                class="stat-number"
+                id="cardMissing"
+            >
+                0
+            </div>
 
-        <button
-            class="action-btn"
-            onclick="resetSearch()"
-        >
-            CLEAR
-        </button>
+        </div>
 
-        <button
-            class="action-btn"
-            onclick="resetCollection()"
-        >
-            RESET COLLECTION
-        </button>
+
+        <div class="stat-box">
+
+            <div class="stat-label">
+                Hidden Cards
+            </div>
+
+            <div
+                class="stat-number"
+                id="hiddenTotal"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <div class="stat-label">
+                Hidden Collected
+            </div>
+
+            <div
+                class="stat-number"
+                id="hiddenCollected"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <div class="stat-label">
+                Series
+            </div>
+
+            <div
+                class="stat-number"
+                id="seriesTotal"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <div class="stat-label">
+                Series Complete
+            </div>
+
+            <div
+                class="stat-number"
+                id="seriesComplete"
+            >
+                0
+            </div>
+
+        </div>
 
     </div>
 
 
-    <!-- ========================================================
-         CARD CATALOG
-    ======================================================== -->
+    <div class="overall-progress">
 
-    <section
-        class="catalog-heading"
-        id="catalogHeading"
-    >
+        <div class="progress-header">
 
-        <div class="catalog-line"></div>
+            <span>
+                OVERALL COLLECTION
+            </span>
 
-        <h2>
-            📖 CARD CATALOG
-        </h2>
-
-        <div class="collection-legend">
-
-            🖼️ Horizontal Card
-            &nbsp; • &nbsp;
-
-            <span class="gold">
-                ✨ Gold Border = Hidden Card
+            <span id="progressText">
+                0%
             </span>
 
         </div>
 
-        <div class="catalog-line"></div>
+        <div class="progress-bar">
 
-    </section>
+            <div
+                class="progress-fill"
+                id="progressFill"
+            ></div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- ========================================================
-         COLLECTION
-    ======================================================== -->
+<!-- ============================================================
+     SERIES PROGRESS BUTTON
+============================================================ -->
+
+<div id="progressButtonWrapper">
+
+    <button
+        class="series-progress-button"
+        onclick="showSeriesProgress()"
+    >
+        📊 VIEW SERIES PROGRESS
+    </button>
+
+</div>
+
+
+<!-- ============================================================
+     SERIES PROGRESS VIEW
+============================================================ -->
+
+<section id="seriesProgressView">
+
+    <div class="progress-page-header">
+
+        <h2>
+            📊 SERIES PROGRESS
+        </h2>
+
+        <!-- IMPORTANT:
+             NO HARDCODED 54 / 55 HERE
+        -->
+
+        <p id="seriesProgressDescription">
+            Track your collection progress across all series.
+        </p>
+
+    </div>
+
 
     <div
-        id="collectionContainer"
+        class="progress-series-list"
+        id="seriesProgressList"
     ></div>
+
+</section>
+
+
+<!-- ============================================================
+     COLLECTION TOOLS
+============================================================ -->
+
+<div
+    class="collection-tools"
+    id="collectionTools"
+>
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search card number... e.g. 001"
+    >
+
+    <button
+        class="tool-button"
+        onclick="resetSearch()"
+    >
+        CLEAR
+    </button>
+
+    <button
+        class="tool-button reset-button"
+        onclick="resetCollection()"
+    >
+        RESET
+    </button>
+
+</div>
+
+
+<!-- ============================================================
+     CATALOG HEADING
+============================================================ -->
+
+<div
+    class="catalog-heading"
+    id="catalogHeading"
+>
+
+    <h2>
+        📚 CARD CATALOG
+    </h2>
+
+    <div class="legend">
+
+        <span>
+            🖤 Collected
+        </span>
+
+        <span>
+            ✨ Hidden
+        </span>
+
+        <span>
+            ↔ Horizontal
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     COLLECTION CONTAINER
+============================================================ -->
+
+<div
+    id="collectionContainer"
+></div>
+
 
 </main>
 
 
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+
 <footer>
 
-    <strong>
-        PERTHSANTA CARD COLLECTION
-    </strong>
+    PERTHSANTA CARD COLLECTION 🖤🤍❤️
 
     <br><br>
 
-    Because of love, every card has its own value. 🖤🤍❤️
+    Every card has its own value.
 
 </footer>
 
@@ -1855,7 +1533,8 @@ footer strong {
 <script>
 
 /* ============================================================
-   SUPABASE CONFIG
+   SUPABASE
+   KEEP THIS EXACTLY AS PROVIDED
 ============================================================ */
 
 const SUPABASE_URL =
@@ -1870,12 +1549,14 @@ const supabaseClient =
         SUPABASE_PUBLISHABLE_KEY
     );
 
+
 let currentUser = null;
+
 let cloudSyncReady = false;
 
 
 /* ============================================================
-   LOCATION DATA
+   LOCATIONS
 ============================================================ */
 
 const locations = [
@@ -1906,10 +1587,6 @@ const locations = [
 ============================================================ */
 
 const seriesData = [
-
-    /* ========================================================
-       PERTH
-    ======================================================== */
 
     {
         location: "Perth",
@@ -2036,10 +1713,6 @@ const seriesData = [
     },
 
 
-    /* ========================================================
-       SANTA
-    ======================================================== */
-
     {
         location: "Santa",
 
@@ -2084,10 +1757,6 @@ const seriesData = [
         ]
     },
 
-
-    /* ========================================================
-       PERTHSANTA
-    ======================================================== */
 
     {
         location: "PerthSanta",
@@ -2287,30 +1956,74 @@ const seriesData = [
 const STORAGE_KEY =
     "myCardCollection";
 
-let collection = JSON.parse(
-    localStorage.getItem(STORAGE_KEY) || "{}"
-);
+
+let collection =
+    JSON.parse(
+        localStorage.getItem(
+            STORAGE_KEY
+        ) || "{}"
+    );
+
+
+/* ============================================================
+   GET REAL TOTAL SERIES COUNT
+   THIS IS THE IMPORTANT PART
+============================================================ */
+
+function getTotalSeriesCount() {
+
+    return seriesData.reduce(
+        (
+            total,
+            locationData
+        ) => {
+
+            return (
+                total +
+                locationData.series.length
+            );
+
+        },
+        0
+    );
+
+}
 
 
 /* ============================================================
    LOCATION ICON
 ============================================================ */
 
-function getLocationIcon(locationName) {
+function getLocationIcon(
+    locationName
+) {
 
-    if (locationName === "Perth") {
+    if (
+        locationName === "Perth"
+    ) {
+
         return "🐯🖤";
+
     }
 
-    if (locationName === "Santa") {
+    if (
+        locationName === "Santa"
+    ) {
+
         return "🐱🤍";
+
     }
 
-    if (locationName === "PerthSanta") {
+    if (
+        locationName === "PerthSanta"
+    ) {
+
         return "🖤🤍❤️";
+
     }
 
     return "👿";
+
 }
 
 
@@ -2324,113 +2037,9 @@ function getCardKey(
     cardNumber
 ) {
 
-    return `${location}-${seriesIndex}-${cardNumber}`;
-
-}
-
-
-/* ============================================================
-   SYNC MESSAGE
-============================================================ */
-
-function showSyncMessage(
-    message,
-    isError = false
-) {
-
-    const element =
-        document.getElementById(
-            "syncMessage"
-        );
-
-    if (!element) {
-        return;
-    }
-
-    element.textContent =
-        message;
-
-    element.classList.toggle(
-        "error",
-        isError
+    return (
+        `${location}-${seriesIndex}-${cardNumber}`
     );
-
-    element.style.display =
-        "block";
-
-    if (!isError) {
-
-        setTimeout(() => {
-
-            if (
-                element.textContent ===
-                message
-            ) {
-
-                element.style.display =
-                    "none";
-
-            }
-
-        }, 3500);
-
-    }
-
-}
-
-
-/* ============================================================
-   CLOUD STATUS
-============================================================ */
-
-function updateCloudStatus(message) {
-
-    const status =
-        document.getElementById(
-            "cloudStatus"
-        );
-
-    if (status) {
-        status.textContent =
-            message;
-    }
-
-}
-
-
-/* ============================================================
-   SAVE LOCAL
-============================================================ */
-
-function saveCollection() {
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(collection)
-    );
-
-}
-
-
-/* ============================================================
-   GET OWNED
-============================================================ */
-
-function getOwnedCardEntries() {
-
-    const entries = [];
-
-    Object.keys(collection).forEach(
-        key => {
-
-            if (collection[key] === true) {
-                entries.push(key);
-            }
-
-        }
-    );
-
-    return entries;
 
 }
 
@@ -2439,33 +2048,37 @@ function getOwnedCardEntries() {
    PARSE CARD KEY
 ============================================================ */
 
-function parseCardKey(key) {
+function parseCardKey(
+    key
+) {
 
     const parts =
         key.split("-");
 
-    if (parts.length < 3) {
+    if (
+        parts.length < 3
+    ) {
+
         return null;
+
     }
+
 
     const cardNumber =
         Number(
-            parts[parts.length - 1]
+            parts.pop()
         );
 
     const seriesIndex =
         Number(
-            parts[parts.length - 2]
+            parts.pop()
         );
 
     const location =
-        parts.slice(
-            0,
-            parts.length - 2
-        ).join("-");
+        parts.join("-");
+
 
     if (
-        !location ||
         Number.isNaN(seriesIndex) ||
         Number.isNaN(cardNumber)
     ) {
@@ -2474,17 +2087,20 @@ function parseCardKey(key) {
 
     }
 
+
     return {
+
         location,
         seriesIndex,
         cardNumber
+
     };
 
 }
 
 
 /* ============================================================
-   CARD TYPE HELPERS
+   HIDDEN CARD
 ============================================================ */
 
 function isHiddenCard(
@@ -2500,6 +2116,10 @@ function isHiddenCard(
 }
 
 
+/* ============================================================
+   HORIZONTAL CARD
+============================================================ */
+
 function isHorizontalCard(
     series,
     number
@@ -2514,694 +2134,76 @@ function isHorizontalCard(
 
 
 /* ============================================================
-   LOGIN WITH GOOGLE
+   SAVE LOCAL COLLECTION
 ============================================================ */
 
-async function loginWithGoogle() {
+function saveCollection() {
 
-    const button =
-        document.getElementById(
-            "googleLoginButton"
-        );
-
-    if (button) {
-
-        button.disabled = true;
-
-        button.textContent =
-            "🔄 CONNECTING...";
-
-    }
-
-    showSyncMessage(
-        "Opening Google login..."
-    );
-
-    const redirectTo =
-        window.location.origin +
-        window.location.pathname;
-
-    const { error } =
-        await supabaseClient.auth.signInWithOAuth({
-
-            provider: "google",
-
-            options: {
-                redirectTo: redirectTo
-            }
-
-        });
-
-    if (error) {
-
-        console.error(
-            "Google login error:",
-            error
-        );
-
-        showSyncMessage(
-            "Google login failed: " +
-            error.message,
-            true
-        );
-
-        if (button) {
-
-            button.disabled = false;
-
-            button.textContent =
-                "🔐 SIGN IN WITH GOOGLE";
-
-        }
-
-    }
-
-}
-
-
-/* ============================================================
-   LOGOUT
-============================================================ */
-
-async function logout() {
-
-    const confirmed =
-        confirm(
-            "Log out from your Google account?"
-        );
-
-    if (!confirmed) {
-        return;
-    }
-
-    const { error } =
-        await supabaseClient.auth.signOut();
-
-    if (error) {
-
-        console.error(
-            "Logout error:",
-            error
-        );
-
-        alert(
-            "Logout failed: " +
-            error.message
-        );
-
-        return;
-
-    }
-
-    currentUser = null;
-    cloudSyncReady = false;
-
-    updateLoginUI(null);
-
-    showSyncMessage(
-        "Logged out. Your local collection remains on this device."
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(collection)
     );
 
 }
 
 
 /* ============================================================
-   LOGIN UI
+   SYNC MESSAGE
 ============================================================ */
 
-function updateLoginUI(user) {
-
-    const loginPanel =
-        document.getElementById(
-            "loginPanel"
-        );
-
-    const userPanel =
-        document.getElementById(
-            "userPanel"
-        );
-
-    const userName =
-        document.getElementById(
-            "userName"
-        );
-
-    const userEmail =
-        document.getElementById(
-            "userEmail"
-        );
-
-    if (!user) {
-
-        loginPanel.style.display =
-            "block";
-
-        userPanel.style.display =
-            "none";
-
-        return;
-
-    }
-
-    loginPanel.style.display =
-        "none";
-
-    userPanel.style.display =
-        "flex";
-
-    const metadata =
-        user.user_metadata || {};
-
-    const name =
-        metadata.full_name ||
-        metadata.name ||
-        "Google User";
-
-    const email =
-        user.email ||
-        "";
-
-    userName.textContent =
-        name;
-
-    userEmail.textContent =
-        email;
-
-}
-
-
-/* ============================================================
-   LOAD CLOUD
-============================================================ */
-
-async function loadCloudCollection() {
-
-    if (!currentUser) {
-        return;
-    }
-
-    updateCloudStatus(
-        "☁️ Loading cloud collection..."
-    );
-
-    const { data, error } =
-        await supabaseClient
-            .from("card_collection")
-            .select(
-                "location, series_index, card_number, owned"
-            )
-            .eq(
-                "user_id",
-                currentUser.id
-            );
-
-    if (error) {
-
-        console.error(
-            "Load cloud collection error:",
-            error
-        );
-
-        updateCloudStatus(
-            "⚠️ Cloud sync error"
-        );
-
-        showSyncMessage(
-            "Could not load cloud collection: " +
-            error.message,
-            true
-        );
-
-        return;
-
-    }
-
-    const cloudCollection = {};
-
-    (data || []).forEach(
-        row => {
-
-            if (row.owned === true) {
-
-                const key =
-                    getCardKey(
-                        row.location,
-                        row.series_index,
-                        row.card_number
-                    );
-
-                cloudCollection[key] =
-                    true;
-
-            }
-
-        }
-    );
-
-    const localKeys =
-        getOwnedCardEntries();
-
-
-    /* FIRST LOGIN / EMPTY CLOUD */
-
-    if (
-        Object.keys(cloudCollection).length === 0 &&
-        localKeys.length > 0
-    ) {
-
-        showSyncMessage(
-            `Found ${localKeys.length} cards on this device. Uploading them to your cloud collection...`
-        );
-
-        const success =
-            await uploadLocalCollection();
-
-        if (success) {
-
-            cloudSyncReady =
-                true;
-
-            updateCloudStatus(
-                "☁️ Cloud Sync On"
-            );
-
-            showSyncMessage(
-                `☁️ ${localKeys.length} cards saved to your cloud collection.`
-            );
-
-            return;
-
-        }
-
-    }
-
-
-    /* MERGE LOCAL + CLOUD */
-
-    let mergedCollection = {
-        ...cloudCollection
-    };
-
-    let localOnlyCount = 0;
-
-    localKeys.forEach(
-        key => {
-
-            if (!mergedCollection[key]) {
-
-                mergedCollection[key] =
-                    true;
-
-                localOnlyCount++;
-
-            }
-
-        }
-    );
-
-    collection =
-        mergedCollection;
-
-    saveCollection();
-
-    if (localOnlyCount > 0) {
-        await uploadLocalCollection();
-    }
-
-    cloudSyncReady =
-        true;
-
-    updateCloudStatus(
-        "☁️ Cloud Sync On"
-    );
-
-    renderCollection();
-    renderLocations();
-    renderSummary();
-
-    showSyncMessage(
-        `☁️ Cloud collection loaded: ${Object.keys(collection).length} cards.`
-    );
-
-}
-
-
-/* ============================================================
-   UPLOAD LOCAL
-============================================================ */
-
-async function uploadLocalCollection() {
-
-    if (!currentUser) {
-        return false;
-    }
-
-    const ownedKeys =
-        getOwnedCardEntries();
-
-    if (ownedKeys.length === 0) {
-        return true;
-    }
-
-    const rows = [];
-
-    ownedKeys.forEach(
-        key => {
-
-            const parsed =
-                parseCardKey(key);
-
-            if (!parsed) {
-                return;
-            }
-
-            rows.push({
-
-                user_id:
-                    currentUser.id,
-
-                location:
-                    parsed.location,
-
-                series_index:
-                    parsed.seriesIndex,
-
-                card_number:
-                    parsed.cardNumber,
-
-                owned:
-                    true,
-
-                updated_at:
-                    new Date().toISOString()
-
-            });
-
-        }
-    );
-
-    if (rows.length === 0) {
-        return true;
-    }
-
-    const { error } =
-        await supabaseClient
-            .from("card_collection")
-            .upsert(
-                rows,
-                {
-                    onConflict:
-                        "user_id,location,series_index,card_number"
-                }
-            );
-
-    if (error) {
-
-        console.error(
-            "Upload collection error:",
-            error
-        );
-
-        showSyncMessage(
-            "Cloud upload failed: " +
-            error.message,
-            true
-        );
-
-        updateCloudStatus(
-            "⚠️ Cloud Sync Error"
-        );
-
-        return false;
-
-    }
-
-    return true;
-
-}
-
-
-/* ============================================================
-   SYNC ONE CARD
-============================================================ */
-
-async function syncCardToCloud(
-    location,
-    seriesIndex,
-    cardNumber,
-    owned
+function showSyncMessage(
+    message
 ) {
 
-    if (
-        !currentUser ||
-        !cloudSyncReady
-    ) {
+    const element =
+        document.getElementById(
+            "syncMessage"
+        );
+
+    if (!element) {
         return;
     }
 
-    const baseQuery =
-        supabaseClient
-            .from("card_collection");
-
-    if (owned) {
-
-        const { error } =
-            await baseQuery.upsert(
-
-                {
-
-                    user_id:
-                        currentUser.id,
-
-                    location:
-                        location,
-
-                    series_index:
-                        seriesIndex,
-
-                    card_number:
-                        cardNumber,
-
-                    owned:
-                        true,
-
-                    updated_at:
-                        new Date().toISOString()
-
-                },
-
-                {
-
-                    onConflict:
-                        "user_id,location,series_index,card_number"
-
-                }
-
-            );
-
-        if (error) {
-
-            console.error(
-                "Cloud card save error:",
-                error
-            );
-
-            updateCloudStatus(
-                "⚠️ Save error"
-            );
-
-            showSyncMessage(
-                "Could not save this card to cloud: " +
-                error.message,
-                true
-            );
-
-            return;
-
-        }
-
-    } else {
-
-        const { error } =
-            await baseQuery
-                .delete()
-                .eq(
-                    "user_id",
-                    currentUser.id
-                )
-                .eq(
-                    "location",
-                    location
-                )
-                .eq(
-                    "series_index",
-                    seriesIndex
-                )
-                .eq(
-                    "card_number",
-                    cardNumber
-                );
-
-        if (error) {
-
-            console.error(
-                "Cloud card delete error:",
-                error
-            );
-
-            updateCloudStatus(
-                "⚠️ Save error"
-            );
-
-            showSyncMessage(
-                "Could not update cloud collection: " +
-                error.message,
-                true
-            );
-
-            return;
-
-        }
-
-    }
-
-    updateCloudStatus(
-        "☁️ Cloud Sync On"
-    );
+    element.textContent =
+        message;
 
 }
 
 
 /* ============================================================
-   RESET CLOUD
+   CLOUD STATUS
 ============================================================ */
 
-async function resetCloudCollection() {
-
-    if (!currentUser) {
-        return true;
-    }
-
-    const { error } =
-        await supabaseClient
-            .from("card_collection")
-            .delete()
-            .eq(
-                "user_id",
-                currentUser.id
-            );
-
-    if (error) {
-
-        console.error(
-            "Cloud reset error:",
-            error
-        );
-
-        showSyncMessage(
-            "Cloud reset failed: " +
-            error.message,
-            true
-        );
-
-        updateCloudStatus(
-            "⚠️ Cloud Sync Error"
-        );
-
-        return false;
-
-    }
-
-    updateCloudStatus(
-        "☁️ Cloud Sync On"
-    );
-
-    return true;
-
-}
-
-
-/* ============================================================
-   AUTH SESSION
-============================================================ */
-
-async function handleAuthSession(
-    session
+function updateCloudStatus(
+    message
 ) {
 
-    if (!session) {
+    const element =
+        document.getElementById(
+            "cloudStatus"
+        );
 
-        currentUser = null;
+    if (element) {
 
-        cloudSyncReady = false;
-
-        updateLoginUI(null);
-
-        return;
+        element.textContent =
+            message;
 
     }
-
-    currentUser =
-        session.user;
-
-    updateLoginUI(
-        currentUser
-    );
-
-    await loadCloudCollection();
 
 }
 
 
 /* ============================================================
-   INITIALIZE AUTH
+   GET OWNED CARD ENTRIES
 ============================================================ */
 
-async function initializeAuth() {
+function getOwnedCardEntries() {
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient.auth.getSession();
-
-    if (error) {
-
-        console.error(
-            "Get session error:",
-            error
-        );
-
-        showSyncMessage(
-            "Could not check login session: " +
-            error.message,
-            true
-        );
-
-        return;
-
-    }
-
-    await handleAuthSession(
-        data.session
-    );
-
-    supabaseClient.auth.onAuthStateChange(
-        async (
-            event,
-            session
-        ) => {
-
-            console.log(
-                "Auth event:",
-                event
-            );
-
-            await handleAuthSession(
-                session
-            );
-
-        }
+    return Object.keys(
+        collection
+    ).filter(
+        key =>
+            collection[key] === true
     );
 
 }
@@ -3214,12 +2216,15 @@ async function initializeAuth() {
 function getTotals() {
 
     let totalCards = 0;
+
     let collected = 0;
 
     let hiddenTotal = 0;
+
     let hiddenCollected = 0;
 
     let totalSeries = 0;
+
     let completedSeries = 0;
 
 
@@ -3234,10 +2239,13 @@ function getTotals() {
 
                     totalSeries++;
 
+
                     totalCards +=
                         series.count;
 
+
                     let seriesCollected = 0;
+
 
                     for (
                         let number = 1;
@@ -3252,14 +2260,17 @@ function getTotals() {
                                 number
                             );
 
+
                         if (
                             collection[key] === true
                         ) {
 
                             collected++;
+
                             seriesCollected++;
 
                         }
+
 
                         if (
                             isHiddenCard(
@@ -3269,6 +2280,7 @@ function getTotals() {
                         ) {
 
                             hiddenTotal++;
+
 
                             if (
                                 collection[key] === true
@@ -3281,6 +2293,7 @@ function getTotals() {
                         }
 
                     }
+
 
                     if (
                         seriesCollected ===
@@ -3304,25 +2317,34 @@ function getTotals() {
             0
         );
 
+
     const percent =
         totalCards === 0
             ? 0
             : Math.round(
-                (collected / totalCards) * 100
+                (
+                    collected /
+                    totalCards
+                ) * 100
             );
 
 
     return {
 
         totalCards,
+
         collected,
+
         missing,
+
         percent,
 
         hiddenTotal,
+
         hiddenCollected,
 
         totalSeries,
+
         completedSeries
 
     };
@@ -3341,49 +2363,77 @@ function renderLocations() {
             "locationGrid"
         );
 
+    if (!container) {
+        return;
+    }
+
+
     container.innerHTML =
         "";
 
-    seriesData.forEach(
-        locationData => {
 
-            let total = 0;
-            let collected = 0;
+    locations.forEach(
+        location => {
 
-            locationData.series.forEach(
-                (
-                    series,
-                    seriesIndex
-                ) => {
+            const locationData =
+                seriesData.find(
+                    item =>
+                        item.location ===
+                        location.name
+                );
 
-                    total +=
-                        series.count;
 
-                    for (
-                        let number = 1;
-                        number <= series.count;
-                        number++
-                    ) {
+            let totalCards = 0;
 
-                        const key =
-                            getCardKey(
-                                locationData.location,
-                                seriesIndex,
-                                number
-                            );
+            let collectedCards = 0;
 
-                        if (
-                            collection[key] === true
+            let totalSeries = 0;
+
+
+            if (locationData) {
+
+                totalSeries =
+                    locationData.series.length;
+
+
+                locationData.series.forEach(
+                    (
+                        series,
+                        seriesIndex
+                    ) => {
+
+                        totalCards +=
+                            series.count;
+
+
+                        for (
+                            let number = 1;
+                            number <= series.count;
+                            number++
                         ) {
 
-                            collected++;
+                            const key =
+                                getCardKey(
+                                    locationData.location,
+                                    seriesIndex,
+                                    number
+                                );
+
+
+                            if (
+                                collection[key] === true
+                            ) {
+
+                                collectedCards++;
+
+                            }
 
                         }
 
                     }
+                );
 
-                }
-            );
+            }
 
 
             const card =
@@ -3391,54 +2441,49 @@ function renderLocations() {
                     "div"
                 );
 
+
             card.className =
                 "location-card";
-
-            card.onclick =
-                () => {
-
-                    showCollection();
-
-                    setTimeout(
-                        () => {
-
-                            const target =
-                                document.getElementById(
-                                    `location-${locationData.location}`
-                                );
-
-                            if (target) {
-
-                                target.scrollIntoView({
-                                    behavior: "smooth"
-                                });
-
-                            }
-
-                        },
-                        50
-                    );
-
-                };
 
 
             card.innerHTML = `
 
                 <div class="location-icon">
-                    ${getLocationIcon(
-                        locationData.location
-                    )}
+                    ${location.icon}
                 </div>
 
                 <div class="location-name">
-                    ${locationData.location}
+                    ${location.name}
                 </div>
 
                 <div class="location-count">
-                    ${collected} / ${total} collected
+                    ${collectedCards} / ${totalCards}
+                    cards collected
+                    ·
+                    ${totalSeries} series
                 </div>
 
             `;
+
+
+            card.onclick =
+                () => {
+
+                    const section =
+                        document.getElementById(
+                            `location-${location.name}`
+                        );
+
+
+                    if (section) {
+
+                        section.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    }
+
+                };
 
 
             container.appendChild(
@@ -3474,6 +2519,12 @@ function renderSummary() {
 
 
     document.getElementById(
+        "cardMissing"
+    ).textContent =
+        totals.missing;
+
+
+    document.getElementById(
         "hiddenTotal"
     ).textContent =
         totals.hiddenTotal;
@@ -3500,13 +2551,13 @@ function renderSummary() {
     document.getElementById(
         "progressText"
     ).textContent =
-        totals.percent + "%";
+        `${totals.percent}%`;
 
 
     document.getElementById(
         "progressFill"
     ).style.width =
-        totals.percent + "%";
+        `${totals.percent}%`;
 
 }
 
@@ -3522,12 +2573,50 @@ function renderSeriesProgress() {
             "seriesProgressList"
         );
 
+
     if (!container) {
         return;
     }
 
+
+    /* ========================================================
+       REAL SERIES COUNT
+    ======================================================== */
+
+    const totalSeries =
+        getTotalSeriesCount();
+
+
+    /* ========================================================
+       UPDATE PAGE DESCRIPTION
+    ======================================================== */
+
+    const description =
+        document.getElementById(
+            "seriesProgressDescription"
+        );
+
+
+    if (description) {
+
+        description.textContent =
+            `Track your collection progress across all ${totalSeries} series.`;
+
+    }
+
+
+    /* ========================================================
+       CLEAR
+    ======================================================== */
+
     container.innerHTML =
         "";
+
+
+    /* ========================================================
+       SERIES NUMBER
+       Automatically follows actual seriesData order.
+    ======================================================== */
 
     let globalSeriesNumber = 0;
 
@@ -3543,7 +2632,9 @@ function renderSeriesProgress() {
 
                     globalSeriesNumber++;
 
+
                     let collected = 0;
+
 
                     for (
                         let number = 1;
@@ -3557,6 +2648,7 @@ function renderSeriesProgress() {
                                 seriesIndex,
                                 number
                             );
+
 
                         if (
                             collection[key] === true
@@ -3573,7 +2665,10 @@ function renderSeriesProgress() {
                         series.count === 0
                             ? 0
                             : Math.round(
-                                (collected / series.count) * 100
+                                (
+                                    collected /
+                                    series.count
+                                ) * 100
                             );
 
 
@@ -3581,6 +2676,7 @@ function renderSeriesProgress() {
                         document.createElement(
                             "div"
                         );
+
 
                     row.className =
                         "progress-series-row";
@@ -3601,32 +2697,50 @@ function renderSeriesProgress() {
                     row.innerHTML = `
 
                         <div class="progress-series-number">
+
                             ${String(
                                 globalSeriesNumber
-                            ).padStart(2, "0")}
+                            ).padStart(
+                                2,
+                                "0"
+                            )}
+
                         </div>
+
 
                         <div class="progress-series-name">
 
                             <div class="progress-series-title">
+
                                 ${series.title}
+
                             </div>
 
+
                             <div class="progress-series-location">
+
                                 ${getLocationIcon(
                                     locationData.location
                                 )}
+
                                 ${locationData.location}
+
                             </div>
 
                         </div>
 
+
                         <div class="progress-series-count">
+
                             ${collected} / ${series.count}
+
                         </div>
 
+
                         <div class="progress-series-percent">
+
                             ${percent}%
+
                         </div>
 
                     `;
@@ -3653,39 +2767,56 @@ function showSeriesProgress() {
 
     renderSeriesProgress();
 
-    document.querySelector(
-        ".summary"
-    ).style.display =
-        "none";
+
+    const summary =
+        document.querySelector(
+            ".summary"
+        );
+
+    if (summary) {
+
+        summary.style.display =
+            "none";
+
+    }
+
 
     document.getElementById(
         "progressButtonWrapper"
     ).style.display =
         "none";
 
+
     document.getElementById(
         "collectionTools"
     ).style.display =
         "none";
+
 
     document.getElementById(
         "catalogHeading"
     ).style.display =
         "none";
 
+
     document.getElementById(
         "collectionContainer"
     ).style.display =
         "none";
+
 
     document.getElementById(
         "seriesProgressView"
     ).style.display =
         "block";
 
+
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
 
 }
@@ -3697,30 +2828,43 @@ function showSeriesProgress() {
 
 function showCollection() {
 
-    document.querySelector(
-        ".summary"
-    ).style.display =
-        "";
+    const summary =
+        document.querySelector(
+            ".summary"
+        );
+
+
+    if (summary) {
+
+        summary.style.display =
+            "";
+
+    }
+
 
     document.getElementById(
         "progressButtonWrapper"
     ).style.display =
         "flex";
 
+
     document.getElementById(
         "collectionTools"
     ).style.display =
         "flex";
+
 
     document.getElementById(
         "catalogHeading"
     ).style.display =
         "";
 
+
     document.getElementById(
         "collectionContainer"
     ).style.display =
         "";
+
 
     document.getElementById(
         "seriesProgressView"
@@ -3734,15 +2878,19 @@ function showCollection() {
    IMAGE FALLBACK
 ============================================================ */
 
-function imageError(img) {
+function imageError(
+    img
+) {
 
     img.style.display =
         "none";
+
 
     const fallback =
         img.parentElement.querySelector(
             ".card-no-image"
         );
+
 
     if (fallback) {
 
@@ -3765,6 +2913,12 @@ function renderCollection() {
             "collectionContainer"
         );
 
+
+    if (!container) {
+        return;
+    }
+
+
     container.innerHTML =
         "";
 
@@ -3777,8 +2931,10 @@ function renderCollection() {
                     "section"
                 );
 
+
             locationSection.className =
                 "location-section";
+
 
             locationSection.id =
                 `location-${locationData.location}`;
@@ -3789,11 +2945,13 @@ function renderCollection() {
                     "div"
                 );
 
+
             locationHeader.className =
                 "location-header";
 
 
             let locationTotal = 0;
+
             let locationCollected = 0;
 
 
@@ -3805,6 +2963,7 @@ function renderCollection() {
 
                     locationTotal +=
                         series.count;
+
 
                     for (
                         let number = 1;
@@ -3819,8 +2978,9 @@ function renderCollection() {
                                 number
                             );
 
+
                         if (
-                            collection[key]
+                            collection[key] === true
                         ) {
 
                             locationCollected++;
@@ -3836,15 +2996,22 @@ function renderCollection() {
             locationHeader.innerHTML = `
 
                 <h2>
+
                     ${getLocationIcon(
                         locationData.location
                     )}
+
                     ${locationData.location}
+
                 </h2>
 
                 <p>
-                    ${locationCollected} / ${locationTotal}
+
+                    ${locationCollected}
+                    /
+                    ${locationTotal}
                     cards collected
+
                 </p>
 
             `;
@@ -3862,7 +3029,9 @@ function renderCollection() {
                 ) => {
 
                     let collected = 0;
+
                     let hiddenCount = 0;
+
                     let hiddenCollected = 0;
 
 
@@ -3879,13 +3048,15 @@ function renderCollection() {
                                 number
                             );
 
+
                         if (
-                            collection[key]
+                            collection[key] === true
                         ) {
 
                             collected++;
 
                         }
+
 
                         if (
                             isHiddenCard(
@@ -3896,8 +3067,9 @@ function renderCollection() {
 
                             hiddenCount++;
 
+
                             if (
-                                collection[key]
+                                collection[key] === true
                             ) {
 
                                 hiddenCollected++;
@@ -3913,6 +3085,7 @@ function renderCollection() {
                         document.createElement(
                             "div"
                         );
+
 
                     seriesElement.className =
                         "series";
@@ -3935,6 +3108,7 @@ function renderCollection() {
                             "div"
                         );
 
+
                     seriesDivider.className =
                         "series-divider";
 
@@ -3942,27 +3116,48 @@ function renderCollection() {
                     seriesDivider.innerHTML = `
 
                         <div class="series-number">
+
                             SERIES ${String(
                                 seriesIndex + 1
-                            ).padStart(2, "0")}
+                            ).padStart(
+                                2,
+                                "0"
+                            )}
+
                         </div>
+
 
                         <div class="series-title">
+
                             ${series.title}
+
                         </div>
 
+
                         <div class="series-count">
-                            ${collected} / ${series.count}
+
+                            ${collected}
+                            /
+                            ${series.count}
                             collected
+
                         </div>
+
 
                         ${
                             hiddenCount > 0
                                 ? `
+
                                     <div class="series-hidden-info">
-                                        ✨ ${hiddenCollected}/${hiddenCount}
+
+                                        ✨
+                                        ${hiddenCollected}
+                                        /
+                                        ${hiddenCount}
                                         hidden collected
+
                                     </div>
+
                                   `
                                 : ""
                         }
@@ -3979,6 +3174,7 @@ function renderCollection() {
                         document.createElement(
                             "div"
                         );
+
 
                     grid.className =
                         "cards-grid";
@@ -4028,28 +3224,36 @@ function renderCollection() {
 
 
                         if (owned) {
+
                             classes.push(
                                 "owned"
                             );
+
                         }
 
 
                         if (hidden) {
+
                             classes.push(
                                 "hidden-card"
                             );
+
                         }
 
 
                         if (horizontal) {
+
                             classes.push(
                                 "horizontal-card"
                             );
+
                         }
 
 
                         card.className =
-                            classes.join(" ");
+                            classes.join(
+                                " "
+                            );
 
 
                         card.dataset.number =
@@ -4073,6 +3277,7 @@ function renderCollection() {
                                 onerror="imageError(this)"
                             >
 
+
                             <div
                                 class="card-no-image"
                                 style="display:none;"
@@ -4080,30 +3285,49 @@ function renderCollection() {
                                 NO IMAGE
                             </div>
 
+
                             <div class="card-number">
-                                ${String(number).padStart(3, "0")}
+
+                                ${String(
+                                    number
+                                ).padStart(
+                                    3,
+                                    "0"
+                                )}
+
                             </div>
+
 
                             ${
                                 hidden
                                     ? `
+
                                         <div class="hidden-badge">
+
                                             ✨ HIDDEN
+
                                         </div>
+
                                       `
                                     : ""
                             }
 
+
                             <div class="heart">
+
                                 🖤
+
                             </div>
 
+
                             <div class="card-status">
+
                                 ${
                                     owned
                                         ? "- 🖤🤍❤️ get"
                                         : "- havent get 😭"
                                 }
+
                             </div>
 
                         `;
@@ -4208,9 +3432,11 @@ function searchCards() {
             "searchInput"
         );
 
+
     if (!input) {
         return;
     }
+
 
     const value =
         input.value.trim();
@@ -4270,11 +3496,25 @@ function searchCards() {
 }
 
 
+/* ============================================================
+   RESET SEARCH
+============================================================ */
+
 function resetSearch() {
 
-    document.getElementById(
-        "searchInput"
-    ).value = "";
+    const input =
+        document.getElementById(
+            "searchInput"
+        );
+
+
+    if (input) {
+
+        input.value =
+            "";
+
+    }
+
 
     searchCards();
 
@@ -4299,6 +3539,7 @@ async function resetCollection() {
         confirm(
             "Are you sure you want to reset your entire collection?"
         );
+
 
     if (!confirmed) {
         return;
@@ -4335,7 +3576,9 @@ async function resetCollection() {
     collection =
         {};
 
+
     saveCollection();
+
 
     renderCollection();
 
@@ -4350,6 +3593,669 @@ async function resetCollection() {
 
         showSyncMessage(
             "☁️ Your cloud collection has been reset."
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   GOOGLE LOGIN
+============================================================ */
+
+async function loginWithGoogle() {
+
+    try {
+
+        showSyncMessage(
+            "☁️ Connecting to Google..."
+        );
+
+
+        const {
+            error
+        } =
+            await supabaseClient.auth.signInWithOAuth({
+
+                provider: "google",
+
+                options: {
+
+                    redirectTo:
+                        window.location.href
+
+                }
+
+            });
+
+
+        if (error) {
+
+            console.error(
+                error
+            );
+
+
+            showSyncMessage(
+                "❌ Google login failed."
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        showSyncMessage(
+            "❌ Login error."
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   LOGOUT
+============================================================ */
+
+async function logout() {
+
+    try {
+
+        await supabaseClient.auth.signOut();
+
+        currentUser =
+            null;
+
+        cloudSyncReady =
+            false;
+
+        updateLoginUI();
+
+        showSyncMessage(
+            ""
+        );
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   UPDATE LOGIN UI
+============================================================ */
+
+function updateLoginUI() {
+
+    const loginPanel =
+        document.getElementById(
+            "loginPanel"
+        );
+
+
+    const userPanel =
+        document.getElementById(
+            "userPanel"
+        );
+
+
+    const userName =
+        document.getElementById(
+            "userName"
+        );
+
+
+    const userEmail =
+        document.getElementById(
+            "userEmail"
+        );
+
+
+    if (currentUser) {
+
+        loginPanel.style.display =
+            "none";
+
+
+        userPanel.style.display =
+            "flex";
+
+
+        const metadata =
+            currentUser.user_metadata ||
+            {};
+
+
+        userName.textContent =
+            metadata.full_name ||
+            metadata.name ||
+            currentUser.email ||
+            "Google User";
+
+
+        userEmail.textContent =
+            currentUser.email ||
+            "";
+
+
+        updateCloudStatus(
+            cloudSyncReady
+                ? "☁️ Cloud Sync On"
+                : "☁️ Connecting..."
+        );
+
+    } else {
+
+        loginPanel.style.display =
+            "block";
+
+
+        userPanel.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* ============================================================
+   LOAD CLOUD COLLECTION
+============================================================ */
+
+async function loadCloudCollection() {
+
+    if (!currentUser) {
+        return false;
+    }
+
+
+    try {
+
+        updateCloudStatus(
+            "☁️ Loading cloud collection..."
+        );
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("card_collection")
+                .select("*")
+                .eq(
+                    "user_id",
+                    currentUser.id
+                );
+
+
+        if (error) {
+
+            console.error(
+                "Cloud load error:",
+                error
+            );
+
+            cloudSyncReady =
+                false;
+
+            updateCloudStatus(
+                "☁️ Cloud Sync Error"
+            );
+
+            return false;
+
+        }
+
+
+        if (Array.isArray(data)) {
+
+            const cloudCollection =
+                {};
+
+
+            data.forEach(
+                row => {
+
+                    let key = null;
+
+
+                    if (
+                        row.card_key
+                    ) {
+
+                        key =
+                            row.card_key;
+
+                    } else if (
+                        row.location !== undefined &&
+                        row.series_index !== undefined &&
+                        row.card_number !== undefined
+                    ) {
+
+                        key =
+                            getCardKey(
+                                row.location,
+                                row.series_index,
+                                row.card_number
+                            );
+
+                    }
+
+
+                    if (
+                        key
+                    ) {
+
+                        cloudCollection[key] =
+                            true;
+
+                    }
+
+                }
+            );
+
+
+            collection =
+                cloudCollection;
+
+
+            saveCollection();
+
+        }
+
+
+        cloudSyncReady =
+            true;
+
+
+        updateCloudStatus(
+            "☁️ Cloud Sync On"
+        );
+
+
+        renderCollection();
+
+        renderLocations();
+
+        renderSummary();
+
+        renderSeriesProgress();
+
+
+        return true;
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        cloudSyncReady =
+            false;
+
+
+        updateCloudStatus(
+            "☁️ Cloud Sync Error"
+        );
+
+
+        return false;
+
+    }
+
+}
+
+
+/* ============================================================
+   UPLOAD LOCAL COLLECTION
+============================================================ */
+
+async function uploadLocalCollection() {
+
+    if (!currentUser) {
+        return false;
+    }
+
+
+    const entries =
+        getOwnedCardEntries();
+
+
+    for (
+        const key of entries
+    ) {
+
+        const parsed =
+            parseCardKey(
+                key
+            );
+
+
+        if (!parsed) {
+            continue;
+        }
+
+
+        await syncCardToCloud(
+
+            parsed.location,
+
+            parsed.seriesIndex,
+
+            parsed.cardNumber,
+
+            true
+
+        );
+
+    }
+
+
+    return true;
+
+}
+
+
+/* ============================================================
+   SYNC CARD TO CLOUD
+============================================================ */
+
+async function syncCardToCloud(
+
+    location,
+
+    seriesIndex,
+
+    cardNumber,
+
+    owned
+
+) {
+
+    if (!currentUser) {
+        return false;
+    }
+
+
+    try {
+
+        const key =
+            getCardKey(
+                location,
+                seriesIndex,
+                cardNumber
+            );
+
+
+        if (owned) {
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .from("card_collection")
+                    .upsert(
+                        {
+
+                            user_id:
+                                currentUser.id,
+
+                            card_key:
+                                key,
+
+                            location:
+                                location,
+
+                            series_index:
+                                seriesIndex,
+
+                            card_number:
+                                cardNumber,
+
+                            owned:
+                                true
+
+                        },
+                        {
+                            onConflict:
+                                "user_id,card_key"
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Cloud save error:",
+                    error
+                );
+
+                return false;
+
+            }
+
+        } else {
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .from("card_collection")
+                    .delete()
+                    .eq(
+                        "user_id",
+                        currentUser.id
+                    )
+                    .eq(
+                        "card_key",
+                        key
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Cloud delete error:",
+                    error
+                );
+
+                return false;
+
+            }
+
+        }
+
+
+        updateCloudStatus(
+            "☁️ Cloud Sync On"
+        );
+
+
+        return true;
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        return false;
+
+    }
+
+}
+
+
+/* ============================================================
+   RESET CLOUD COLLECTION
+============================================================ */
+
+async function resetCloudCollection() {
+
+    if (!currentUser) {
+        return true;
+    }
+
+
+    try {
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("card_collection")
+                .delete()
+                .eq(
+                    "user_id",
+                    currentUser.id
+                );
+
+
+        if (error) {
+
+            console.error(
+                "Cloud reset error:",
+                error
+            );
+
+            return false;
+
+        }
+
+
+        return true;
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        return false;
+
+    }
+
+}
+
+
+/* ============================================================
+   HANDLE AUTH SESSION
+============================================================ */
+
+async function handleAuthSession(
+    session
+) {
+
+    if (
+        session &&
+        session.user
+    ) {
+
+        currentUser =
+            session.user;
+
+
+        cloudSyncReady =
+            false;
+
+
+        updateLoginUI();
+
+
+        await loadCloudCollection();
+
+    } else {
+
+        currentUser =
+            null;
+
+
+        cloudSyncReady =
+            false;
+
+
+        updateLoginUI();
+
+    }
+
+}
+
+
+/* ============================================================
+   INITIALIZE AUTH
+============================================================ */
+
+async function initializeAuth() {
+
+    try {
+
+        const {
+            data
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        await handleAuthSession(
+            data.session
+        );
+
+
+        supabaseClient.auth.onAuthStateChange(
+            async (
+                event,
+                session
+            ) => {
+
+                if (
+                    event === "SIGNED_IN" ||
+                    event === "TOKEN_REFRESHED" ||
+                    event === "INITIAL_SESSION"
+                ) {
+
+                    await handleAuthSession(
+                        session
+                    );
+
+                }
+
+
+                if (
+                    event === "SIGNED_OUT"
+                ) {
+
+                    currentUser =
+                        null;
+
+                    cloudSyncReady =
+                        false;
+
+                    updateLoginUI();
+
+                }
+
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Auth initialization error:",
+            error
         );
 
     }
@@ -4391,20 +4297,24 @@ const audio =
         "audioPlayer"
     );
 
+
 const playPauseButton =
     document.getElementById(
         "playPauseButton"
     );
+
 
 const trackName =
     document.getElementById(
         "musicTrackName"
     );
 
+
 const loopButton =
     document.getElementById(
         "loopButton"
     );
+
 
 const volumeControl =
     document.getElementById(
@@ -4413,10 +4323,13 @@ const volumeControl =
 
 
 let currentTrack = 0;
+
 let isLooping = false;
 
 
-/* LOAD TRACK */
+/* ============================================================
+   LOAD TRACK
+============================================================ */
 
 function loadTrack(
     index,
@@ -4427,38 +4340,55 @@ function loadTrack(
         (
             index +
             playlist.length
-        ) % playlist.length;
+        ) %
+        playlist.length;
+
 
     audio.src =
-        playlist[currentTrack].src;
+        playlist[
+            currentTrack
+        ].src;
+
 
     trackName.textContent =
-        playlist[currentTrack].title;
+        playlist[
+            currentTrack
+        ].title;
+
 
     if (autoPlay) {
 
-        audio.play().catch(() => {});
+        audio.play().catch(
+            () => {}
+        );
 
     }
+
 
     updateMusicButton();
 
 }
 
 
-/* PLAY / PAUSE */
+/* ============================================================
+   PLAY / PAUSE
+============================================================ */
 
 function toggleMusic() {
 
-    if (audio.paused) {
+    if (
+        audio.paused
+    ) {
 
-        audio.play().catch(() => {
+        audio.play().catch(
+            () => {
 
-            alert(
-                "Please press Play again to start the music."
-            );
+                alert(
+                    "Please press Play again to start the music."
+                );
 
-        });
+            }
+        );
 
     } else {
 
@@ -4469,11 +4399,15 @@ function toggleMusic() {
 }
 
 
-/* UPDATE BUTTON */
+/* ============================================================
+   UPDATE MUSIC BUTTON
+============================================================ */
 
 function updateMusicButton() {
 
-    if (audio.paused) {
+    if (
+        audio.paused
+    ) {
 
         playPauseButton.textContent =
             "▶️";
@@ -4488,20 +4422,29 @@ function updateMusicButton() {
 }
 
 
-/* NEXT */
+/* ============================================================
+   NEXT
+============================================================ */
 
 function nextTrack() {
 
-    if (isLooping) {
+    if (
+        isLooping
+    ) {
 
         audio.currentTime =
             0;
 
-        audio.play().catch(() => {});
+
+        audio.play().catch(
+            () => {}
+        );
+
 
         return;
 
     }
+
 
     loadTrack(
         currentTrack + 1,
@@ -4511,7 +4454,9 @@ function nextTrack() {
 }
 
 
-/* PREVIOUS */
+/* ============================================================
+   PREVIOUS
+============================================================ */
 
 function previousTrack() {
 
@@ -4526,6 +4471,7 @@ function previousTrack() {
 
     }
 
+
     loadTrack(
         currentTrack - 1,
         true
@@ -4534,18 +4480,24 @@ function previousTrack() {
 }
 
 
-/* LOOP */
+/* ============================================================
+   LOOP
+============================================================ */
 
 function toggleLoop() {
 
     isLooping =
         !isLooping;
 
-    if (isLooping) {
+
+    if (
+        isLooping
+    ) {
 
         loopButton.classList.add(
             "loop-active"
         );
+
 
         loopButton.textContent =
             "🔁 ON";
@@ -4556,6 +4508,7 @@ function toggleLoop() {
             "loop-active"
         );
 
+
         loopButton.textContent =
             "🔁";
 
@@ -4564,7 +4517,9 @@ function toggleLoop() {
 }
 
 
-/* VOLUME */
+/* ============================================================
+   VOLUME
+============================================================ */
 
 volumeControl.addEventListener(
     "input",
@@ -4577,28 +4532,37 @@ volumeControl.addEventListener(
 );
 
 
-/* AUDIO EVENTS */
+/* ============================================================
+   AUDIO EVENTS
+============================================================ */
 
 audio.addEventListener(
     "play",
     updateMusicButton
 );
 
+
 audio.addEventListener(
     "pause",
     updateMusicButton
 );
 
+
 audio.addEventListener(
     "ended",
     function() {
 
-        if (isLooping) {
+        if (
+            isLooping
+        ) {
 
             audio.currentTime =
                 0;
 
-            audio.play().catch(() => {});
+
+            audio.play().catch(
+                () => {}
+            );
 
         } else {
 
@@ -4624,17 +4588,21 @@ async function initializeApp() {
 
     renderSeriesProgress();
 
+
     audio.volume =
         0.6;
+
 
     loadTrack(
         0,
         false
     );
 
+
     await initializeAuth();
 
 }
+
 
 initializeApp();
 
@@ -4650,13 +4618,15 @@ window.addEventListener(
         setTimeout(
             () => {
 
-                audio.play().catch(() => {
+                audio.play().catch(
+                    () => {
 
-                    /*
-                        Autoplay blocked by browser.
-                    */
+                        /*
+                            Autoplay blocked by browser.
+                        */
 
-                });
+                    }
+                );
 
             },
             500
@@ -4668,4 +4638,5 @@ window.addEventListener(
 </script>
 
 </body>
+
 </html>
