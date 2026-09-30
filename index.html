@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>PERTHSANTA CARD COLLECTION </title>
+  <title>PERTHSANTA CARD COLLECTION 🖤🤍❤️</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -18,11 +19,18 @@
     body {
       margin: 0;
       background:
-        radial-gradient(circle at top, #3a0000 0%, #120000 35%, #050505 75%);
+        radial-gradient(
+          circle at top,
+          #3a0000 0%,
+          #120000 35%,
+          #050505 75%
+        );
+
       color: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
       min-height: 100vh;
     }
+
 
     /* =========================
        HEADER
@@ -31,19 +39,28 @@
     header {
       text-align: center;
       padding: 45px 20px 30px;
+
       border-bottom: 2px solid #5c0000;
-      background: linear-gradient(
-        180deg,
-        rgba(90, 0, 0, 0.55),
-        rgba(10, 0, 0, 0.9)
-      );
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(90, 0, 0, 0.55),
+          rgba(10, 0, 0, 0.9)
+        );
+
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.8);
     }
 
     header h1 {
       margin: 0;
-      font-size: clamp(28px, 5vw, 54px);
+
+      font-size:
+        clamp(28px, 5vw, 54px);
+
       letter-spacing: 3px;
+
       text-shadow:
         0 0 5px #ff0000,
         0 0 15px #ff0000,
@@ -52,30 +69,42 @@
 
     header p {
       margin: 15px 0 0;
+
       color: #dddddd;
-      font-size: clamp(14px, 2vw, 18px);
+
+      font-size:
+        clamp(14px, 2vw, 18px);
+
       letter-spacing: 1px;
     }
+
 
     /* =========================
        MUSIC PLAYER
     ========================= */
 
     .music-player {
+
       position: fixed;
+
       top: 18px;
       right: 18px;
+
       z-index: 9999;
 
       display: flex;
       align-items: center;
+
       gap: 10px;
 
       padding: 10px 14px;
+
       border: 1px solid #7d0000;
       border-radius: 12px;
 
-      background: rgba(10, 0, 0, 0.94);
+      background:
+        rgba(10, 0, 0, 0.94);
+
       box-shadow:
         0 0 10px rgba(255, 0, 0, 0.25),
         0 0 30px rgba(100, 0, 0, 0.4);
@@ -84,67 +113,106 @@
     }
 
     .music-title {
+
       color: #ff6666;
+
       font-size: 12px;
+
       font-weight: bold;
+
       letter-spacing: 1px;
     }
 
     #musicButton {
+
       border: 1px solid #b00000;
+
       background: #210000;
+
       color: white;
+
       padding: 8px 12px;
+
       border-radius: 8px;
+
       cursor: pointer;
+
       font-weight: bold;
+
       font-size: 12px;
+
       transition: 0.2s;
     }
 
     #musicButton:hover {
+
       background: #650000;
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+
+      box-shadow:
+        0 0 15px rgba(255, 0, 0, 0.5);
     }
+
 
     /* =========================
        MAIN
     ========================= */
 
     main {
+
       width: min(1500px, 94%);
+
       margin: auto;
+
       padding-bottom: 80px;
     }
 
+
     /* =========================
-       HOME LOCATION CARDS
+       HOME
     ========================= */
 
     .home-section {
+
       padding: 40px 0 25px;
     }
 
     .home-section h2 {
+
       text-align: center;
+
       margin-bottom: 25px;
+
       font-size: 28px;
+
       color: #ff5555;
+
       letter-spacing: 2px;
     }
 
+
     .location-grid {
+
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 22px;
     }
 
+
     .location-card {
+
       position: relative;
+
       min-height: 190px;
+
       border: 1px solid #620000;
+
       border-radius: 16px;
+
       overflow: hidden;
+
       cursor: pointer;
 
       background:
@@ -158,57 +226,90 @@
         0 8px 30px rgba(0, 0, 0, 0.65),
         inset 0 0 30px rgba(120, 0, 0, 0.15);
 
-      transition: transform 0.25s, box-shadow 0.25s;
+      transition:
+        transform 0.25s,
+        box-shadow 0.25s;
     }
 
+
     .location-card:hover {
-      transform: translateY(-6px);
+
+      transform:
+        translateY(-6px);
+
       box-shadow:
         0 12px 40px rgba(0, 0, 0, 0.8),
         0 0 25px rgba(255, 0, 0, 0.25);
     }
 
+
     .location-card-content {
+
       position: relative;
+
       z-index: 2;
+
       min-height: 190px;
 
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
+
       align-items: center;
 
       text-align: center;
+
       padding: 25px;
     }
 
+
     .devil {
+
       font-size: 45px;
+
       margin-bottom: 8px;
+
+      letter-spacing: 5px;
     }
+
 
     .location-name {
+
       font-size: 30px;
+
       font-weight: bold;
+
       letter-spacing: 3px;
-      text-shadow: 0 0 12px #ff0000;
+
+      text-shadow:
+        0 0 12px #ff0000;
     }
 
+
     .location-count {
+
       margin-top: 10px;
+
       color: #bbbbbb;
+
       font-size: 14px;
     }
+
 
     /* =========================
        DASHBOARD
     ========================= */
 
     .dashboard {
+
       margin: 30px 0 45px;
+
       padding: 25px;
 
       border: 1px solid #620000;
+
       border-radius: 16px;
 
       background:
@@ -223,144 +324,251 @@
         0 10px 30px rgba(0, 0, 0, 0.6);
     }
 
+
     .dashboard h2 {
+
       margin-top: 0;
+
       text-align: center;
+
       color: #ff4444;
+
       letter-spacing: 2px;
     }
 
+
     .summary-grid {
+
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
       gap: 15px;
+
       margin-top: 20px;
     }
 
+
     .summary-box {
+
       text-align: center;
+
       padding: 18px 10px;
+
       border: 1px solid #400000;
+
       border-radius: 12px;
-      background: rgba(0, 0, 0, 0.55);
+
+      background:
+        rgba(0, 0, 0, 0.55);
     }
 
+
     .summary-number {
+
       font-size: 30px;
+
       font-weight: bold;
+
       color: #ff5555;
     }
 
+
     .summary-label {
+
       margin-top: 6px;
+
       color: #aaaaaa;
+
       font-size: 13px;
     }
 
+
     .progress-container {
+
       margin-top: 25px;
     }
 
+
     .progress-label {
+
       display: flex;
+
       justify-content: space-between;
+
       margin-bottom: 8px;
+
       color: #dddddd;
+
       font-size: 14px;
     }
 
+
     .progress-bar {
+
       height: 15px;
+
       background: #1b1b1b;
+
       border: 1px solid #450000;
+
       border-radius: 999px;
+
       overflow: hidden;
     }
 
+
     .progress-fill {
+
       height: 100%;
+
       width: 0%;
-      background: linear-gradient(90deg, #6b0000, #ff0000);
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
-      transition: width 0.4s ease;
+
+      background:
+        linear-gradient(
+          90deg,
+          #6b0000,
+          #ff0000
+        );
+
+      box-shadow:
+        0 0 15px rgba(255, 0, 0, 0.7);
+
+      transition:
+        width 0.4s ease;
     }
 
+
     .series-breakdown {
+
       margin-top: 25px;
+
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 8px 20px;
     }
 
+
     .breakdown-item {
+
       font-size: 13px;
+
       color: #bbbbbb;
-      border-bottom: 1px solid #250000;
+
+      border-bottom:
+        1px solid #250000;
+
       padding: 7px 0;
     }
 
+
     .breakdown-item span {
+
       color: #ff5555;
+
       font-weight: bold;
     }
+
 
     /* =========================
        CONTROLS
     ========================= */
 
     .controls {
+
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 12px;
+
       justify-content: center;
+
       margin-bottom: 40px;
     }
 
+
     .control-button {
+
       padding: 11px 18px;
+
       border-radius: 9px;
+
       border: 1px solid #710000;
+
       background: #170000;
+
       color: #ffffff;
+
       cursor: pointer;
+
       font-weight: bold;
+
       transition: 0.2s;
     }
 
+
     .control-button:hover {
+
       background: #650000;
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.35);
+
+      box-shadow:
+        0 0 15px rgba(255, 0, 0, 0.35);
     }
 
+
     .search-box {
+
       min-width: 220px;
+
       padding: 11px 15px;
+
       border-radius: 9px;
+
       border: 1px solid #710000;
+
       background: #080808;
+
       color: white;
+
       outline: none;
     }
 
+
     .search-box:focus {
+
       border-color: #ff2222;
-      box-shadow: 0 0 12px rgba(255, 0, 0, 0.25);
+
+      box-shadow:
+        0 0 12px rgba(255, 0, 0, 0.25);
     }
 
+
     /* =========================
-       LOCATION SECTION
+       LOCATION
     ========================= */
 
     .location-section {
+
       margin-bottom: 70px;
     }
 
+
     .location-heading {
+
       padding: 20px;
+
       margin-bottom: 30px;
 
-      border-top: 2px solid #7c0000;
-      border-bottom: 2px solid #7c0000;
+      border-top:
+        2px solid #7c0000;
+
+      border-bottom:
+        2px solid #7c0000;
 
       background:
         linear-gradient(
@@ -373,34 +581,55 @@
       text-align: center;
     }
 
+
     .location-heading h2 {
+
       margin: 0;
-      font-size: clamp(25px, 4vw, 40px);
+
+      font-size:
+        clamp(25px, 4vw, 40px);
+
       letter-spacing: 4px;
-      text-shadow: 0 0 15px #ff0000;
+
+      text-shadow:
+        0 0 15px #ff0000;
     }
 
+
     .location-heading p {
+
       margin: 8px 0 0;
+
       color: #aaa;
     }
+
 
     /* =========================
        SERIES
     ========================= */
 
     .series-section {
+
       margin-bottom: 55px;
     }
 
+
     .series-divider {
+
       position: relative;
+
       margin-bottom: 22px;
+
       padding: 18px 20px;
 
-      border-left: 5px solid #a00000;
-      border-top: 1px solid #480000;
-      border-bottom: 1px solid #480000;
+      border-left:
+        5px solid #a00000;
+
+      border-top:
+        1px solid #480000;
+
+      border-bottom:
+        1px solid #480000;
 
       background:
         linear-gradient(
@@ -409,56 +638,92 @@
           rgba(12, 12, 12, 0.9)
         );
 
-      box-shadow: inset 0 0 20px rgba(120, 0, 0, 0.08);
+      box-shadow:
+        inset 0 0 20px
+        rgba(120, 0, 0, 0.08);
     }
+
 
     .series-divider.completed {
+
       box-shadow:
-        0 0 18px rgba(255, 0, 0, 0.2),
-        inset 0 0 25px rgba(255, 0, 0, 0.08);
+        0 0 18px
+        rgba(255, 0, 0, 0.2),
+
+        inset 0 0 25px
+        rgba(255, 0, 0, 0.08);
     }
 
+
     .series-number {
+
       color: #ff4444;
+
       font-size: 13px;
+
       font-weight: bold;
+
       letter-spacing: 2px;
     }
 
+
     .series-title {
+
       margin: 5px 0;
-      font-size: clamp(19px, 2.5vw, 28px);
+
+      font-size:
+        clamp(19px, 2.5vw, 28px);
+
       font-weight: bold;
     }
 
+
     .series-count {
+
       color: #999999;
+
       font-size: 13px;
     }
 
+
     /* =========================
-       CARD GRID
+       CARDS
     ========================= */
 
     .card-grid {
+
       display: grid;
-      grid-template-columns: repeat(10, 1fr);
+
+      grid-template-columns:
+        repeat(10, 1fr);
+
       gap: 10px;
     }
 
+
     .card {
+
       position: relative;
+
       min-width: 0;
+
       aspect-ratio: 2 / 3;
 
-      border: 1px solid #2c2c2c;
+      border:
+        1px solid #2c2c2c;
+
       border-radius: 8px;
+
       overflow: hidden;
 
       background: #111111;
+
       cursor: pointer;
 
-      filter: grayscale(100%) brightness(0.25);
+      filter:
+        grayscale(100%)
+        brightness(0.25);
+
       opacity: 0.7;
 
       transition:
@@ -468,187 +733,298 @@
         box-shadow 0.25s;
     }
 
+
     .card:hover {
-      transform: translateY(-4px) scale(1.02);
+
+      transform:
+        translateY(-4px)
+        scale(1.02);
+
       z-index: 5;
     }
 
+
     .card.owned {
-      filter: grayscale(0%) brightness(1);
+
+      filter:
+        grayscale(0%)
+        brightness(1);
+
       opacity: 1;
 
-      border-color: #d00000;
+      border-color:
+        #d00000;
 
       box-shadow:
-        0 0 8px rgba(255, 0, 0, 0.55),
-        0 0 20px rgba(255, 0, 0, 0.3);
+        0 0 8px
+        rgba(255, 0, 0, 0.55),
+
+        0 0 20px
+        rgba(255, 0, 0, 0.3);
     }
 
+
     .card img {
+
       width: 100%;
+
       height: 100%;
+
       display: block;
+
       object-fit: cover;
     }
 
+
     .no-image {
+
       width: 100%;
+
       height: 100%;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       text-align: center;
+
       padding: 5px;
 
       color: #555555;
+
       font-size: 11px;
+
       font-weight: bold;
+
       background: #111111;
     }
 
+
     .card-number {
+
       position: absolute;
+
       top: 5px;
+
       left: 5px;
 
       padding: 3px 5px;
 
       border-radius: 5px;
-      background: rgba(0, 0, 0, 0.8);
+
+      background:
+        rgba(0, 0, 0, 0.8);
 
       color: white;
+
       font-size: 10px;
+
       font-weight: bold;
     }
 
+
     .card-status {
+
       position: absolute;
+
       bottom: 0;
+
       left: 0;
+
       right: 0;
 
       padding: 6px 3px;
 
-      background: rgba(0, 0, 0, 0.82);
+      background:
+        rgba(0, 0, 0, 0.82);
+
       text-align: center;
 
       color: #888888;
+
       font-size: 9px;
+
       font-weight: bold;
     }
 
+
     .card.owned .card-status {
+
       color: #ff7777;
     }
 
+
     .heart {
+
       position: absolute;
+
       top: 5px;
+
       right: 5px;
 
       font-size: 15px;
+
       opacity: 0;
 
-      transition: opacity 0.2s;
+      transition:
+        opacity 0.2s;
     }
 
+
     .card.owned .heart {
+
       opacity: 1;
-      text-shadow: 0 0 10px #ff0000;
+
+      text-shadow:
+        0 0 10px #ff0000;
     }
+
 
     /* =========================
        FOOTER
     ========================= */
 
     footer {
+
       text-align: center;
+
       padding: 35px 20px;
-      border-top: 1px solid #3d0000;
+
+      border-top:
+        1px solid #3d0000;
+
       color: #666666;
+
       font-size: 12px;
     }
+
 
     /* =========================
        HIDDEN
     ========================= */
 
     .hidden {
+
       display: none !important;
     }
+
 
     /* =========================
        RESPONSIVE
     ========================= */
 
     @media (max-width: 1100px) {
+
       .card-grid {
-        grid-template-columns: repeat(6, 1fr);
+
+        grid-template-columns:
+          repeat(6, 1fr);
       }
 
+
       .location-grid {
+
         grid-template-columns: 1fr;
       }
 
+
       .summary-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+          repeat(2, 1fr);
       }
+
     }
 
+
     @media (max-width: 650px) {
+
       header {
+
         padding-top: 90px;
       }
 
+
       .music-player {
+
         top: 12px;
+
         left: 12px;
+
         right: 12px;
-        justify-content: space-between;
+
+        justify-content:
+          space-between;
       }
 
+
       .card-grid {
-        grid-template-columns: repeat(4, 1fr);
+
+        grid-template-columns:
+          repeat(4, 1fr);
+
         gap: 7px;
       }
 
+
       .series-breakdown {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
       }
 
+
       .dashboard {
+
         padding: 17px;
       }
 
+
       .summary-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
+
       .controls {
-        flex-direction: column;
+
+        flex-direction:
+          column;
       }
+
 
       .search-box,
       .control-button {
+
         width: 100%;
       }
+
     }
 
+
     @media (max-width: 400px) {
+
       .card-grid {
-        grid-template-columns: repeat(3, 1fr);
+
+        grid-template-columns:
+          repeat(3, 1fr);
       }
+
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- =========================
-       MUSIC PLAYER
-  ========================= -->
+
+  <!-- =====================================
+       MUSIC
+  ====================================== -->
 
   <div class="music-player">
 
@@ -656,19 +1032,30 @@
       🎵 NOW PLAYING
     </div>
 
-    <button id="musicButton" onclick="toggleMusic()">
+
+    <button
+      id="musicButton"
+      onclick="toggleMusic()">
+
       ▶️ PLAY MUSIC
+
     </button>
 
-    <!-- YouTube player -->
+
     <iframe
       id="youtubePlayer"
+
       width="1"
       height="1"
+
       src="https://www.youtube.com/embed/itsxy1gUIYY?enablejsapi=1&loop=1&playlist=itsxy1gUIYY"
+
       title="YouTube music"
+
       frameborder="0"
+
       allow="autoplay; encrypted-media"
+
       style="
         position:absolute;
         width:1px;
@@ -676,19 +1063,21 @@
         opacity:0;
         pointer-events:none;
       ">
+
     </iframe>
 
   </div>
 
 
-  <!-- =========================
+
+  <!-- =====================================
        HEADER
-  ========================= -->
+  ====================================== -->
 
   <header>
 
     <h1>
-      PERTHSANTA CARD COLLECTION 👿
+      PERTHSANTA CARD COLLECTION 🖤🤍❤️
     </h1>
 
     <p>
@@ -698,29 +1087,34 @@
   </header>
 
 
+
   <main>
 
-    <!-- =========================
+
+    <!-- =====================================
          HOME
-    ========================= -->
+    ====================================== -->
 
     <section class="home-section">
 
       <h2>
-        👿 MY CARD WORLD
+        🖤 MY CARD WORLD 🤍
       </h2>
+
 
       <div
         id="locationGrid"
         class="location-grid">
+
       </div>
 
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================
          DASHBOARD
-    ========================= -->
+    ====================================== -->
 
     <section class="dashboard">
 
@@ -728,60 +1122,88 @@
         🖤 COLLECTION SUMMARY 🤍
       </h2>
 
+
       <div class="summary-grid">
 
+
         <div class="summary-box">
+
           <div
             id="seriesTotal"
             class="summary-number">
+
             0
+
           </div>
 
           <div class="summary-label">
+
             SERIES
+
           </div>
+
         </div>
 
 
         <div class="summary-box">
+
           <div
             id="cardTotal"
             class="summary-number">
+
             0
+
           </div>
 
           <div class="summary-label">
+
             TOTAL CARDS
+
           </div>
+
         </div>
 
 
         <div class="summary-box">
+
           <div
             id="collectedTotal"
             class="summary-number">
+
             0
+
           </div>
 
           <div class="summary-label">
+
             COLLECTED
+
           </div>
+
         </div>
 
 
         <div class="summary-box">
+
           <div
             id="missingTotal"
             class="summary-number">
+
             0
+
           </div>
 
           <div class="summary-label">
+
             MISSING
+
           </div>
+
         </div>
 
+
       </div>
+
 
 
       <div class="progress-container">
@@ -798,11 +1220,13 @@
 
         </div>
 
+
         <div class="progress-bar">
 
           <div
             id="progressFill"
             class="progress-fill">
+
           </div>
 
         </div>
@@ -810,79 +1234,142 @@
       </div>
 
 
+
       <div
         id="seriesBreakdown"
         class="series-breakdown">
+
       </div>
 
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================
          CONTROLS
-    ========================= -->
+    ====================================== -->
 
     <div class="controls">
 
+
       <input
         id="searchInput"
+
         class="search-box"
+
         type="text"
+
         placeholder="🔍 Search card number e.g. 001"
+
         oninput="searchCards()"
       >
+
 
       <button
         class="control-button"
         onclick="resetSearch()">
+
         SHOW ALL
+
       </button>
+
 
       <button
         class="control-button"
         onclick="resetCollection()">
+
         🔄 RESET COLLECTION
+
       </button>
+
 
     </div>
 
 
-    <!-- =========================
-         ALL LOCATIONS
-    ========================= -->
+
+    <!-- =====================================
+         LOCATIONS
+    ====================================== -->
 
     <div id="locationsContainer"></div>
+
 
   </main>
 
 
+
+  <!-- =====================================
+       FOOTER
+  ====================================== -->
+
   <footer>
 
     🖤🤍❤️ PerthSanta Card Collection ❤️🤍🖤
-    <br><br>
+
+    <br>
+    <br>
+
     Made with love for the collection. 👿
 
   </footer>
 
 
-  <!-- =========================
+
+  <!-- =====================================
        JAVASCRIPT
-  ========================= -->
+  ====================================== -->
 
   <script>
 
-    /* =====================================================
-       CARD DATA
-    ===================================================== */
+
+    /* =====================================
+       LOCATION ICON
+    ====================================== */
+
+    function getLocationIcon(locationName) {
+
+      if (locationName === "Perth") {
+
+        return "🐯🖤";
+
+      }
+
+
+      if (locationName === "Santa") {
+
+        return "🐱🤍";
+
+      }
+
+
+      if (locationName === "PerthSanta") {
+
+        return "🖤🤍❤️";
+
+      }
+
+
+      return "👿";
+
+    }
+
+
+
+    /* =====================================
+       LOCATION DATA
+    ====================================== */
 
     const locations = [
 
-      /* =========================
+
+      /* ===================================
          PERTH
-      ========================= */
+      =================================== */
 
       {
+
         name: "Perth",
+
         imageFolder: "Perth",
 
         series: [
@@ -1002,15 +1489,19 @@
           }
 
         ]
+
       },
 
 
-      /* =========================
+
+      /* ===================================
          SANTA
-      ========================= */
+      =================================== */
 
       {
+
         name: "Santa",
+
         imageFolder: "Santa",
 
         series: [
@@ -1052,15 +1543,19 @@
           }
 
         ]
+
       },
 
 
-      /* =========================
+
+      /* ===================================
          PERTHSANTA
-      ========================= */
+      =================================== */
 
       {
+
         name: "PerthSanta",
+
         imageFolder: "PerthSanta",
 
         series: [
@@ -1246,55 +1741,74 @@
           }
 
         ]
+
       }
 
     ];
 
 
-    /* =====================================================
-       LOCAL STORAGE
-    ===================================================== */
 
-    let ownedCards = JSON.parse(
-      localStorage.getItem("myCardCollection") || "{}"
-    );
+    /* =====================================
+       COLLECTION STORAGE
+    ====================================== */
+
+    let ownedCards =
+      JSON.parse(
+        localStorage.getItem(
+          "myCardCollection"
+        ) || "{}"
+      );
+
 
 
     function saveCollection() {
 
       localStorage.setItem(
         "myCardCollection",
-        JSON.stringify(ownedCards)
+        JSON.stringify(
+          ownedCards
+        )
       );
 
     }
 
 
-    /* =====================================================
-       TOTAL CARD COUNT
-    ===================================================== */
+
+    /* =====================================
+       TOTAL CARDS
+    ====================================== */
 
     function getTotalCards() {
 
       let total = 0;
 
-      locations.forEach(location => {
 
-        location.series.forEach(series => {
+      locations.forEach(
+        location => {
 
-          total += series.count;
+          location.series.forEach(
+            series => {
 
-        });
+              total +=
+                series.count;
 
-      });
+            }
+
+          );
+
+        }
+      );
+
 
       return total;
+
     }
 
 
-    /* =====================================================
+
+    /* =====================================
        CARD KEY
-    ===================================================== */
+    ====================================== */
 
     function getCardKey(
       location,
@@ -1302,82 +1816,141 @@
       number
     ) {
 
-      return `${location.name}|||${series.name}|||${number}`;
+      return `
+        ${location.name}|||
+        ${series.name}|||
+        ${number}
+      `.replace(/\s+/g, "");
 
     }
 
 
-    /* =====================================================
+
+    /* =====================================
+       SAFE ID
+    ====================================== */
+
+    function makeSafeId(text) {
+
+      return text
+        .replace(
+          /[^a-zA-Z0-9]/g,
+          "-"
+        )
+        .toLowerCase();
+
+    }
+
+
+
+    /* =====================================
        LOCATION HOME CARDS
-    ===================================================== */
+    ====================================== */
 
     function renderLocationCards() {
 
       const container =
-        document.getElementById("locationGrid");
+        document.getElementById(
+          "locationGrid"
+        );
+
 
       container.innerHTML = "";
 
-      locations.forEach(location => {
 
-        let total = 0;
+      locations.forEach(
+        location => {
 
-        location.series.forEach(series => {
-          total += series.count;
-        });
+          let total = 0;
 
-        const card =
-          document.createElement("div");
 
-        card.className = "location-card";
+          location.series.forEach(
+            series => {
 
-        card.onclick = () => {
+              total +=
+                series.count;
 
-          const target =
-            document.getElementById(
-              `location-${location.name}`
+            }
+          );
+
+
+          const card =
+            document.createElement(
+              "div"
             );
 
-          if (target) {
 
-            target.scrollIntoView({
-              behavior: "smooth"
-            });
+          card.className =
+            "location-card";
 
-          }
 
-        };
+          card.onclick = () => {
 
-        card.innerHTML = `
+            const target =
+              document.getElementById(
+                `location-${location.name}`
+              );
 
-          <div class="location-card-content">
 
-            <div class="devil">
-              👿
+            if (target) {
+
+              target.scrollIntoView({
+                behavior: "smooth"
+              });
+
+            }
+
+          };
+
+
+          card.innerHTML = `
+
+            <div class="location-card-content">
+
+              <div class="devil">
+
+                ${getLocationIcon(
+                  location.name
+                )}
+
+              </div>
+
+
+              <div class="location-name">
+
+                ${location.name}
+
+              </div>
+
+
+              <div class="location-count">
+
+                ${location.series.length}
+                series ·
+                ${total}
+                cards
+
+              </div>
+
             </div>
 
-            <div class="location-name">
-              ${location.name}
-            </div>
+          `;
 
-            <div class="location-count">
-              ${location.series.length} series · ${total} cards
-            </div>
 
-          </div>
+          container.appendChild(
+            card
+          );
 
-        `;
-
-        container.appendChild(card);
-
-      });
+        }
+      );
 
     }
 
 
-    /* =====================================================
-       RENDER ALL LOCATIONS
-    ===================================================== */
+
+    /* =====================================
+       RENDER LOCATIONS
+    ====================================== */
 
     function renderLocations() {
 
@@ -1386,79 +1959,110 @@
           "locationsContainer"
         );
 
+
       container.innerHTML = "";
 
-      locations.forEach(location => {
 
-        const locationSection =
-          document.createElement("section");
-
-        locationSection.className =
-          "location-section";
-
-        locationSection.id =
-          `location-${location.name}`;
+      locations.forEach(
+        location => {
 
 
-        let totalCards = 0;
-
-        location.series.forEach(series => {
-
-          totalCards += series.count;
-
-        });
+          const locationSection =
+            document.createElement(
+              "section"
+            );
 
 
-        locationSection.innerHTML = `
-
-          <div class="location-heading">
-
-            <h2>
-              👿 ${location.name}
-            </h2>
-
-            <p>
-              ${location.series.length} series ·
-              ${totalCards} cards
-            </p>
-
-          </div>
-
-          <div class="series-container"></div>
-
-        `;
+          locationSection.className =
+            "location-section";
 
 
-        container.appendChild(locationSection);
+          locationSection.id =
+            `location-${location.name}`;
 
 
-        const seriesContainer =
-          locationSection.querySelector(
-            ".series-container"
+          let totalCards = 0;
+
+
+          location.series.forEach(
+            series => {
+
+              totalCards +=
+                series.count;
+
+            }
           );
 
 
-        location.series.forEach(
-          (series, seriesIndex) => {
+          locationSection.innerHTML = `
 
-            renderSeries(
-              location,
-              series,
-              seriesIndex,
-              seriesContainer
+            <div class="location-heading">
+
+              <h2>
+
+                ${getLocationIcon(
+                  location.name
+                )}
+
+                ${location.name}
+
+              </h2>
+
+
+              <p>
+
+                ${location.series.length}
+                series ·
+                ${totalCards}
+                cards
+
+              </p>
+
+            </div>
+
+
+            <div class="series-container"></div>
+
+          `;
+
+
+          container.appendChild(
+            locationSection
+          );
+
+
+          const seriesContainer =
+            locationSection.querySelector(
+              ".series-container"
             );
 
-          }
-        );
 
-      });
+          location.series.forEach(
+            (
+              series,
+              seriesIndex
+            ) => {
+
+              renderSeries(
+                location,
+                series,
+                seriesIndex,
+                seriesContainer
+              );
+
+            }
+          );
+
+        }
+      );
 
     }
 
 
-    /* =====================================================
+
+    /* =====================================
        RENDER SERIES
-    ===================================================== */
+    ====================================== */
 
     function renderSeries(
       location,
@@ -1468,21 +2072,63 @@
     ) {
 
       const seriesSection =
-        document.createElement("section");
+        document.createElement(
+          "section"
+        );
+
 
       seriesSection.className =
         "series-section";
 
 
       const divider =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       divider.className =
         "series-divider";
 
 
-      const seriesCards =
-        [];
+      divider.innerHTML = `
+
+        <div class="series-number">
+
+          SERIES
+          ${String(
+            seriesIndex + 1
+          ).padStart(2, "0")}
+
+        </div>
+
+
+        <div class="series-title">
+
+          ${series.name}
+
+        </div>
+
+
+        <div class="series-count">
+
+          0 /
+          ${series.count}
+          collected
+
+        </div>
+
+      `;
+
+
+      const grid =
+        document.createElement(
+          "div"
+        );
+
+
+      grid.className =
+        "card-grid";
 
 
       for (
@@ -1492,40 +2138,11 @@
       ) {
 
         const number =
-          String(i).padStart(3, "0");
+          String(i).padStart(
+            3,
+            "0"
+          );
 
-        seriesCards.push(number);
-
-      }
-
-
-      divider.innerHTML = `
-
-        <div class="series-number">
-          SERIES ${String(seriesIndex + 1).padStart(2, "0")}
-        </div>
-
-        <div class="series-title">
-          ${series.name}
-        </div>
-
-        <div
-          class="series-count"
-          id="${makeSafeId(location.name)}-${seriesIndex}-count">
-          0 / ${series.count} collected
-        </div>
-
-      `;
-
-
-      const grid =
-        document.createElement("div");
-
-      grid.className =
-        "card-grid";
-
-
-      seriesCards.forEach(number => {
 
         const card =
           createCard(
@@ -1534,30 +2151,42 @@
             number
           );
 
-        grid.appendChild(card);
 
-      });
+        grid.appendChild(
+          card
+        );
+
+      }
 
 
-      seriesSection.appendChild(divider);
-      seriesSection.appendChild(grid);
+      seriesSection.appendChild(
+        divider
+      );
 
-      container.appendChild(seriesSection);
+
+      seriesSection.appendChild(
+        grid
+      );
+
+
+      container.appendChild(
+        seriesSection
+      );
 
 
       updateSeriesCount(
         location,
         series,
-        seriesIndex,
         divider
       );
 
     }
 
 
-    /* =====================================================
+
+    /* =====================================
        CREATE CARD
-    ===================================================== */
+    ====================================== */
 
     function createCard(
       location,
@@ -1574,17 +2203,26 @@
 
 
       const card =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
-      card.className = "card";
+
+      card.className =
+        "card";
+
 
       card.dataset.number =
         number;
 
 
-      if (ownedCards[key]) {
+      if (
+        ownedCards[key]
+      ) {
 
-        card.classList.add("owned");
+        card.classList.add(
+          "owned"
+        );
 
       }
 
@@ -1597,27 +2235,40 @@
 
         <img
           src="${imagePath}"
+
           alt="${series.name} ${number}"
+
           onerror="
             this.style.display='none';
+
             this.parentElement.innerHTML=
             '<div class=&quot;no-image&quot;>NO IMAGE</div>';
           "
         >
 
+
         <div class="card-number">
+
           ${number}
+
         </div>
+
 
         <div class="heart">
+
           🖤
+
         </div>
 
+
         <div class="card-status">
-          ${ownedCards[key]
-            ? "- 🖤🤍❤️ get"
-            : "- havent get 😭"
+
+          ${
+            ownedCards[key]
+              ? "- 🖤🤍❤️ get"
+              : "- havent get 😭"
           }
+
         </div>
 
       `;
@@ -1625,7 +2276,7 @@
 
       card.addEventListener(
         "click",
-        function() {
+        () => {
 
           toggleCard(
             key,
@@ -1641,9 +2292,10 @@
     }
 
 
-    /* =====================================================
+
+    /* =====================================
        TOGGLE CARD
-    ===================================================== */
+    ====================================== */
 
     function toggleCard(
       key,
@@ -1654,42 +2306,60 @@
         !ownedCards[key];
 
 
-      if (ownedCards[key]) {
+      if (
+        ownedCards[key]
+      ) {
 
-        card.classList.add("owned");
+        card.classList.add(
+          "owned"
+        );
 
       } else {
 
-        card.classList.remove("owned");
+        card.classList.remove(
+          "owned"
+        );
 
       }
 
 
-      updateCardText(card);
+      updateCardText(
+        card
+      );
+
 
       saveCollection();
+
 
       updateDashboard();
 
     }
 
 
-    /* =====================================================
-       UPDATE CARD TEXT
-    ===================================================== */
 
-    function updateCardText(card) {
+    /* =====================================
+       UPDATE CARD TEXT
+    ====================================== */
+
+    function updateCardText(
+      card
+    ) {
 
       const status =
         card.querySelector(
           ".card-status"
         );
 
-      if (!status) return;
+
+      if (!status) {
+        return;
+      }
 
 
       if (
-        card.classList.contains("owned")
+        card.classList.contains(
+          "owned"
+        )
       ) {
 
         status.textContent =
@@ -1705,14 +2375,14 @@
     }
 
 
-    /* =====================================================
-       UPDATE SERIES COUNT
-    ===================================================== */
+
+    /* =====================================
+       UPDATE SERIES
+    ====================================== */
 
     function updateSeriesCount(
       location,
       series,
-      seriesIndex,
       divider
     ) {
 
@@ -1726,7 +2396,11 @@
       ) {
 
         const number =
-          String(i).padStart(3, "0");
+          String(i).padStart(
+            3,
+            "0"
+          );
+
 
         const key =
           getCardKey(
@@ -1735,7 +2409,10 @@
             number
           );
 
-        if (ownedCards[key]) {
+
+        if (
+          ownedCards[key]
+        ) {
 
           collected++;
 
@@ -1750,7 +2427,9 @@
         );
 
 
-      if (countElement) {
+      if (
+        countElement
+      ) {
 
         countElement.textContent =
           `${collected} / ${series.count} collected`;
@@ -1759,8 +2438,8 @@
 
 
       if (
-        collected === series.count &&
-        series.count > 0
+        collected ===
+        series.count
       ) {
 
         divider.classList.add(
@@ -1778,79 +2457,83 @@
     }
 
 
-    /* =====================================================
-       UPDATE ALL SERIES COUNTS
-    ===================================================== */
+
+    /* =====================================
+       UPDATE ALL SERIES
+    ====================================== */
 
     function updateAllSeriesCounts() {
 
-      locations.forEach(location => {
-
-        location.series.forEach(
-          (series, seriesIndex) => {
-
-            let collected = 0;
+      const sections =
+        document.querySelectorAll(
+          ".location-section"
+        );
 
 
-            for (
-              let i = 1;
-              i <= series.count;
-              i++
-            ) {
+      locations.forEach(
+        location => {
 
-              const number =
-                String(i).padStart(3, "0");
+          const locationElement =
+            document.getElementById(
+              `location-${location.name}`
+            );
 
-              const key =
-                getCardKey(
+
+          if (
+            !locationElement
+          ) {
+            return;
+          }
+
+
+          const dividers =
+            locationElement.querySelectorAll(
+              ".series-divider"
+            );
+
+
+          location.series.forEach(
+            (
+              series,
+              index
+            ) => {
+
+              if (
+                dividers[index]
+              ) {
+
+                updateSeriesCount(
                   location,
                   series,
-                  number
+                  dividers[index]
                 );
-
-
-              if (ownedCards[key]) {
-
-                collected++;
 
               }
 
             }
+          );
 
-
-            const id =
-              `${makeSafeId(location.name)}-${seriesIndex}-count`;
-
-
-            const element =
-              document.getElementById(id);
-
-
-            if (element) {
-
-              element.textContent =
-                `${collected} / ${series.count} collected`;
-
-            }
-
-          }
-        );
-
-      });
+        }
+      );
 
     }
 
 
-    /* =====================================================
+
+    /* =====================================
        DASHBOARD
-    ===================================================== */
+    ====================================== */
 
     function updateDashboard() {
 
       const totalSeries =
         locations.reduce(
-          (sum, location) =>
-            sum + location.series.length,
+          (
+            total,
+            location
+          ) =>
+            total +
+            location.series.length,
           0
         );
 
@@ -1862,10 +2545,14 @@
       let collected = 0;
 
 
-      Object.keys(ownedCards).forEach(
+      Object.keys(
+        ownedCards
+      ).forEach(
         key => {
 
-          if (ownedCards[key]) {
+          if (
+            ownedCards[key]
+          ) {
 
             collected++;
 
@@ -1878,15 +2565,21 @@
       const missing =
         Math.max(
           0,
-          totalCards - collected
+          totalCards -
+          collected
         );
 
 
       const percentage =
         totalCards === 0
+
           ? 0
+
           : Math.round(
-              (collected / totalCards) * 100
+              (
+                collected /
+                totalCards
+              ) * 100
             );
 
 
@@ -1928,14 +2621,16 @@
 
       renderBreakdown();
 
+
       updateAllSeriesCounts();
 
     }
 
 
-    /* =====================================================
+
+    /* =====================================
        BREAKDOWN
-    ===================================================== */
+    ====================================== */
 
     function renderBreakdown() {
 
@@ -1944,74 +2639,101 @@
           "seriesBreakdown"
         );
 
+
       container.innerHTML = "";
 
 
-      locations.forEach(location => {
+      locations.forEach(
+        location => {
 
-        location.series.forEach(series => {
+          location.series.forEach(
+            series => {
 
-          let collected = 0;
-
-
-          for (
-            let i = 1;
-            i <= series.count;
-            i++
-          ) {
-
-            const number =
-              String(i).padStart(3, "0");
+              let collected = 0;
 
 
-            const key =
-              getCardKey(
-                location,
-                series,
-                number
+              for (
+                let i = 1;
+                i <= series.count;
+                i++
+              ) {
+
+                const number =
+                  String(i).padStart(
+                    3,
+                    "0"
+                  );
+
+
+                const key =
+                  getCardKey(
+                    location,
+                    series,
+                    number
+                  );
+
+
+                if (
+                  ownedCards[key]
+                ) {
+
+                  collected++;
+
+                }
+
+              }
+
+
+              const item =
+                document.createElement(
+                  "div"
+                );
+
+
+              item.className =
+                "breakdown-item";
+
+
+              item.innerHTML = `
+
+                ${getLocationIcon(
+                  location.name
+                )}
+
+                ${location.name}
+
+                ·
+
+                ${series.name}
+
+                :
+
+                <span>
+
+                  ${collected}/${series.count}
+
+                </span>
+
+              `;
+
+
+              container.appendChild(
+                item
               );
 
-
-            if (ownedCards[key]) {
-
-              collected++;
-
             }
+          );
 
-          }
-
-
-          const item =
-            document.createElement("div");
-
-          item.className =
-            "breakdown-item";
-
-
-          item.innerHTML = `
-
-            ${location.name}
-            · ${series.name}
-            :
-            <span>
-              ${collected}/${series.count}
-            </span>
-
-          `;
-
-
-          container.appendChild(item);
-
-        });
-
-      });
+        }
+      );
 
     }
 
 
-    /* =====================================================
+
+    /* =====================================
        SEARCH
-    ===================================================== */
+    ====================================== */
 
     function searchCards() {
 
@@ -2019,6 +2741,7 @@
         document.getElementById(
           "searchInput"
         );
+
 
       const search =
         input.value
@@ -2032,38 +2755,43 @@
         );
 
 
-      cards.forEach(card => {
+      cards.forEach(
+        card => {
 
-        const number =
-          card.dataset.number
-            .toLowerCase();
+          const number =
+            card.dataset.number
+              .toLowerCase();
 
 
-        if (
-          search === "" ||
-          number.includes(search)
-        ) {
+          if (
+            search === "" ||
+            number.includes(
+              search
+            )
+          ) {
 
-          card.classList.remove(
-            "hidden"
-          );
+            card.classList.remove(
+              "hidden"
+            );
 
-        } else {
+          } else {
 
-          card.classList.add(
-            "hidden"
-          );
+            card.classList.add(
+              "hidden"
+            );
+
+          }
 
         }
-
-      });
+      );
 
     }
 
 
-    /* =====================================================
+
+    /* =====================================
        RESET SEARCH
-    ===================================================== */
+    ====================================== */
 
     function resetSearch() {
 
@@ -2074,20 +2802,23 @@
 
       document.querySelectorAll(
         ".card"
-      ).forEach(card => {
+      ).forEach(
+        card => {
 
-        card.classList.remove(
-          "hidden"
-        );
+          card.classList.remove(
+            "hidden"
+          );
 
-      });
+        }
+      );
 
     }
 
 
-    /* =====================================================
+
+    /* =====================================
        RESET COLLECTION
-    ===================================================== */
+    ====================================== */
 
     function resetCollection() {
 
@@ -2097,7 +2828,9 @@
         );
 
 
-      if (!confirmReset) {
+      if (
+        !confirmReset
+      ) {
 
         return;
 
@@ -2106,33 +2839,25 @@
 
       ownedCards = {};
 
+
       saveCollection();
+
 
       renderLocations();
 
+
       updateDashboard();
+
 
       resetSearch();
 
     }
 
 
-    /* =====================================================
-       SAFE ID
-    ===================================================== */
 
-    function makeSafeId(text) {
-
-      return text
-        .replace(/[^a-zA-Z0-9]/g, "-")
-        .toLowerCase();
-
-    }
-
-
-    /* =====================================================
-       INITIALIZE WEBSITE
-    ===================================================== */
+    /* =====================================
+       INITIAL LOAD
+    ====================================== */
 
     renderLocationCards();
 
@@ -2141,13 +2866,15 @@
     updateDashboard();
 
 
-    /* =====================================================
-       YOUTUBE MUSIC PLAYER
-    ===================================================== */
+
+    /* =====================================
+       YOUTUBE
+    ====================================== */
 
     let player = null;
 
     let isPlaying = false;
+
 
 
     function onYouTubeIframeAPIReady() {
@@ -2163,12 +2890,8 @@
 
                 /*
                   尝试自动播放。
-
-                  如果浏览器允许：
-                  音乐会自动开始。
-
-                  如果浏览器阻止：
-                  用户点击 PLAY MUSIC 即可。
+                  浏览器允许就自动播放。
+                  浏览器禁止则需要点击 PLAY。
                 */
 
                 try {
@@ -2189,12 +2912,15 @@
               onStateChange:
                 function(event) {
 
+
                   if (
                     event.data ===
                     YT.PlayerState.PLAYING
                   ) {
 
-                    isPlaying = true;
+                    isPlaying =
+                      true;
+
 
                     document.getElementById(
                       "musicButton"
@@ -2209,7 +2935,9 @@
                     YT.PlayerState.PAUSED
                   ) {
 
-                    isPlaying = false;
+                    isPlaying =
+                      false;
+
 
                     document.getElementById(
                       "musicButton"
@@ -2224,13 +2952,9 @@
                     YT.PlayerState.ENDED
                   ) {
 
-                    /*
-                      理论上 loop=1
-                      + playlist=同一个 ID
-                      会让歌曲循环。
-                    */
+                    isPlaying =
+                      false;
 
-                    isPlaying = false;
 
                     document.getElementById(
                       "musicButton"
@@ -2249,20 +2973,25 @@
     }
 
 
-    /* =====================================================
+
+    /* =====================================
        PLAY / PAUSE
-    ===================================================== */
+    ====================================== */
 
     function toggleMusic() {
 
-      if (!player) {
+      if (
+        !player
+      ) {
 
         return;
 
       }
 
 
-      if (isPlaying) {
+      if (
+        isPlaying
+      ) {
 
         player.pauseVideo();
 
@@ -2277,9 +3006,15 @@
   </script>
 
 
-  <!-- YouTube IFrame API -->
 
-  <script src="https://www.youtube.com/iframe_api"></script>
+  <!-- =====================================
+       YOUTUBE IFRAME API
+  ====================================== -->
+
+  <script
+    src="https://www.youtube.com/iframe_api">
+  </script>
+
 
 </body>
 </html>
