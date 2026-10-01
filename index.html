@@ -4362,6 +4362,8 @@ function renderCollection() {
                                 3,
                                 "0"
                             );
+                        card.dataset.series =
+                            series.title;
 
 
                         const imagePath =
@@ -4582,47 +4584,7 @@ function searchCards() {
     );
 
 }
-
-
-/* ============================================================
-   RESET SEARCH
-============================================================ */
-
-function resetSearch() {
-
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
-    if (!input) {
-        return;
-    }
-
-    input.value = "";
-
-    searchCards();
-
-}
-
-
-/* ============================================================
-   SEARCH INPUT
-============================================================ */
-
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
-
-if (searchInput) {
-
-    searchInput.addEventListener(
-        "input",
-        searchCards
-    );
-
-}
+    
 /* ============================================================
    RESET COLLECTION
 ============================================================ */
