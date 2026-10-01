@@ -4268,6 +4268,21 @@ function renderCollection() {
             );
 
 
+            /*
+             * In shared mode, location with
+             * no owned cards will not be shown.
+             */
+
+            if (
+                isSharedView &&
+                locationCollected === 0
+            ) {
+
+                return;
+
+            }
+
+
             locationHeader.innerHTML = `
 
                 <h2>
@@ -4353,6 +4368,21 @@ function renderCollection() {
                             }
 
                         }
+
+                    }
+
+
+                    /*
+                     * In shared mode, completely empty
+                     * series will not be shown.
+                     */
+
+                    if (
+                        isSharedView &&
+                        collected === 0
+                    ) {
+
+                        return;
 
                     }
 
@@ -4456,6 +4486,23 @@ function renderCollection() {
 
                         const owned =
                             activeCollection[key] === true;
+
+
+                        /*
+                         * SHARED MODE
+                         *
+                         * Only render cards that
+                         * are actually owned.
+                         */
+
+                        if (
+                            isSharedView &&
+                            !owned
+                        ) {
+
+                            continue;
+
+                        }
 
 
                         const hidden =
@@ -4687,8 +4734,6 @@ function renderCollection() {
 
 }
 
-
-    
 /* ============================================================
    SEARCH
 ============================================================ */
