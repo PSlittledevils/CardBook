@@ -4988,6 +4988,33 @@ window.addEventListener(
     }
 );
 
+/* ============================================================
+   FIX TOOLS BAR
+============================================================ */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const tools =
+            document.getElementById(
+                "collectionTools"
+            );
+
+        if (!tools) {
+            return;
+        }
+
+        /*
+         * Move the tools bar directly into BODY
+         * so it is not affected by parent containers.
+         */
+
+        document.body.appendChild(tools);
+
+    }
+);
+    
 </script>
 
 </body>
