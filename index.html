@@ -1098,16 +1098,19 @@ header h1 {
 ============================================================ */
 
 .tools {
-    position: sticky;
-    bottom: 12px;
+    position: fixed;
 
-    z-index: 100;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: 1000;
 
     display: flex;
     justify-content: center;
     gap: 10px;
 
-    margin: 20px auto;
+    margin: 0;
 
     padding: 10px;
 
