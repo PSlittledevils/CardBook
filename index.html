@@ -4509,14 +4509,11 @@ function renderCollection() {
 function searchCards() {
 
     const input =
-        document.getElementById(
-            "searchInput"
-        );
+        document.getElementById("searchInput");
 
     if (!input) {
         return;
     }
-
 
     const value =
         input.value
@@ -4525,34 +4522,8 @@ function searchCards() {
 
 
     const seriesElements =
-        document.querySelectorAll(
-            ".series"
-        );
+        document.querySelectorAll(".series");
 
-
-    /* ========================================================
-       SHOW ALL SERIES
-    ======================================================== */
-
-    if (!value) {
-
-        seriesElements.forEach(
-            seriesElement => {
-
-                seriesElement.style.display =
-                    "";
-
-            }
-        );
-
-        return;
-
-    }
-
-
-    /* ========================================================
-       SEARCH SERIES TITLE ONLY
-    ======================================================== */
 
     seriesElements.forEach(
         seriesElement => {
@@ -4562,14 +4533,8 @@ function searchCards() {
                     ".series-title"
                 );
 
-
             if (!titleElement) {
-
-                seriesElement.style.display =
-                    "none";
-
                 return;
-
             }
 
 
@@ -4580,9 +4545,8 @@ function searchCards() {
 
 
             if (
-                title.includes(
-                    value
-                )
+                !value ||
+                title.includes(value)
             ) {
 
                 seriesElement.style.display =
@@ -4616,7 +4580,6 @@ function resetSearch() {
         return;
     }
 
-
     input.value = "";
 
     searchCards();
@@ -4625,22 +4588,25 @@ function resetSearch() {
 
 
 /* ============================================================
-   SEARCH INPUT
+   SEARCH INPUT EVENT
 ============================================================ */
 
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
+document.addEventListener(
+    "input",
+    function(event) {
 
-if (searchInput) {
+        if (
+            event.target &&
+            event.target.id ===
+                "searchInput"
+        ) {
 
-    searchInput.addEventListener(
-        "input",
-        searchCards
-    );
+            searchCards();
 
-}
+        }
+
+    }
+);
     
 /* ============================================================
    RESET COLLECTION
