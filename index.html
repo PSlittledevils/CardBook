@@ -5418,7 +5418,6 @@ document.addEventListener(
     }
 );
 
-
 /* ============================================================
    CHECK SHARED COLLECTION LINK
 ============================================================ */
@@ -5440,7 +5439,12 @@ async function checkSharedCollectionLink() {
     }
 
     console.log(
-        "Shared collection link detected."
+        "🔗 Shared collection link detected."
+    );
+
+    console.log(
+        "🔑 Share token:",
+        shareToken
     );
 
     const result =
@@ -5448,7 +5452,16 @@ async function checkSharedCollectionLink() {
             shareToken
         );
 
+    console.log(
+        "📦 Shared collection result:",
+        result
+    );
+
     if (result === false) {
+
+        console.error(
+            "❌ Failed to load shared collection."
+        );
 
         return false;
 
@@ -5457,13 +5470,18 @@ async function checkSharedCollectionLink() {
     sharedCollection =
         result;
 
+    console.log(
+        "❤️ Shared cards loaded:",
+        Object.keys(
+            sharedCollection
+        ).length
+    );
+
     renderCollection();
 
     return true;
 
 }
-
-
 /* ============================================================
    LOAD SHARED COLLECTION
 ============================================================ */
