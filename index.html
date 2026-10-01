@@ -4517,70 +4517,127 @@ function searchCards() {
         return;
     }
 
+
     const value =
         input.value
             .trim()
             .toLowerCase();
 
 
-    const cards =
+    const seriesElements =
         document.querySelectorAll(
-            ".card"
+            ".series"
         );
 
 
     /* ========================================================
-       SHOW ALL
+       SHOW ALL SERIES
     ======================================================== */
 
     if (!value) {
 
-        cards.forEach(
-            card => {
+        seriesElements.forEach(
+            seriesElement => {
 
-                card.style.display =
+                seriesElement.style.display =
                     "";
 
             }
         );
 
         return;
+
     }
 
 
     /* ========================================================
-       SEARCH SERIES NAME ONLY
+       SEARCH SERIES TITLE ONLY
     ======================================================== */
 
-    cards.forEach(
-        card => {
+    seriesElements.forEach(
+        seriesElement => {
 
-            const seriesName =
-                (
-                    card.dataset.series ||
-                    ""
-                )
-                .trim()
-                .toLowerCase();
+            const titleElement =
+                seriesElement.querySelector(
+                    ".series-title"
+                );
+
+
+            if (!titleElement) {
+
+                seriesElement.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            const title =
+                titleElement.textContent
+                    .trim()
+                    .toLowerCase();
 
 
             if (
-                seriesName.includes(
+                title.includes(
                     value
                 )
             ) {
 
-                card.style.display =
+                seriesElement.style.display =
                     "";
 
             } else {
 
-                card.style.display =
+                seriesElement.style.display =
                     "none";
 
             }
 
         }
+    );
+
+}
+
+
+/* ============================================================
+   RESET SEARCH
+============================================================ */
+
+function resetSearch() {
+
+    const input =
+        document.getElementById(
+            "searchInput"
+        );
+
+    if (!input) {
+        return;
+    }
+
+
+    input.value = "";
+
+    searchCards();
+
+}
+
+
+/* ============================================================
+   SEARCH INPUT
+============================================================ */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        searchCards
     );
 
 }
