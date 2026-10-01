@@ -1764,38 +1764,37 @@ footer strong {
     </section>
 
 
-    <!-- ========================================================
-         TOOLS
-    ======================================================== -->
+<!-- ========================================================
+     TOOLS
+======================================================== -->
 
-    <div
-        class="tools"
-        id="collectionTools"
+<div
+    class="tools"
+    id="collectionTools"
+>
+
+    <input
+        class="search-box"
+        id="searchInput"
+        type="text"
+        placeholder="🔎 Search series..."
     >
 
-        <input
-            class="search-box"
-            id="searchInput"
-            type="text"
-            placeholder="🔎 Search card number..."
-        >
+    <button
+        class="action-btn"
+        onclick="resetSearch()"
+    >
+        CLEAR
+    </button>
 
-        <button
-            class="action-btn"
-            onclick="resetSearch()"
-        >
-            CLEAR
-        </button>
+    <button
+        class="action-btn"
+        onclick="resetCollection()"
+    >
+        RESET COLLECTION
+    </button>
 
-        <button
-            class="action-btn"
-            onclick="resetCollection()"
-        >
-            RESET COLLECTION
-        </button>
-
-    </div>
-
+</div>
 
     <!-- ========================================================
          CARD CATALOG
