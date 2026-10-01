@@ -2010,6 +2010,7 @@ const supabaseClient =
 let currentUser = null;
 let cloudSyncReady = false;
 let sharedCollection = null;
+let sharedOwnerName = "";
 
 
 /* ============================================================
@@ -5765,25 +5766,31 @@ async function loadSharedCollection(
          * into the same collection format
          */
 
-        const sharedCollection =
-            {};
+        sharedOwnerName =
+    data &&
+    data.length > 0 &&
+    data[0].display_name
+        ? data[0].display_name
+        : "Anonymous";
 
 
-        (data || []).forEach(
-            row => {
+const sharedCollection = {};
 
-                const key =
-                    getCardKey(
-                        row.location,
-                        row.series_index,
-                        row.card_number
-                    );
+(data || []).forEach(
+    row => {
 
-                sharedCollection[key] =
-                    true;
+        const key =
+            getCardKey(
+                row.location,
+                row.series_index,
+                row.card_number
+            );
 
-            }
-        );
+        sharedCollection[key] =
+            true;
+
+    }
+);
 
 
         console.log(
