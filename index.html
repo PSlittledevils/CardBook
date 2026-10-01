@@ -1876,6 +1876,7 @@ const supabaseClient =
 
 let currentUser = null;
 let cloudSyncReady = false;
+let sharedCollection = null;
 
 
 /* ============================================================
@@ -4072,8 +4073,41 @@ function renderCollection() {
             "collectionContainer"
         );
 
+
+    if (!container) {
+        return;
+    }
+
+
     container.innerHTML =
         "";
+
+
+    /*
+     * Shared mode
+     *
+     * Normal mode:
+     *     collection
+     *
+     * Shared mode:
+     *     sharedCollection
+     *
+     * Shared mode is read-only.
+     */
+
+    const isSharedView =
+        sharedCollection !== null;
+
+
+    /*
+     * Decide which collection data
+     * should be displayed.
+     */
+
+    const activeCollection =
+        isSharedView
+            ? sharedCollection
+            : collection;
 
 
     seriesData.forEach(
@@ -4104,6 +4138,10 @@ function renderCollection() {
             let locationCollected = 0;
 
 
+            /*
+             * Calculate location progress
+             */
+
             locationData.series.forEach(
                 (
                     series,
@@ -4112,6 +4150,7 @@ function renderCollection() {
 
                     locationTotal +=
                         series.count;
+
 
                     for (
                         let number = 1;
@@ -4126,8 +4165,9 @@ function renderCollection() {
                                 number
                             );
 
+
                         if (
-                            collection[key]
+                            activeCollection[key]
                         ) {
 
                             locationCollected++;
@@ -4162,6 +4202,10 @@ function renderCollection() {
             );
 
 
+            /*
+             * Render every series
+             */
+
             locationData.series.forEach(
                 (
                     series,
@@ -4169,9 +4213,15 @@ function renderCollection() {
                 ) => {
 
                     let collected = 0;
+
                     let hiddenCount = 0;
+
                     let hiddenCollected = 0;
 
+
+                    /*
+                     * Calculate series progress
+                     */
 
                     for (
                         let number = 1;
@@ -4186,13 +4236,15 @@ function renderCollection() {
                                 number
                             );
 
+
                         if (
-                            collection[key]
+                            activeCollection[key]
                         ) {
 
                             collected++;
 
                         }
+
 
                         if (
                             isHiddenCard(
@@ -4203,8 +4255,9 @@ function renderCollection() {
 
                             hiddenCount++;
 
+
                             if (
-                                collection[key]
+                                activeCollection[key]
                             ) {
 
                                 hiddenCollected++;
@@ -4224,6 +4277,10 @@ function renderCollection() {
                     seriesElement.className =
                         "series";
 
+
+                    /*
+                     * Mark completed series
+                     */
 
                     if (
                         collected ===
@@ -4291,6 +4348,10 @@ function renderCollection() {
                         "cards-grid";
 
 
+                    /*
+                     * Render cards
+                     */
+
                     for (
                         let number = 1;
                         number <= series.count;
@@ -4306,7 +4367,7 @@ function renderCollection() {
 
 
                         const owned =
-                            collection[key] === true;
+                            activeCollection[key] === true;
 
 
                         const hidden =
@@ -4335,23 +4396,29 @@ function renderCollection() {
 
 
                         if (owned) {
+
                             classes.push(
                                 "owned"
                             );
+
                         }
 
 
                         if (hidden) {
+
                             classes.push(
                                 "hidden-card"
                             );
+
                         }
 
 
                         if (horizontal) {
+
                             classes.push(
                                 "horizontal-card"
                             );
+
                         }
 
 
@@ -4366,6 +4433,8 @@ function renderCollection() {
                                 3,
                                 "0"
                             );
+
+
                         card.dataset.series =
                             series.title;
 
@@ -4418,60 +4487,80 @@ function renderCollection() {
                         `;
 
 
-                        card.onclick =
-                            async () => {
+                        /*
+                         * NORMAL MODE
+                         *
+                         * Cards can be clicked
+                         * and collection can be changed.
+                         */
 
-                                const newOwned =
-                                    !collection[key];
+                        if (!isSharedView) {
 
+                            card.onclick =
+                                async () => {
 
-                                collection[key] =
-                                    newOwned;
-
-
-                                saveCollection();
-
-
-                                renderCollection();
-
-                                renderLocations();
-
-                                renderSummary();
-
-                                renderSeriesProgress();
+                                    const newOwned =
+                                        !collection[key];
 
 
-                                if (
-                                    currentUser &&
-                                    cloudSyncReady
-                                ) {
-
-                                    const syncData =
-                                        parseCardKey(
-                                            key
-                                        );
+                                    collection[key] =
+                                        newOwned;
 
 
-                                    if (syncData) {
+                                    saveCollection();
 
-                                        await syncCardToCloud(
 
-                                            syncData.location,
+                                    renderCollection();
 
-                                            syncData.seriesIndex,
+                                    renderLocations();
 
-                                            syncData.cardNumber,
+                                    renderSummary();
 
-                                            newOwned
+                                    renderSeriesProgress();
 
-                                        );
+
+                                    if (
+                                        currentUser &&
+                                        cloudSyncReady
+                                    ) {
+
+                                        const syncData =
+                                            parseCardKey(
+                                                key
+                                            );
+
+
+                                        if (syncData) {
+
+                                            await syncCardToCloud(
+
+                                                syncData.location,
+
+                                                syncData.seriesIndex,
+
+                                                syncData.cardNumber,
+
+                                                newOwned
+
+                                            );
+
+                                        }
 
                                     }
 
-                                }
+                                };
 
-                            };
+                        }
 
+
+                        /*
+                         * SHARED MODE
+                         *
+                         * No onclick handler.
+                         *
+                         * The shared collection
+                         * is completely read-only.
+                         */
 
                         grid.appendChild(
                             card
@@ -4501,11 +4590,17 @@ function renderCollection() {
     );
 
 
+    /*
+     * Keep the existing
+     * series-name search working.
+     */
+
     searchCards();
 
 }
 
 
+    
 /* ============================================================
    SEARCH
 ============================================================ */
@@ -4679,7 +4774,229 @@ async function resetCollection() {
 
 }
 
+/* ============================================================
+   SHARE COLLECTION
+============================================================ */
 
+async function shareMyCollection() {
+
+    if (!currentUser) {
+
+        alert(
+            "Please sign in with Google before sharing your collection."
+        );
+
+        return;
+
+    }
+
+
+    if (!cloudSyncReady) {
+
+        alert(
+            "Cloud Sync is not ready yet. Please wait a moment and try again."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        updateCloudStatus(
+            "☁️ Creating share link..."
+        );
+
+
+        /*
+         * Check whether this user already has
+         * a share record.
+         */
+
+        const {
+            data: existingShare,
+            error: existingError
+        } =
+            await supabaseClient
+                .from("collection_shares")
+                .select(
+                    "id, share_token, enabled"
+                )
+                .eq(
+                    "user_id",
+                    currentUser.id
+                )
+                .maybeSingle();
+
+
+        if (existingError) {
+
+            console.error(
+                "Check share link error:",
+                existingError
+            );
+
+            alert(
+                "Could not create share link: " +
+                existingError.message
+            );
+
+            updateCloudStatus(
+                "☁️ Cloud Sync On"
+            );
+
+            return;
+
+        }
+
+
+        let shareToken;
+
+
+        /*
+         * Existing share link
+         */
+
+        if (
+            existingShare &&
+            existingShare.share_token &&
+            existingShare.enabled
+        ) {
+
+            shareToken =
+                existingShare.share_token;
+
+        }
+
+
+        /*
+         * Create a new share link
+         */
+
+        else {
+
+            shareToken =
+                crypto.randomUUID()
+                    .replaceAll(
+                        "-",
+                        ""
+                    );
+
+
+            const {
+                error: insertError
+            } =
+                await supabaseClient
+                    .from("collection_shares")
+                    .upsert(
+                        {
+                            user_id:
+                                currentUser.id,
+
+                            share_token:
+                                shareToken,
+
+                            enabled:
+                                true
+                        },
+                        {
+                            onConflict:
+                                "user_id"
+                        }
+                    );
+
+
+            if (insertError) {
+
+                console.error(
+                    "Create share link error:",
+                    insertError
+                );
+
+                alert(
+                    "Could not create share link: " +
+                    insertError.message
+                );
+
+                updateCloudStatus(
+                    "☁️ Cloud Sync On"
+                );
+
+                return;
+
+            }
+
+        }
+
+
+        /*
+         * Create public URL
+         */
+
+        const shareUrl =
+            window.location.origin +
+            window.location.pathname +
+            "?share=" +
+            encodeURIComponent(
+                shareToken
+            );
+
+
+        /*
+         * Copy link
+         */
+
+        try {
+
+            await navigator.clipboard.writeText(
+                shareUrl
+            );
+
+            alert(
+                "🔗 Share link copied!\n\n" +
+                shareUrl
+            );
+
+        } catch (copyError) {
+
+            /*
+             * Clipboard may be blocked by
+             * browser permissions.
+             */
+
+            prompt(
+                "Copy your share link:",
+                shareUrl
+            );
+
+        }
+
+
+        updateCloudStatus(
+            "☁️ Cloud Sync On"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Share collection error:",
+            error
+        );
+
+        alert(
+            "Could not create share link."
+        );
+
+        updateCloudStatus(
+            "☁️ Cloud Sync On"
+        );
+
+    }
+
+}
+    
 /* ============================================================
    MUSIC PLAYER
 ============================================================ */
@@ -4932,7 +5249,6 @@ audio.addEventListener(
     }
 );
 
-
 /* ============================================================
    INITIALIZE APP
 ============================================================ */
@@ -4955,12 +5271,33 @@ async function initializeApp() {
         false
     );
 
-    await initializeAuth();
+
+    /*
+     * Check whether this page was opened
+     * using a shared collection link.
+     */
+
+    const isSharedView =
+        await checkSharedCollectionLink();
+
+
+    /*
+     * Normal login / cloud sync
+     *
+     * Do not run normal cloud loading
+     * when viewing somebody else's
+     * shared collection.
+     */
+
+    if (!isSharedView) {
+
+        await initializeAuth();
+
+    }
 
 }
 
 initializeApp();
-
 
 /* ============================================================
    OPTIONAL AUTOPLAY
@@ -5014,6 +5351,115 @@ document.addEventListener(
 
     }
 );
+
+/* ============================================================
+   LOAD SHARED COLLECTION
+============================================================ */
+
+async function loadSharedCollection(
+    shareToken
+) {
+
+    if (!shareToken) {
+        return false;
+    }
+
+
+    console.log(
+        "Loading shared collection..."
+    );
+
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.rpc(
+                "get_shared_collection",
+                {
+                    p_share_token:
+                        shareToken
+                }
+            );
+
+
+        if (error) {
+
+            console.error(
+                "Load shared collection error:",
+                error
+            );
+
+            alert(
+                "Could not load shared collection."
+            );
+
+            return false;
+
+        }
+
+
+        console.log(
+            "Shared collection:",
+            data
+        );
+
+
+        /*
+         * Convert database rows
+         * into the same collection format
+         */
+
+        const sharedCollection =
+            {};
+
+
+        (data || []).forEach(
+            row => {
+
+                const key =
+                    getCardKey(
+                        row.location,
+                        row.series_index,
+                        row.card_number
+                    );
+
+                sharedCollection[key] =
+                    true;
+
+            }
+        );
+
+
+        console.log(
+            "Shared cards:",
+            Object.keys(
+                sharedCollection
+            ).length
+        );
+
+
+        return sharedCollection;
+
+
+    } catch (error) {
+
+        console.error(
+            "Shared collection error:",
+            error
+        );
+
+        alert(
+            "Could not load shared collection."
+        );
+
+        return false;
+
+    }
+
+}
     
 </script>
 
