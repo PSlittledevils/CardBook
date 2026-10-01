@@ -5531,6 +5531,50 @@ async function loadSharedCollection(
     }
 
 }
+
+/* ============================================================
+   CHECK SHARED COLLECTION LINK
+============================================================ */
+
+async function checkSharedCollectionLink() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const shareToken =
+        params.get("share");
+
+    if (!shareToken) {
+
+        return false;
+
+    }
+
+    console.log(
+        "Shared collection link detected."
+    );
+
+    const result =
+        await loadSharedCollection(
+            shareToken
+        );
+
+    if (result === false) {
+
+        return false;
+
+    }
+
+    sharedCollection =
+        result;
+
+    renderCollection();
+
+    return true;
+
+}
     
 </script>
 
