@@ -2857,12 +2857,15 @@ function isHorizontalCard(
 
 }
 
-
 /* ============================================================
    LOGIN WITH GOOGLE
 ============================================================ */
 
 async function loginWithGoogle() {
+
+    console.log(
+        "Google login button clicked"
+    );
 
     const button =
         document.getElementById(
@@ -2886,16 +2889,30 @@ async function loginWithGoogle() {
         window.location.origin +
         window.location.pathname;
 
-    const { error } =
+    console.log(
+        "Google OAuth redirect:",
+        redirectTo
+    );
+
+    const { data, error } =
         await supabaseClient.auth.signInWithOAuth({
 
             provider: "google",
 
             options: {
-                redirectTo: redirectTo
+
+                redirectTo:
+                    redirectTo
+
             }
 
         });
+
+    console.log(
+        "Google OAuth result:",
+        data,
+        error
+    );
 
     if (error) {
 
@@ -2919,10 +2936,11 @@ async function loginWithGoogle() {
 
         }
 
+        return;
+
     }
 
 }
-
 
 /* ============================================================
    LOGOUT
