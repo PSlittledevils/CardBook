@@ -4516,7 +4516,9 @@ function searchCards() {
     }
 
     const value =
-        input.value.trim();
+        input.value
+            .trim()
+            .toLowerCase();
 
 
     const cards =
@@ -4524,6 +4526,10 @@ function searchCards() {
             ".card"
         );
 
+
+    /* ========================================================
+       SHOW ALL
+    ======================================================== */
 
     if (!value) {
 
@@ -4537,24 +4543,29 @@ function searchCards() {
         );
 
         return;
-
     }
 
+
+    /* ========================================================
+       SEARCH SERIES NAME ONLY
+    ======================================================== */
 
     cards.forEach(
         card => {
 
-            const number =
-                card.dataset.number;
+            const seriesName =
+                (
+                    card.dataset.series ||
+                    ""
+                )
+                .trim()
+                .toLowerCase();
 
 
             if (
-                number.includes(value) ||
-                number ===
-                    value.padStart(
-                        3,
-                        "0"
-                    )
+                seriesName.includes(
+                    value
+                )
             ) {
 
                 card.style.display =
@@ -4573,25 +4584,45 @@ function searchCards() {
 }
 
 
+/* ============================================================
+   RESET SEARCH
+============================================================ */
+
 function resetSearch() {
 
-    document.getElementById(
-        "searchInput"
-    ).value = "";
+    const input =
+        document.getElementById(
+            "searchInput"
+        );
+
+    if (!input) {
+        return;
+    }
+
+    input.value = "";
 
     searchCards();
 
 }
 
 
-document.getElementById(
-    "searchInput"
-).addEventListener(
-    "input",
-    searchCards
-);
+/* ============================================================
+   SEARCH INPUT
+============================================================ */
 
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
 
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        searchCards
+    );
+
+}
 /* ============================================================
    RESET COLLECTION
 ============================================================ */
