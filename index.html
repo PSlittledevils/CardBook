@@ -3586,6 +3586,19 @@ function getTotals() {
     let completedSeries = 0;
 
 
+    /*
+     * Use shared collection when viewing
+     * somebody else's shared collection.
+     *
+     * Otherwise use the normal collection.
+     */
+
+    const activeCollection =
+        sharedCollection !== null
+            ? sharedCollection
+            : collection;
+
+
     seriesData.forEach(
         locationData => {
 
@@ -3615,14 +3628,17 @@ function getTotals() {
                                 number
                             );
 
+
                         if (
-                            collection[key] === true
+                            activeCollection[key] === true
                         ) {
 
                             collected++;
+
                             seriesCollected++;
 
                         }
+
 
                         if (
                             isHiddenCard(
@@ -3633,8 +3649,9 @@ function getTotals() {
 
                             hiddenTotal++;
 
+
                             if (
-                                collection[key] === true
+                                activeCollection[key] === true
                             ) {
 
                                 hiddenCollected++;
@@ -3644,6 +3661,7 @@ function getTotals() {
                         }
 
                     }
+
 
                     if (
                         seriesCollected ===
@@ -3666,6 +3684,7 @@ function getTotals() {
             totalCards - collected,
             0
         );
+
 
     const percent =
         totalCards === 0
@@ -3691,8 +3710,6 @@ function getTotals() {
     };
 
 }
-
-
 /* ============================================================
    RENDER LOCATIONS
 ============================================================ */
