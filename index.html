@@ -3780,14 +3780,37 @@ function renderLocations() {
             "locationGrid"
         );
 
+    if (!container) {
+        return;
+    }
+
     container.innerHTML =
         "";
+
+
+    /*
+     * Shared mode:
+     *     use sharedCollection
+     *
+     * Normal mode:
+     *     use collection
+     */
+
+    const isSharedView =
+        sharedCollection !== null;
+
+    const activeCollection =
+        isSharedView
+            ? sharedCollection
+            : collection;
+
 
     seriesData.forEach(
         locationData => {
 
             let total = 0;
             let collected = 0;
+
 
             locationData.series.forEach(
                 (
@@ -3797,6 +3820,7 @@ function renderLocations() {
 
                     total +=
                         series.count;
+
 
                     for (
                         let number = 1;
@@ -3811,8 +3835,9 @@ function renderLocations() {
                                 number
                             );
 
+
                         if (
-                            collection[key] === true
+                            activeCollection[key] === true
                         ) {
 
                             collected++;
@@ -3825,6 +3850,21 @@ function renderLocations() {
             );
 
 
+            /*
+             * In shared mode, don't show
+             * locations with no owned cards.
+             */
+
+            if (
+                isSharedView &&
+                collected === 0
+            ) {
+
+                return;
+
+            }
+
+
             const card =
                 document.createElement(
                     "div"
@@ -3832,6 +3872,7 @@ function renderLocations() {
 
             card.className =
                 "location-card";
+
 
             card.onclick =
                 () => {
@@ -3966,6 +4007,23 @@ function renderSeriesProgress() {
     }
 
 
+    /*
+     * Shared mode:
+     *     use sharedCollection
+     *
+     * Normal mode:
+     *     use collection
+     */
+
+    const isSharedView =
+        sharedCollection !== null;
+
+    const activeCollection =
+        isSharedView
+            ? sharedCollection
+            : collection;
+
+
     /* DYNAMIC SERIES COUNT */
 
     const description =
@@ -4000,6 +4058,7 @@ function renderSeriesProgress() {
 
                     let collected = 0;
 
+
                     for (
                         let number = 1;
                         number <= series.count;
@@ -4013,13 +4072,29 @@ function renderSeriesProgress() {
                                 number
                             );
 
+
                         if (
-                            collection[key] === true
+                            activeCollection[key] === true
                         ) {
 
                             collected++;
 
                         }
+
+                    }
+
+
+                    /*
+                     * In shared mode, don't show
+                     * series with no owned cards.
+                     */
+
+                    if (
+                        isSharedView &&
+                        collected === 0
+                    ) {
+
+                        return;
 
                     }
 
@@ -4144,7 +4219,6 @@ function showSeriesProgress() {
     });
 
 }
-
 
 /* ============================================================
    SHOW COLLECTION
