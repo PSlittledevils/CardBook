@@ -1204,7 +1204,7 @@ footer strong {
 @media (max-width: 700px) {
 
     header {
-        padding-top: 30px;
+        padding-top: 40px;
     }
 
     .logo {
@@ -1230,27 +1230,70 @@ footer strong {
         justify-content: space-between;
     }
 
+    /* ========================================================
+       MOBILE MUSIC NOTIFICATION BAR
+    ======================================================== */
+
     .music-player {
         position: fixed;
-        
-        top: 10px;
+
+        top: 0;
+        left: 0;
+        right: 0;
         bottom: auto;
-        left: auto;
-        right: 10px;
-        
-        width: calc(100vw - 20px);
-        max-width: 300px;
-        
-        padding: 10px;
+
+        width: 100%;
+        max-width: none;
+
+        height: 42px;
+        padding: 6px 10px;
+
+        border-radius: 0 0 10px 10px;
+
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        box-sizing: border-box;
+    }
+
+    .music-title {
+        font-size: 9px;
+        letter-spacing: 1px;
+        margin-bottom: 0;
+        white-space: nowrap;
+    }
+
+    .music-track {
+        flex: 1;
+        min-width: 0;
+
+        font-size: 11px;
+        margin-bottom: 0;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .music-controls {
-        gap: 5px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-shrink: 0;
     }
 
     .music-btn {
-        height: 32px;
-        min-width: 35px;
+        height: 28px;
+        min-width: 30px;
+        padding: 0 6px;
+
+        font-size: 12px;
+        border-radius: 6px;
+    }
+
+    .music-btn.main {
+        min-width: 32px;
     }
 
     .volume-area {
@@ -1321,6 +1364,7 @@ footer strong {
             42px
             minmax(0, 1fr)
             70px;
+
         gap: 8px;
         padding: 13px 10px;
     }
@@ -1338,7 +1382,6 @@ footer strong {
     }
 
 }
-
 /* ============================================================
    SMALL PHONE
 ============================================================ */
