@@ -1657,33 +1657,37 @@ footer strong {
 
 
 <main class="container">
+<!-- ========================================================
+     HOME
+======================================================== -->
 
-    <!-- ========================================================
-         HOME
-    ======================================================== -->
+<section class="home">
 
-    <section class="home">
+    <div class="section-title">
 
-        <div class="section-title">
+        <h2>
+            MY CARD COLLECTION
+        </h2>
 
-            <h2>
-                MY CARD COLLECTION
-            </h2>
+        <p>
+            Choose your collection
+        </p>
 
-            <p>
-                Choose your collection
-            </p>
+        <p
+            id="sharedOwnerName"
+            class="shared-owner-name"
+            style="display: none;"
+        ></p>
 
-        </div>
+    </div>
 
-        <div
-            class="location-grid"
-            id="locationGrid"
-        ></div>
+    <div
+        class="location-grid"
+        id="locationGrid"
+    ></div>
 
-    </section>
-
-
+</section>
+    
     <!-- ========================================================
          COLLECTION SUMMARY
     ======================================================== -->
@@ -5634,7 +5638,6 @@ document.addEventListener(
 
     }
 );
-
 /* ============================================================
    CHECK SHARED COLLECTION LINK
 ============================================================ */
@@ -5686,6 +5689,27 @@ async function checkSharedCollectionLink() {
 
     sharedCollection =
         result;
+
+
+    /* ====================================================
+       SHOW SHARER NAME
+    ==================================================== */
+
+    const ownerElement =
+        document.getElementById(
+            "sharedOwnerName"
+        );
+
+    if (ownerElement) {
+
+        ownerElement.textContent =
+            "Shared by: " +
+            sharedOwnerName;
+
+        ownerElement.style.display =
+            "block";
+    }
+
 
     console.log(
         "❤️ Shared cards loaded:",
