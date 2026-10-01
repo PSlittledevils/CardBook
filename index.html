@@ -496,6 +496,8 @@ header h1 {
     color: #ff9999;
 }
 
+
+
 /* ============================================================
    OVERALL PROGRESS
 ============================================================ */
@@ -1230,14 +1232,15 @@ footer strong {
 
     .music-player {
         position: fixed;
-
-        top: auto;
-        bottom: 10px;
-        left: 10px;
+        
+        top: 10px;
+        bottom: auto;
+        left: auto;
         right: 10px;
-
-        width: auto;
-
+        
+        width: calc(100vw - 20px);
+        max-width: 300px;
+        
         padding: 10px;
     }
 
